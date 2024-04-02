@@ -1,0 +1,15 @@
+
+.login {
+    background-color: aqua;
+}
+  .padre { 
+  height: 20rem;
+  width: 20rem;
+  margin: 20% auto;
+  display: flex;
+  padding: 1rem;
+
+  }
+  .header {
+    text-align: center;
+  }

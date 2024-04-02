@@ -1,6 +1,7 @@
 # GeneradorDePdf
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+usa node 18.15.0
 
 ## Development server
 
