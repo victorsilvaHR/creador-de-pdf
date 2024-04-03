@@ -5,7 +5,6 @@ import { jsPDF } from "jspdf";
     providedIn: 'root'
 })
 export class GenerarPDF {
-    prueba: string ='hola';
     pdfArmado() : void {
 
 const doc = new jsPDF();

@@ -1,0 +1,10 @@
+.titulos {
+    text-align: center;
+    margin-top: 1em;
+   
+}
+.select{
+    display: flex;
+    margin-bottom: 5em;
+    margin: 2em;
+}

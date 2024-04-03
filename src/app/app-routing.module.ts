@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'home', component: CotizadorComponent },
   { path:'', component: LoginComponent },
   { path:'**', component: LoginComponent }
+  
 ];
 
 @NgModule({
