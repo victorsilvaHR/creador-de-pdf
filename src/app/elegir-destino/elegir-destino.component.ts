@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { baseDatos } from '../modelos/cotizador';
 
 @Component({
   selector: 'app-elegir-destino',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './elegir-destino.component.css'
 })
 export class ElegirDestinoComponent {
+  destinos = baseDatos 
 
 }
