@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { baseDatos } from '../modelos/cotizador';
+import { SharedDataService } from '../servicios/sharedData.service';
 
 @Component({
   selector: 'app-elegir-destino',
@@ -7,6 +8,19 @@ import { baseDatos } from '../modelos/cotizador';
   styleUrl: './elegir-destino.component.css'
 })
 export class ElegirDestinoComponent {
-  destinos = baseDatos 
 
+  destinos = baseDatos 
+  
+  constructor (private sharedDataService : SharedDataService)  {}
+
+  enviarMensaje(destino: string) {
+    this.sharedDataService.enviarDestino(destino);
+  }
+
+  destinoElegido(event: any) {
+    
+    console.log(event.target?.value)
+    this.enviarMensaje(event.target?.value)
+
+  }
 }
