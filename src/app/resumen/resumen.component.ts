@@ -7,12 +7,21 @@ import { SharedDataService } from '../servicios/sharedData.service';
   styleUrl: './resumen.component.css'
 })
 export class ResumenComponent {
-  destino= '';
+  destino = '';
+  caracteristicas = '';
+  pilotos = ''
 
   constructor(private sharedDataService: SharedDataService) {
+    
     this.sharedDataService.destinoObservable.subscribe(destino => {
       this.destino = destino;
     });
-
+    this.sharedDataService.descripcionObservable.subscribe(descripcion => {
+      this.caracteristicas = descripcion;
+    });
+    this.sharedDataService.pilotosObservable.subscribe(pilotos => {
+      this.pilotos = pilotos;
+    });
 }
+
 }

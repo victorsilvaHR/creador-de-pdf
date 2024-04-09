@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { baseDatos } from '../modelos/cotizador';
+import { SharedDataService } from '../servicios/sharedData.service';
 
 
 
@@ -12,15 +13,22 @@ export class ElegirCaracteristicasComponent implements OnInit {
 
   caracteristicas:any [] = [] 
   opcionSeleccionada: string = ''
-  elegir:any [] = [] 
-  piloto: string = ''
 
+  constructor (private sharedDataService : SharedDataService)  {}
   ngOnInit(): void {
-    this.catalogoCaracteristicas();
-    this.catalgoPiloto();
-    
-  };
-catalogoCaracteristicas() {
+    this.catalogoCaracteristicas(this.opcionSeleccionada)
+    this.catalgoPiloto(this.elegir)
+
+  }
+ 
+  changeCaracteristicas(event: any) {
+    console.log(event.target?.value)
+    this.opcionSeleccionada = event.target?.value;
+    this.sharedDataService.enviarCaracteristicas(this.opcionSeleccionada)
+  }
+
+catalogoCaracteristicas(caracteristicas: any) {
+  
   this.caracteristicas = [
     {
       id:1, descripcion: "Hasta 33 Toneladas"
@@ -32,13 +40,17 @@ catalogoCaracteristicas() {
       id:3, descripcion: "Hasta 46 Toneladas"
     }
   ]
-  
 }
-changeCaracteristicas(event: any) {
-  this.opcionSeleccionada = event.target?.value
+
+elegir:any [] = [] 
+piloto: string = ''
+
+elegirpiloto(event: any) {
   console.log(event.target?.value)
+  this.piloto = event.target?.value;
+  this.sharedDataService.enviarPilotos(this.piloto)
 }
-catalgoPiloto() {
+catalgoPiloto(elegir:any) {
   this.elegir = [
     {
       id:1, pilotos: "sin piloto"
@@ -51,11 +63,5 @@ catalgoPiloto() {
     }
   ]
 }
-
-elegirpiloto(event: any) {
-  this.piloto = event.target?.value
-  this.opcionSeleccionada = ''
-}
-
 
 }

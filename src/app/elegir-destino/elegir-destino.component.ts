@@ -13,14 +13,14 @@ export class ElegirDestinoComponent {
   
   constructor (private sharedDataService : SharedDataService)  {}
 
-  enviarMensaje(destino: string) {
+  enviarDestino(destino: string) {
     this.sharedDataService.enviarDestino(destino);
   }
 
   destinoElegido(event: any) {
-    
     console.log(event.target?.value)
-    this.enviarMensaje(event.target?.value)
+    this.enviarDestino(event.target?.value)
 
   }
+  
 }
