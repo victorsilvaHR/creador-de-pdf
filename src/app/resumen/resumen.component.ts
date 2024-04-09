@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedDataService } from '../servicios/sharedData.service';
+import { GenerarPDF } from '../servicios/generarPDF.service';
 
 @Component({
   selector: 'app-resumen',
@@ -11,7 +12,7 @@ export class ResumenComponent {
   caracteristicas = '';
   pilotos = ''
 
-  constructor(private sharedDataService: SharedDataService) {
+  constructor(private sharedDataService: SharedDataService, private generarPDF: GenerarPDF) {
     
     this.sharedDataService.destinoObservable.subscribe(destino => {
       this.destino = destino;
@@ -23,5 +24,8 @@ export class ResumenComponent {
       this.pilotos = pilotos;
     });
 }
+descargarPDF(){
+  this.generarPDF.pdfArmado(this.destino, this.caracteristicas, this.pilotos);
+ }
 
 }

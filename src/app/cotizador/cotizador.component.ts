@@ -11,6 +11,5 @@ export class CotizadorComponent {
   private generarPDF: GenerarPDF
  ){}
  descargarPDF(){
-  this.generarPDF.pdfArmado();
  }
 }
