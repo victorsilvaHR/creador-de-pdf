@@ -8,6 +8,7 @@ import { CotizadorComponent } from './cotizador/cotizador.component';
 import { ElegirDestinoComponent } from './elegir-destino/elegir-destino.component';
 import { ElegirCaracteristicasComponent } from './elegir-caracteristicas/elegir-caracteristicas.component';
 import { ResumenComponent } from './resumen/resumen.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ResumenComponent } from './resumen/resumen.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
