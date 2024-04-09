@@ -13,7 +13,6 @@ export class CotizadorComponent {
   private userService: UserService
  ){}
  descargarPDF(){
-  this.generarPDF.pdfArmado();
  }
  cerrarSesion() {
   this.userService.logOut();
