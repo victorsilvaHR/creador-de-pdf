@@ -17,6 +17,7 @@ export class UserService {
         signInWithEmailAndPassword(this.auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            this.router.navigateByUrl('/home');
             console.log(user);
           })
           .catch((error) => {

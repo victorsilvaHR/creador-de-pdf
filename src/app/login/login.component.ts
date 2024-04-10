@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { environment } from '../../environments';
-import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { UserService } from '../servicios/users.service';
+import { environment } from '../../environments';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +16,6 @@ export class LoginComponent implements OnInit {
   analytics: any;
 
   constructor (
-    private router: Router,
     private userService : UserService
   ) {
 
@@ -36,12 +33,11 @@ export class LoginComponent implements OnInit {
   sendCredentials() {
     console.log(this.loginForm.value);
     const { email, password } = this.loginForm.value;
+    if(!!email && !!password) {
     this.userService.singIn(email, password);
-    this.login();
+  }
     
   }
-  login() {
-    this.router.navigateByUrl('/home');
-  }
+  
  
 }

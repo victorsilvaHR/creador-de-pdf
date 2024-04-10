@@ -4,6 +4,6 @@
 </div>
 <div class="container">
     <app-elegir-destino></app-elegir-destino>
-    <app-elegir-caracteristicas></app-elegir-caracteristicas>
+    <app-elegir-caracteristicas *ngIf="destino"></app-elegir-caracteristicas>
     <app-resumen></app-resumen>
 </div>

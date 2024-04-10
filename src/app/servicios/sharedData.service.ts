@@ -26,7 +26,12 @@ export class SharedDataService {
   enviarPilotos(mensaje : string) {
     console.log(mensaje)
     this.pilotosSubjetcts.next(mensaje)
+}
+private segundaParteSubjetcts = new Subject<boolean>();
+  segundaParteObservable = this.segundaParteSubjetcts.asObservable();
 
-  
+  segundaParte(mensaje : boolean) {
+    console.log(mensaje)
+    this.segundaParteSubjetcts.next(mensaje)
 }
 }
