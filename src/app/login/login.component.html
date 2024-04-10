@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="header">HEADER</h2>
   <div class="row padre login">
-    <form (formGroup)="login" (ngSubmit)="sendCredentials()">
+    <form [formGroup]="loginForm" (ngSubmit)="sendCredentials()">
       <div class="">
         <label for="inputUsername">Usuario</label>
         <input formControlName="email" type="email" class="form-control" id="email" placeholder="correo@mail.com">

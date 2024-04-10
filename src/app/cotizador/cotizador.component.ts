@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GenerarPDF } from '../servicios/generarPDF.service';
+import { UserService } from '../servicios/users.service';
 
 @Component({
   selector: 'app-cotizador',
@@ -8,9 +9,14 @@ import { GenerarPDF } from '../servicios/generarPDF.service';
 })
 export class CotizadorComponent {
  constructor(
-  private generarPDF: GenerarPDF
+  private generarPDF: GenerarPDF,
+  private userService: UserService
  ){}
  descargarPDF(){
   this.generarPDF.pdfArmado();
+ }
+ cerrarSesion() {
+  this.userService.logOut();
+  
  }
 }

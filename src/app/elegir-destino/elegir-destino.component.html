@@ -8,10 +8,9 @@
     </div>
     <div class="mb-3 col-sm-12 col-md-6">
         <label for="origen" class="form-label">Destino</label>
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Seleccione</option>
-            <option *ngFor="let estado of destinos" value="estado.destino">{{estado.destino}}</option>
-            
+        <select class="form-select" aria-label="Default select example" (change)="destinoElegido($event)">
+            <option value=""value="" disabled selected>Seleccione</option>
+            <option *ngFor="let estado of destinos" [value]="estado.destino">{{estado.destino}}</option>
         </select>
     </div>
 </div>
@@ -19,3 +18,5 @@
 <div class="d-grid justify-content-md-end">
     <button class="btn btn-primary" type="button">Continuar</button>
 </div>
+
+
