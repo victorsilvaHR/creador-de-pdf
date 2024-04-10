@@ -38,7 +38,7 @@ export class GenerarPDF {
         doc.text("11.80-2,90-370", 11, 122);
         doc.text("PESO " + caracteristicas, 11, 128);
         doc.text("(LARGO x ANCHO x ALTO)", 11, 134);
-        doc.text("No.PILOTOS: " + pilotos, 11, 139);
+        doc.text("No. de PILOTOS: " + pilotos, 11, 139);
 
                     
         doc.setFillColor(0, 6, 136);
