@@ -38,6 +38,7 @@ export class ElegirDestinoComponent implements OnInit {
     const segundaParte = true
     this.sharedDataService.segundaParte(segundaParte);
   }
+  
 
   
 }

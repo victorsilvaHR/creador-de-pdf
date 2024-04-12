@@ -34,4 +34,12 @@ private segundaParteSubjetcts = new Subject<boolean>();
     console.log(mensaje)
     this.segundaParteSubjetcts.next(mensaje)
 }
+private resumenSubjetcts = new Subject<boolean>();
+  resumenObservable = this.resumenSubjetcts.asObservable();
+
+  enviarResumen(mensaje : boolean) {
+    console.log(mensaje)
+    this.resumenSubjetcts.next(mensaje)
+
+}
 }

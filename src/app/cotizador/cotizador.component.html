@@ -1,9 +1,21 @@
-<div>
-    <h2>HEADER</h2>
-    <button (click)="cerrarSesion()">Cerrar Sesión</button>
-</div>
-<div class="container">
+
+  <div class="titulo d-flex justify-content-between ">
+    <div>
+      <h3>LARP</h3>
+      <H3>TRANSPORT</H3>
+    </div>
+    <div class="d-grid justify-content-md-end">
+      <h2 class="bienvenida">¡Bien Venido! <p>Victor Silva</p>
+      </h2>
+    </div>
+  </div>
+  <div class="d-grid justify-content-md-end mt-3">
+    <button class="btn btn-danger mt-" type="button" (click)="cerrarSesion()">cerrar sesion</button>
+  </div>
+
+
+  <div class="container">
     <app-elegir-destino></app-elegir-destino>
     <app-elegir-caracteristicas *ngIf="destino"></app-elegir-caracteristicas>
-    <app-resumen></app-resumen>
-</div>
+    <app-resumen *ngIf="resumen"></app-resumen>
+  </div>
