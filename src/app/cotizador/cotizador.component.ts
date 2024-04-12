@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { GenerarPDF } from '../servicios/generarPDF.service';
 import { UserService } from '../servicios/users.service';
+import { SharedDataService } from '../servicios/sharedData.service';
 
 @Component({
   selector: 'app-cotizador',
@@ -8,12 +8,16 @@ import { UserService } from '../servicios/users.service';
   styleUrl: './cotizador.component.css'
 })
 export class CotizadorComponent {
+  destino = false ;
  constructor(
-  private generarPDF: GenerarPDF,
-  private userService: UserService
- ){}
+  private userService: UserService,
+  private sharedDataService: SharedDataService
+ ){ 
+  this.sharedDataService.segundaParteObservable.subscribe(destino => {
+    this.destino = destino;
+  });
+ }
  descargarPDF(){
-  this.generarPDF.pdfArmado();
  }
  cerrarSesion() {
   this.userService.logOut();

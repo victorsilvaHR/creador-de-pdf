@@ -14,7 +14,9 @@ export class ElegirCaracteristicasComponent implements OnInit {
   caracteristicas:any [] = [] 
   opcionSeleccionada: string = ''
 
+
   constructor (private sharedDataService : SharedDataService)  {}
+  
   ngOnInit(): void {
     this.catalogoCaracteristicas(this.opcionSeleccionada)
     this.catalgoPiloto(this.elegir)
@@ -64,4 +66,7 @@ catalgoPiloto(elegir:any) {
   ]
 }
 
+
 }
+
+

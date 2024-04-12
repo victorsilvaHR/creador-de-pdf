@@ -20,6 +20,8 @@ export class ElegirDestinoComponent implements OnInit {
   
   ngOnInit(): void {
   //  this.dataService.cargarData();
+      this.dataService.consultaCotizador();
+
   }
 
   enviarDestino(destino: string) {
@@ -31,5 +33,11 @@ export class ElegirDestinoComponent implements OnInit {
     this.enviarDestino(event.target?.value)
 
   }
+  
+  mostrarSegundaParteClick() {
+    const segundaParte = true
+    this.sharedDataService.segundaParte(segundaParte);
+  }
+
   
 }
