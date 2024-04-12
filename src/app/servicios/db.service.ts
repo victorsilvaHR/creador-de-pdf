@@ -15,7 +15,6 @@ export class DataService {
 
     baseLocal = baseDatos;
 
-
     cargarData() {
     // recibe BD, ruta/nodo, Object puede o no llevar llaves
       set(ref(this.db, 'cotizador/'), this.baseLocal);

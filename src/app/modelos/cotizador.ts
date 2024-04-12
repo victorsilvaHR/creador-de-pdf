@@ -337,3 +337,11 @@ export const baseDatos= [
     },
     
 ]
+export const users = [
+    {
+        uid: 'jwEB82rEbeOXwyUPeYzqBkubZwB2',
+        email: 'apiros@mailinator.com',
+        tel: '5586779112',
+        name: 'Armando Piros'
+    }
+]
