@@ -1,18 +1,14 @@
 
   <div class="titulo d-flex justify-content-between ">
-    <div>
+    <div class="subtitulo">
       <h3>LARP</h3>
       <H3>TRANSPORT</H3>
     </div>
-    <div class="d-grid justify-content-md-end">
-      <h2 class="bienvenida">¡Bien Venido! <p>Victor Silva</p>
-      </h2>
+    <div class="d-grid justify-content-md-end subtitulo2">
+      <p>¡Bienvenido! Victor Silva</p>
+      <button class="btn btn-danger btn-sm cerrarSesion" type="button" (click)="cerrarSesion()">Cerrar Secion</button>
     </div>
   </div>
-  <div class="d-grid justify-content-md-end mt-3">
-    <button class="btn btn-danger mt-" type="button" (click)="cerrarSesion()">cerrar sesion</button>
-  </div>
-
 
   <div class="container">
     <app-elegir-destino></app-elegir-destino>

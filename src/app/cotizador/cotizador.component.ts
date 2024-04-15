@@ -8,6 +8,7 @@ import { SharedDataService } from '../servicios/sharedData.service';
   styleUrl: './cotizador.component.css'
 })
 export class CotizadorComponent {
+  
   destino = false ;
   resumen = false ;
  constructor(

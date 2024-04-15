@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { GenerarPDF } from '../servicios/generarPDF.service';
 
@@ -7,7 +7,7 @@ import { GenerarPDF } from '../servicios/generarPDF.service';
   templateUrl: './resumen.component.html',
   styleUrl: './resumen.component.css'
 })
-export class ResumenComponent {
+export class ResumenComponent implements OnInit {
   destino = '';
   caracteristicas = '';
   pilotos = ''
@@ -24,8 +24,14 @@ export class ResumenComponent {
       this.pilotos = pilotos;
     });
 }
-descargarPDF(){
-  this.generarPDF.pdfArmado(this.destino, this.caracteristicas, this.pilotos);
- }
+  ngOnInit(): void {
+  this.destino = this.sharedDataService.destino;
+  this.caracteristicas = this.sharedDataService.caracteristicas;
+  this.pilotos = this.sharedDataService.pilotos;
+  }
+
+  descargarPDF(){
+    this.generarPDF.pdfArmado(this.destino, this.caracteristicas, this.pilotos);
+  }
 
 }
