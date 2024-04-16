@@ -3,3 +3,54 @@ text-align: center;
 margin-top: 1em;
 
 }
+.lupa {
+    margin: auto;
+    border: #1489fd 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: #1489fd;
+}
+.lupa:hover {
+    background-color: #1489fd;
+    color: white;
+}
+.modal-body {
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+.destinos {
+    padding: 5px 5px 5px 10px;
+    border: #5cabf9 1px solid;
+    font-size: 20px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    background-color: #78b8f7;
+    color: white;
+}
+.destinos:hover {
+    background-color: #3f9bf7;
+    font-size: 23px;
+}
+.resultados {
+    max-height: 40vh;
+    overflow-y: scroll;
+    background-color: lightskyblue;
+    margin-top: -16px;
+    padding: 0.7rem;
+    border-radius: 5px;
+    opacity: 0.9;
+    position: fixed;
+    width: max(40%, min(50%, 300px));
+} 
+.dest-list {
+    border: white 1px solid;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+.dest-list:hover {
+    background-color: #3f9bf7;
+    color: white;
+}
