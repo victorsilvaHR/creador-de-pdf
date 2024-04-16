@@ -8,7 +8,8 @@ import { CotizadorComponent } from './cotizador/cotizador.component';
 import { ElegirDestinoComponent } from './elegir-destino/elegir-destino.component';
 import { ElegirCaracteristicasComponent } from './elegir-caracteristicas/elegir-caracteristicas.component';
 import { ResumenComponent } from './resumen/resumen.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterDestinosPipe } from './utils/filterDestinos.pipe';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CotizadorComponent,
     ElegirDestinoComponent,
     ElegirCaracteristicasComponent,
-    ResumenComponent
+    ResumenComponent,
+    FilterDestinosPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
