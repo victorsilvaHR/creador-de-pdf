@@ -1,0 +1,20 @@
+.titulo {
+    background-color: #002e5d;
+    height: 4.5em;
+    color: white;
+    position: fixed; /* Posición fija */
+    top: 0; /* Asegura que el header esté en la parte superior */
+    left: 0; /* Asegura que el header comience desde la izquierda */
+    width: 100%; /* Asegura que el header ocupe todo el ancho de la página */
+}
+.subtitulo {
+    margin-left: 2em;
+}
+.subtitulo2 {
+    margin-right: 1em;
+}
+.cerrarSesion {
+    width: 8em;
+    height: 2em;
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { baseDatos } from '../modelos/cotizador';
 import { SharedDataService } from '../servicios/sharedData.service';
 
@@ -65,8 +65,15 @@ catalgoPiloto(elegir:any) {
     }
   ]
 }
-
+mostrarResumen() {
+  const resumen = true
+  this.sharedDataService.enviarResumen(resumen);
+}
 
 }
+
+
+
+
 
 
