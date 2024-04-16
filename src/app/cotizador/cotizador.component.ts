@@ -8,13 +8,18 @@ import { SharedDataService } from '../servicios/sharedData.service';
   styleUrl: './cotizador.component.css'
 })
 export class CotizadorComponent {
+  
   destino = false ;
+  resumen = false ;
  constructor(
   private userService: UserService,
   private sharedDataService: SharedDataService
  ){ 
   this.sharedDataService.segundaParteObservable.subscribe(destino => {
     this.destino = destino;
+  });
+  this.sharedDataService.resumenObservable.subscribe(resumen => {
+    this.resumen = resumen;
   });
  }
  descargarPDF(){

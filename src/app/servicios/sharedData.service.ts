@@ -5,12 +5,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedDataService {
+  destino = '' 
+  caracteristicas = ''
+  pilotos = ''
   
   private destinoSubject = new Subject<string>();
   destinoObservable = this.destinoSubject.asObservable();
   
   enviarDestino(mensaje: string) {
     this.destinoSubject.next(mensaje);
+    this.destino = mensaje;
   }
   private descripcionSubjetcts = new Subject<string>();
   descripcionObservable = this. descripcionSubjetcts.asObservable();
@@ -18,6 +22,8 @@ export class SharedDataService {
   enviarCaracteristicas(mensaje : string) {
     console.log(mensaje)
     this.descripcionSubjetcts.next(mensaje)
+    this.caracteristicas = mensaje;
+
   }
 
   private pilotosSubjetcts = new Subject<string>();
@@ -26,6 +32,8 @@ export class SharedDataService {
   enviarPilotos(mensaje : string) {
     console.log(mensaje)
     this.pilotosSubjetcts.next(mensaje)
+    this.pilotos = mensaje;
+
 }
 private segundaParteSubjetcts = new Subject<boolean>();
   segundaParteObservable = this.segundaParteSubjetcts.asObservable();
@@ -33,5 +41,13 @@ private segundaParteSubjetcts = new Subject<boolean>();
   segundaParte(mensaje : boolean) {
     console.log(mensaje)
     this.segundaParteSubjetcts.next(mensaje)
+}
+private resumenSubjetcts = new Subject<boolean>();
+  resumenObservable = this.resumenSubjetcts.asObservable();
+
+  enviarResumen(mensaje : boolean) {
+    console.log(mensaje)
+    this.resumenSubjetcts.next(mensaje)
+
 }
 }
