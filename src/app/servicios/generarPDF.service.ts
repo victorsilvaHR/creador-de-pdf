@@ -9,13 +9,15 @@ export class GenerarPDF {
     pdfArmado(destino:string, caracteristicas:string, pilotos:string) : void {
 
         const doc = new jsPDF();
+        const currentDate = new Date().toLocaleDateString();
+
             
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);
         doc.rect(0, 30, 80, 8, "F");
         doc.setTextColor("white");
-        doc.text("SEP   2023", 10, 36);
+        doc.text(`${currentDate}`, 10, 36);
             
         doc.setTextColor("black");
         doc.text("Alvaro Puyol", 10, 55);
