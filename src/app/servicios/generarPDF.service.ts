@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from "jspdf";
+import { FechaService } from '../utils/formate.date.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class GenerarPDF {
+    constructor (private fechaService: FechaService){}
     
     pdfArmado(destino:string, caracteristicas:string, pilotos:string) : void {
 
         const doc = new jsPDF();
-        const currentDate = new Date().toLocaleDateString();
+        const currentDate = this.fechaService.formartDate();
 
             
         doc.addImage("/assets/canacar.png",0,0,220, 30);
@@ -70,28 +72,28 @@ export class GenerarPDF {
         doc.setTextColor("black");
             
         const longText = 
-        `* Las medidas y pesos proporcionados deberán ser exactos, ya que con estos datos elaboramos el 
-        permiso especial ante la SCT y por cualquier diferencia nos lo anulan, procediendo a la detención del 
-        ehículo y sanción por 500 dias de salario mínimo.
+    `* Las medidas y pesos proporcionados deberán ser exactos, ya que con estos datos elaboramos el 
+    permiso especial ante la SCT y por cualquier diferencia nos lo anulan, procediendo a la detención del 
+    ehículo y sanción por 500 dias de salario mínimo.
+        
+    * La cotización se basa en las condiciones actuales de ruta: cualquier cambio y/o obstáculo nuevo 
+    tendra que someterse a consideración y el precio pactado pudiese cambiar; Ejemplos:
+    Tramos de terraceria en malas condiciones, bloqueos, inundaciones, etc.
+        
+        
+    Observaciones:
+        
+    -Maniobras de carga y descarga son por cuenta del destinatario.
+    -Esta mercancia viaja por cuenta y riesco del interesado.
+        
             
-        * La cotización se basa en las condiciones actuales de ruta: cualquier cambio y/o obstáculo nuevo 
-        tendra que someterse a consideración y el precio pactado pudiese cambiar; Ejemplos:
-        Tramos de terraceria en malas condiciones, bloqueos, inundaciones, etc.
-            
-            
-        Observaciones:
-            
-        -Maniobras de carga y descarga son por cuenta del destinatario.
-        -Esta mercancia viaja por cuenta y riesco del interesado.
-            
-                
-        -Todos nuestros costos tienen una vigencia de 30 dias.
-        -En caso de existir variaciones en las dimensiones se ajustará el precio.
-        -El tiempo para carga y/o descarga es de 12HRS. pasado este tiempo se negociarán estadías de
-        $5,000mil + I.V.A. por cada 12HRS. por cada unidad.
-        -Las condiciones de acceso al punto de entrega deberán de ser optimas para el acceso de nuestro 
-        equipo, en caso contrario, cualquier costo extra generado para acceder sera por cuenta del 
-        destinatario.`;
+    -Todos nuestros costos tienen una vigencia de 30 dias.
+    -En caso de existir variaciones en las dimensiones se ajustará el precio.
+    -El tiempo para carga y/o descarga es de 12HRS. pasado este tiempo se negociarán estadías de
+    $5,000mil + I.V.A. por cada 12HRS. por cada unidad.
+    -Las condiciones de acceso al punto de entrega deberán de ser optimas para el acceso de nuestro 
+    equipo, en caso contrario, cualquier costo extra generado para acceder sera por cuenta del 
+    destinatario.`;
             
             
         const maxWidth = 200;

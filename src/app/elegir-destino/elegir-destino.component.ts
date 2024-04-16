@@ -14,6 +14,7 @@ export class ElegirDestinoComponent implements OnInit {
   destinos = baseDatos;
   textoBusqueda: string = '';
   destinoOk = true;
+
   
   constructor (
     private sharedDataService : SharedDataService,
@@ -31,20 +32,26 @@ export class ElegirDestinoComponent implements OnInit {
     this.sharedDataService.enviarDestino(destino);
   }
 
-  destinoElegido(event: any) {
-    console.log(event.target?.value)
-    this.enviarDestino(event.target?.value)
-  }
+  // destinoElegido(event: any) {
+  //   console.log(event.target?.value)
+  //   this.enviarDestino(event.target?.value)
+  // }
   
   mostrarSegundaParteClick() {
+    if(this.textoBusqueda ){
     const segundaParte = true
     this.sharedDataService.segundaParte(segundaParte);
+    }
+
   }
+
   destinoSelect(estado: any) {
     console.log('dobleClick', estado);
     this.textoBusqueda = estado.destino;
     this.enviarDestino(estado.destino);
     this.destinoOk = true;
+
   }
+  
   
 }

@@ -1,6 +1,6 @@
 .titulos{
 text-align: center;
-margin-top: 1em;
+margin-top: 2em;
 
 }
 .lupa {
@@ -54,3 +54,10 @@ margin-top: 1em;
     background-color: #3f9bf7;
     color: white;
 }
+.btn-primary {
+    background-color: #002e5d;
+    border: #002e5d 1px solid;
+  }
+  .btn-primary:hover {
+    background-color: #1C4C96;
+  }
