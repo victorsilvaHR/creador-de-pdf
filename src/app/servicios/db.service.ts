@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
-import { baseDatos } from '../modelos/cotizador';
+import { baseDatos, users } from '../modelos/cotizador';
 import { environment } from '../../environments';
 
 
@@ -14,10 +14,11 @@ export class DataService {
     db = getDatabase(this.app);
 
     baseLocal = baseDatos;
-
+    usuario = users;
 
     cargarData() {
     // recibe BD, ruta/nodo, Object puede o no llevar llaves
+    // set(ref(this.db, 'users/'+this.usuario.uid), this.usuario);
       set(ref(this.db, 'cotizador/'), this.baseLocal);
     }
 

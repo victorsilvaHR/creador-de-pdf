@@ -8,10 +8,22 @@
     </div>
     <div class="mb-3 col-sm-12 col-md-6">
         <label for="origen" class="form-label">Destino</label>
-        <select class="form-select" aria-label="Default select example" (change)="destinoElegido($event)">
+        <!-- <select class="form-select" aria-label="Default select example" (change)="destinoElegido($event)">
             <option value=""value="" disabled selected>Seleccione</option>
             <option *ngFor="let estado of destinos" [value]="estado.destino">{{estado.destino}}</option>
-        </select>
+        </select> -->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="textoBusqueda" (keydown)="buscarDestino()"
+              placeholder="Buscar destino" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="material-symbols-outlined lupa" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                search
+            </span>
+        </div>
+       <div *ngIf="!destinoOk" class="resultados">
+          <div *ngFor="let dest of destinos | filterDestinos: textoBusqueda" (click)="destinoSelect(dest)" class="dest-list">
+            <div>{{dest.destino}} </div>
+          </div>
+       </div>
     </div>
 </div>
 
@@ -19,4 +31,22 @@
     <button class="btn btn-primary" type="button" (click)="mostrarSegundaParteClick()">Continuar</button>
 </div>
 
-
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Destinos disponibles</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngFor="let estado of destinos" class="destinos" (click)="destinoSelect(estado)" data-bs-dismiss="modal">
+                {{estado.destino}}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+          <!-- <button type="button" class="btn btn-primary">Aceptar</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
