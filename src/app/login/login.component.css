@@ -1,25 +1,28 @@
 
+.body-login {
+  height: 90vh;
+  width: 100vw;
+  background-image: url('../../assets/img/larp-home.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem;
+}
 .login {
     background-color: #cadffb;
     border-radius: 5px;
-}
-.container {
-  /* background-color: #cadffb; */
-}
-  .padre { 
-  height: 20rem;
-  width: 20rem;
-  margin: 20% auto;
-  display: flex;
-  padding: 1rem;
-
-  }
+    height: 20rem;
+    width: 20rem;
+    margin: 10rem auto;
+    padding: 1rem;
+    }
   .header {
     text-align: center;
   }
 
   .header-login {
     background-color: #002e5d;
+    /* background: rgb(37,36,64);
+    background: linear-gradient(174deg, rgba(37,36,64,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
     color: white;
   }
   .login-form {
@@ -28,8 +31,19 @@
   .btn-primary {
     background-color: #002e5d;
     border: #002e5d 1px solid;
+    /* box-shadow: 0 0 6px 3px #1C4C96; */
+
   }
   .btn-primary:hover {
     background-color: #1C4C96;
     /* border: whitesmoke 1px solid; */
+    box-shadow: 0 0 6px 3px #1C4C96;
   }
+.ver {
+  margin: auto;
+    border: #1C4C96 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: #1489fd;
+}

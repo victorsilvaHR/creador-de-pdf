@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   analytics: any;
+  mostrarPassword: boolean = false;
 
   constructor (
     private userService : UserService
@@ -29,7 +30,9 @@ export class LoginComponent implements OnInit {
     const app = initializeApp(environment.firebaseConfig);
     this.analytics = getAnalytics(app);
   }
-
+  showPass() {
+    this.mostrarPassword = !this.mostrarPassword;
+  }
   sendCredentials() {
     console.log(this.loginForm.value);
     const { email, password } = this.loginForm.value;
