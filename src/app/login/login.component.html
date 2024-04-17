@@ -17,12 +17,15 @@
         <input class="form-control login-form"  formControlName="password"  
           type="{{ mostrarPassword ? 'text' : 'password' }}" class="form-control" id="password"
           placeholder="Contrseña" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <span *ngIf="mostrarPassword" class="material-symbols-outlined ver" (click)="showPass()">
-            visibility_off
-          </span>
-          <span *ngIf="!mostrarPassword" class="material-symbols-outlined ver" (click)="showPass()">
-            visibility
-          </span>
+          <div (mousedown)="showPass()" (mouseup)="showPass()">
+            <span *ngIf="mostrarPassword" class="material-symbols-outlined ver">
+              visibility_off
+            </span>
+            <span *ngIf="!mostrarPassword" class="material-symbols-outlined ver">
+              visibility
+            </span>
+          </div>
+          
     </div>
       <div class="login-form">
         <button type="submit" class="btn btn-primary col-12">Login</button>
