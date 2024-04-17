@@ -1,10 +1,13 @@
+<div class="titulo d-flex justify-content-between ">
+  <img src="/assets/larp.png" alt="larp"  > 
 
-  <div class="titulo d-flex justify-content-between ">
-    <div class="subtitulo">
+  <!-- <div class="subtitulo">
       <h3>LARP</h3>
       <H3>TRANSPORT</H3>
-    </div>
-
+    </div> -->
+    <p class="subtitulo2">25 Años de Experiencia Transportando Cargas Especializadas & Regulares
+      a Cualquier Destino de la República Mexicana.</p>
+    
    <div class="d-grid">
     <div class="d-flex justify-content-between">
         <p class="ms-auto Bienvenido">¡Bienvenido! Victor Silva</p>
@@ -21,9 +24,11 @@
   
   
 
-
+<div class="fondo">
   <div class="container">
     <app-elegir-destino></app-elegir-destino>
     <app-elegir-caracteristicas *ngIf="destino"></app-elegir-caracteristicas>
     <app-resumen *ngIf="resumen"></app-resumen>
   </div>
+</div>
+

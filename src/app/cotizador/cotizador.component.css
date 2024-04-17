@@ -2,16 +2,35 @@
     background-color: #002e5d;
     height: 4.5em;
     color: white;
-    position: fixed; /* Posición fija */
-    top: 0; /* Asegura que el header esté en la parte superior */
-    left: 0; /* Asegura que el header comience desde la izquierda */
-    width: 100%; /* Asegura que el header ocupe todo el ancho de la página */
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 100%;
 }
 .subtitulo {
-    margin-left: 2em;
+    margin-left: 1em;
 }
 .Bienvenido {
     margin-right: 1em;
+}
+.fondo {
+    background-color: #e9ecef;
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+
+}
+.container {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+.subtitulo2 {
+    margin-top: 3em;
+    font-size: 16px;
 }
 
 
