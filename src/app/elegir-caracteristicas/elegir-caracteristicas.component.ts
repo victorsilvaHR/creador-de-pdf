@@ -66,8 +66,10 @@ catalgoPiloto(elegir:any) {
   ]
 }
 mostrarResumen() {
-  const resumen = true
-  this.sharedDataService.enviarResumen(resumen);
+  if(this.opcionSeleccionada){
+    const resumen = true
+    this.sharedDataService.enviarResumen(resumen);
+  }
 }
 
 }

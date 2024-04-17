@@ -9,10 +9,29 @@
     border-bottom: red 2px solid
 }
 .subtitulo {
-    margin-left: 2em;
+    margin-left: 1em;
 }
 .Bienvenido {
     margin-right: 1em;
+}
+.fondo {
+    background-color: #e9ecef;
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+
+}
+.container {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+.subtitulo2 {
+    margin-top: 3em;
+    font-size: 16px;
 }
 
 
