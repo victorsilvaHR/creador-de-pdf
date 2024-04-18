@@ -19,7 +19,7 @@
      <label for="operadores" class="form-label">Operadores</label>
      <select class="form-select" (change)="elegirpiloto($event)">
       <option value="" disabled selected >Seleccione</option>
-      <option *ngFor="let opcion of elegir" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
+      <option *ngFor="let opcion of catalogoPilotos" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
      </select>
    </div>
    <div class="mb-3 col-sm-12 col-md-6">

@@ -28,6 +28,7 @@ margin-top: 2em;
     border-radius: 5px;
     background-color: #78b8f7;
     color: white;
+    cursor: pointer;
 }
 .destinos:hover {
     background-color: #3f9bf7;
@@ -49,6 +50,7 @@ margin-top: 2em;
     padding: 5px 5px 5px 10px;
     border-radius: 5px;
     margin-bottom: 3px;
+    cursor: pointer;
 }
 .dest-list:hover {
     background-color: #3f9bf7;

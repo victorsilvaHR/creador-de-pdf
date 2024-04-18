@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { baseDatos } from '../modelos/cotizador';
 import { SharedDataService } from '../servicios/sharedData.service';
+import { DataService } from '../servicios/db.service';
 
 
 
@@ -11,15 +12,20 @@ import { SharedDataService } from '../servicios/sharedData.service';
 })
 export class ElegirCaracteristicasComponent implements OnInit {
 
-  caracteristicas:any [] = [] 
-  opcionSeleccionada: string = ''
+  caracteristicas:any [] = []; 
+  opcionSeleccionada: string = '';
+  catalogoPilotos:any [] = [];
+  piloto: string = '';
 
 
-  constructor (private sharedDataService : SharedDataService)  {}
+  constructor (
+    private sharedDataService : SharedDataService,
+    private dataService :  DataService
+  )  {}
   
   ngOnInit(): void {
     this.catalogoCaracteristicas(this.opcionSeleccionada)
-    this.catalgoPiloto(this.elegir)
+    this.catalgoPiloto();
 
   }
  
@@ -29,41 +35,29 @@ export class ElegirCaracteristicasComponent implements OnInit {
     this.sharedDataService.enviarCaracteristicas(this.opcionSeleccionada)
   }
 
-catalogoCaracteristicas(caracteristicas: any) {
-  
-  this.caracteristicas = [
-    {
-      id:1, descripcion: "Hasta 33 Toneladas"
-    },
-    {
-      id:2, descripcion: "Hasta 39 Toneladas"
-    },
-    {
-      id:3, descripcion: "Hasta 46 Toneladas"
-    }
-  ]
+async catalogoCaracteristicas(caracteristicas: any) {
+  try {
+    const caract = await this.dataService.consultaCaracteristicas();
+    this.caracteristicas = caract;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
 
-elegir:any [] = [] 
-piloto: string = ''
-
+async catalgoPiloto() {
+  try {
+    const pilotos = await this.dataService.consultaOperadores();
+    this.catalogoPilotos = pilotos;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
 elegirpiloto(event: any) {
   console.log(event.target?.value)
   this.piloto = event.target?.value;
   this.sharedDataService.enviarPilotos(this.piloto)
-}
-catalgoPiloto(elegir:any) {
-  this.elegir = [
-    {
-      id:1, pilotos: "sin piloto"
-    },
-    {
-      id:2, pilotos: "1"
-    },
-    {
-      id:3, pilotos: "2"
-    }
-  ]
 }
 mostrarResumen() {
   if(this.opcionSeleccionada){

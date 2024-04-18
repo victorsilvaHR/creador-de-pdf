@@ -262,14 +262,6 @@ export const baseDatos= [
         hasta46T: 96760,		
         piloto1:  15000,
         piloto2:  20000			
-    },
-    {
-        destino: "San Luis Potosi, SLP",																																																																																																																																								
-        hasta33T: 82000,
-        hasta39T: 86920,
-        hasta46T: 96760,		
-        piloto1:  15000,
-        piloto2:  20000			
     },					
     {
         destino: "Silao",																																																																																																																																								
@@ -343,3 +335,25 @@ export const users =  {
         tel: '5586779112',
         name: 'Armando Piros'
     }
+export const caracteristicasCarga = [
+    {
+      id:1, descripcion: "Hasta 33 Toneladas"
+    },
+    {
+      id:2, descripcion: "Hasta 39 Toneladas"
+    },
+    {
+      id:3, descripcion: "Hasta 46 Toneladas"
+    }
+  ];
+export const operadores = [
+    {
+      id:1, pilotos: "sin piloto"
+    },
+    {
+      id:2, pilotos: "1"
+    },
+    {
+      id:3, pilotos: "2"
+    }
+  ];
