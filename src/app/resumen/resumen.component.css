@@ -1,6 +1,5 @@
 .titulos {
     text-align: center;
-    margin-top: 1em;
    
 }
 .select{
@@ -15,3 +14,10 @@
   .btn-primary:hover {
     background-color: #1C4C96;
   }
+.resumen-rectangulo {
+  background-color: #f0f0f0; 
+  padding: 15px; 
+  border: 1px solid red; 
+  border-radius: 5px; 
+  margin-top: 1em;
+}

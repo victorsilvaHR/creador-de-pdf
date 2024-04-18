@@ -51,9 +51,13 @@
     color: #1489fd;
 }
 .titulo {
-  margin-top: 0.5em;
-  font-size: 250%;
+  font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: -5em;
+  font-size: 6rem;
 }
+
 .larp {
   height: 5.3em;
 }
