@@ -21,7 +21,7 @@
         </div>
        <div *ngIf="!destinoOk" class="resultados">
           <div *ngFor="let dest of destinos | filterDestinos: textoBusqueda" (click)="destinoSelect(dest)" class="dest-list">
-            <div>{{dest.destino}} </div>
+            <div>{{dest.destino}}</div>
           </div>
        </div>
     </div>

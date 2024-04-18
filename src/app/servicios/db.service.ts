@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
-import { baseDatos, users } from '../modelos/cotizador';
+import { baseDatos, caracteristicasCarga, operadores, users } from '../modelos/cotizador';
 import { environment } from '../../environments';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -15,24 +16,78 @@ export class DataService {
 
     baseLocal = baseDatos;
     usuario = users;
+    caracteristicas = caracteristicasCarga;
+    pilotos = operadores;
 
     cargarData() {
     // recibe BD, ruta/nodo, Object puede o no llevar llaves
     // set(ref(this.db, 'users/'+this.usuario.uid), this.usuario);
-      set(ref(this.db, 'cotizador/'), this.baseLocal);
+      set(ref(this.db, 'operadores/'), this.pilotos);
     }
 
-    consultaCotizador() {
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `/cotizador`)).then((snapshot) => {
+    async consultaCotizador(): Promise<any> {
+      try {
+        const dbRef = ref(getDatabase());
+        const snapshot = await get(child(dbRef, `/cotizador`));
+        
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          return snapshot.val();
         } else {
           console.log("No data available");
+          return null;
         }
-      }).catch((error) => {
+      } catch (error) {
         console.error(error);
-      });
+        throw error;
+      }
     }
-    
+    async consultaCaracteristicas(): Promise<any> {
+      try {
+        const dbRef = ref(getDatabase());
+        const snapshot = await get(child(dbRef, `/caracteristicas`));
+        
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+          return null;
+        }
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    }
+    async consultaOperadores(): Promise<any> {
+      try {
+        const dbRef = ref(getDatabase());
+        const snapshot = await get(child(dbRef, `/operadores`));
+        
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+          return null;
+        }
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    }
+    async usuarioById(idUser: string): Promise<any> {
+      try {
+        const dbRef = ref(getDatabase());
+        const snapshot = await get(child(dbRef, `/users/${idUser}`));
+        
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+          return null;
+        }
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    }
+ 
 }

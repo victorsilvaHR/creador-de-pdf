@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { baseDatos } from '../modelos/cotizador';
 
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
@@ -11,7 +10,7 @@ import { DataService } from '../servicios/db.service';
 })
 export class ElegirDestinoComponent implements OnInit {
 
-  destinos = baseDatos;
+  destinos: any[]= [];
   textoBusqueda: string = '';
   destinoOk = true;
 
@@ -23,7 +22,7 @@ export class ElegirDestinoComponent implements OnInit {
   
   ngOnInit(): void {
   //  this.dataService.cargarData();
-    this.dataService.consultaCotizador();
+      this.getDestinos();
   }
   buscarDestino() {
     this.destinoOk = false;
@@ -31,12 +30,10 @@ export class ElegirDestinoComponent implements OnInit {
   enviarDestino(destino: string) {
     this.sharedDataService.enviarDestino(destino);
   }
-
   // destinoElegido(event: any) {
   //   console.log(event.target?.value)
   //   this.enviarDestino(event.target?.value)
   // }
-  
   mostrarSegundaParteClick() {
     if(this.textoBusqueda ){
     const segundaParte = true
@@ -44,14 +41,18 @@ export class ElegirDestinoComponent implements OnInit {
     }
 
   }
-
   destinoSelect(estado: any) {
-    console.log('dobleClick', estado);
     this.textoBusqueda = estado.destino;
     this.enviarDestino(estado.destino);
     this.destinoOk = true;
-
   }
-  
-  
+  async getDestinos() {
+    try {
+      const destinos = await this.dataService.consultaCotizador();
+      this.destinos = destinos;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }
