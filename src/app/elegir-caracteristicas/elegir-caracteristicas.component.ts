@@ -21,6 +21,8 @@ export class ElegirCaracteristicasComponent implements OnInit {
     ancho:'',
     alto:'',
   }
+  referencias : string = ''
+
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -73,6 +75,11 @@ changeMedidas(event: any) {
   console.log(event.target?.value)
   this.opcionSeleccionada = event.target?.value;
   this.sharedDataService.enviarMedidas(this.medidas)
+}
+changeReferencias(event: any) {
+  console.log(event.target?.value)
+  this.opcionSeleccionada = event.target?.value;
+  this.sharedDataService.enviarReferencias(this.referencias)
 }
 
 }
