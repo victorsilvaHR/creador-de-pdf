@@ -1,19 +1,25 @@
 <h4 class="titulos">Elegir Caracteristicas</h4>
-<div class="row">
-   <div class="mb-3 col-sm-12 col-md-6">
-        <label for="origen" class="form-label">Caracteristicas</label>
-      <select class="form-select"   (change)="changeCaracteristicas($event)">
-        <option value="" disabled selected>Seleccione</option>
-        <option *ngFor="let elegir of caracteristicas" [value]="elegir.descripcion">{{elegir.descripcion}}</option>
-      </select>
-   </div>
-   <div class="mb-3 col-sm-12 col-md-6 rectangulo1">
-      <p for="origen" class="mt-1">Caracteristicas</p>
-        Peso maximo
-        {{opcionSeleccionada}}    
-        / Altura Total Maxima 4.70 contando remolque / Largo Total no excede los 15m de prueba
- </div>
-</div>
+  <div class="row">
+      <div class="col-3">
+          <p class="text-center">Largo</p>
+          <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)"type="number" class="form-control"  min="1" step="0.01" max="15">
+      </div>
+      <div class="col-3">
+          <p class="text-center">Ancho</p>
+          <input [(ngModel)]="medidas.ancho"  type="number" class="form-control"  min="1" step="0.01" max="5">
+      </div>
+      <div class="col-3">
+          <p class="text-center">Alto</p>
+          <input  type="number" class="form-control"  min="1" step="0.01" max="7">
+      </div>
+      <div class="col-3">
+          <p>Peso</p>
+          <select class="form-select"   (change)="changeCaracteristicas($event)">
+            <option value="" disabled selected>Seleccione</option>
+            <option *ngFor="let elegir of caracteristicas" [value]="elegir.descripcion">{{elegir.descripcion}}</option>
+          </select>      
+       </div>
+  </div>
 <div class="row">
    <div class="mb-3 col-sm-12 col-md-6 ">
      <label for="operadores" class="form-label">Operadores</label>
@@ -22,7 +28,7 @@
       <option *ngFor="let opcion of elegir" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
      </select>
    </div>
-   <div class="mb-3 col-sm-12 col-md-6 rectangulo2">
+   <div class="mb-3 col-sm-12 col-md-6 ">
     <p for="origen" class="mt-1">Operadores</p>
       {{piloto}}    
   </div>

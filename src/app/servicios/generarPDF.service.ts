@@ -25,7 +25,7 @@ export class GenerarPDF {
         doc.text("Alvaro Puyol", 10, 55);
         doc.text("SPARBER", 10, 60);
             
-        doc.setFillColor(0, 6, 10);
+        doc.setFillColor(32, 202, 240);
         doc.rect(10, 80, 120, 10, "F");
         doc.setTextColor("white");
         doc.text("Origen:Veracruz. Ver", 10, 87);
