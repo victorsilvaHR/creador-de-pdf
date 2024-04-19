@@ -32,12 +32,18 @@
     min-height: 100vh;
     padding: 2rem;
 }
+.subtitulo-home {
+    margin-top: 1em;
+    width: fit-content;
+}
 .subtitulo2 {
-    margin-top: 2em;
     font-size: 18px;
     font-family: "Special Elite", system-ui;
     font-weight: 400;
     font-style: normal;
+    text-align: center;
+    margin: 0;
 }
+
 
 

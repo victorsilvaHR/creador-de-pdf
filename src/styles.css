@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-font {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .custom-font-title {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #1C4C96;
+  }
