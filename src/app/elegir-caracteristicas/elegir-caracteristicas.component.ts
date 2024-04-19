@@ -16,7 +16,11 @@ export class ElegirCaracteristicasComponent implements OnInit {
   opcionSeleccionada: string = '';
   catalogoPilotos:any [] = [];
   piloto: string = '';
-
+  medidas = {
+    largo:'',
+    ancho:'',
+    alto:'',
+  }
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -64,6 +68,11 @@ mostrarResumen() {
     const resumen = true
     this.sharedDataService.enviarResumen(resumen);
   }
+}
+changeMedidas(event: any) {
+  console.log(event.target?.value)
+  this.opcionSeleccionada = event.target?.value;
+  this.sharedDataService.enviarMedidas(this.medidas)
 }
 
 }

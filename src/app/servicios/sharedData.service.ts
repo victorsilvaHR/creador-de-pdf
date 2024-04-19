@@ -8,6 +8,7 @@ export class SharedDataService {
   destino = '' 
   caracteristicas = ''
   pilotos = ''
+  medidas = {};
   
   private destinoSubject = new Subject<string>();
   destinoObservable = this.destinoSubject.asObservable();
@@ -49,5 +50,13 @@ private resumenSubjetcts = new Subject<boolean>();
     console.log(mensaje)
     this.resumenSubjetcts.next(mensaje)
 
+}
+private medidasSubjetcts = new Subject<any>();
+  medidasObservable = this.medidasSubjetcts.asObservable();
+
+  enviarMedidas(medidas : any) {
+    console.log(medidas)
+    this.medidasSubjetcts.next(medidas);
+    this.medidas = medidas
 }
 }

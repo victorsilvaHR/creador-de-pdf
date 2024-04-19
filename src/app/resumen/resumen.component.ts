@@ -10,7 +10,8 @@ import { GenerarPDF } from '../servicios/generarPDF.service';
 export class ResumenComponent implements OnInit {
   destino = '';
   caracteristicas = '';
-  pilotos = ''
+  pilotos = '';
+  medidas : any ;
 
   constructor(private sharedDataService: SharedDataService, private generarPDF: GenerarPDF) {
     
@@ -23,11 +24,16 @@ export class ResumenComponent implements OnInit {
     this.sharedDataService.pilotosObservable.subscribe(pilotos => {
       this.pilotos = pilotos;
     });
+    this.sharedDataService.medidasObservable.subscribe(medidas => {
+      this.medidas = medidas;
+    });
 }
   ngOnInit(): void {
   this.destino = this.sharedDataService.destino;
   this.caracteristicas = this.sharedDataService.caracteristicas;
   this.pilotos = this.sharedDataService.pilotos;
+  this.medidas = this.sharedDataService.medidas;
+
   }
 
   descargarPDF(){
