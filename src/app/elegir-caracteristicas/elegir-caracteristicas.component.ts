@@ -78,7 +78,7 @@ changeMedidas(event: any) {
 }
 changeReferencias(event: any) {
   console.log(event.target?.value)
-  this.opcionSeleccionada = event.target?.value;
+  this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
 

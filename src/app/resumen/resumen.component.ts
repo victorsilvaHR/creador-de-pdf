@@ -37,7 +37,7 @@ export class ResumenComponent implements OnInit {
   this.caracteristicas = this.sharedDataService.caracteristicas;
   this.pilotos = this.sharedDataService.pilotos;
   this.medidas = this.sharedDataService.medidas;
-  this.referencias = this.sharedDataService;
+  this.referencias = this.sharedDataService.referencias;
 
   }
 

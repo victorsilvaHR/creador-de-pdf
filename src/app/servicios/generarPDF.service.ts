@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from "jspdf";
 import { FechaService } from '../utils/formate.date.service';
+import accounting from 'accounting';
+import * as numeral from 'numeral'
 
 @Injectable({
     providedIn: 'root'
@@ -8,12 +10,23 @@ import { FechaService } from '../utils/formate.date.service';
 export class GenerarPDF {
     constructor (private fechaService: FechaService){}
     
-    pdfArmado(destino:string, caracteristicas:string, pilotos:string) : void {
+    pdfArmado(destino:string, caracteristicas:string, pilotos:string,) : void {
 
         const doc = new jsPDF();
         const currentDate = this.fechaService.formartDate();
+        let numero = 105000;
+        let numeroFormateado = accounting.formatNumber(numero);
+       let numeroAletras = numeral
+      
 
-            
+// numeros.numero2word().Config._setSingular("MIL");
+// numeros.numero2word().Config._setPlural("PESOS");
+// numeros.numero2word().Config._setCentsSingular("CENTAVO");
+// numeros.numero2word().Config._setCentsPlural("CENTAVOS");
+// console.log(numeros.numero2word(123.04).toString());
+
+       
+        
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);
@@ -48,7 +61,7 @@ export class GenerarPDF {
         doc.setFillColor(0, 6, 136);
         doc.rect(25, 141, 180, 10, "F");
         doc.setTextColor("white");
-        doc.text("$105.000.00 (Ciento Cinco Mil Pesos 00/100) + I.V.A", 28, 148);
+        doc.text("$" + `${numeroFormateado}` + `${numeroAletras}` + "( 00/100) + I.V.A", 28, 148);
             
         doc.setTextColor("black");     
         doc.text("|", 15, 145);

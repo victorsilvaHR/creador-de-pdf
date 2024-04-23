@@ -63,10 +63,10 @@ private medidasSubjetcts = new Subject<any>();
 private referenciasSubjetcts = new Subject<string>();
 referenciasObservable = this.referenciasSubjetcts.asObservable();
 
-enviarReferencias(mensaje : string) {
-  console.log(mensaje)
-  this.referenciasSubjetcts.next(mensaje)
-  this.referencias = mensaje;
-
+enviarReferencias(referencias : string) {
+  console.log(referencias)
+  this.referenciasSubjetcts.next(referencias)
+  this.referencias = referencias;
 }
+
 }
