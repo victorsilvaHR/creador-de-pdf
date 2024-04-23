@@ -9,6 +9,7 @@ export class SharedDataService {
   caracteristicas = ''
   pilotos = ''
   medidas = {};
+  referencias = ''
   
   private destinoSubject = new Subject<string>();
   destinoObservable = this.destinoSubject.asObservable();
@@ -59,4 +60,13 @@ private medidasSubjetcts = new Subject<any>();
     this.medidasSubjetcts.next(medidas);
     this.medidas = medidas
 }
+private referenciasSubjetcts = new Subject<string>();
+referenciasObservable = this.referenciasSubjetcts.asObservable();
+
+enviarReferencias(referencias : string) {
+  console.log(referencias)
+  this.referenciasSubjetcts.next(referencias)
+  this.referencias = referencias;
+}
+
 }

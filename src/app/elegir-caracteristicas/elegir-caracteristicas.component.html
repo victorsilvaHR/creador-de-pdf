@@ -10,7 +10,7 @@
       </div>
       <div class="col-3">
           <p class="text-center">Alto</p>
-          <input  type="number" class="form-control"  min="1" step="0.01" max="7">
+          <input [(ngModel)]="medidas.alto" type="number" class="form-control"  min="1" step="0.01" max="7">
       </div>
       <div class="col-3">
           <p>Peso</p>
@@ -20,19 +20,21 @@
           </select>      
        </div>
   </div>
-<div class="row">
-   <div class="mb-3 col-sm-12 col-md-6 ">
-     <label for="operadores" class="form-label">Operadores</label>
-     <select class="form-select" (change)="elegirpiloto($event)">
-      <option value="" disabled selected >Seleccione</option>
-      <option *ngFor="let opcion of catalogoPilotos" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
-     </select>
-   </div>
-   <div class="mb-3 col-sm-12 col-md-6 ">
-    <p for="origen" class="mt-1">Operadores</p>
-      {{piloto}}    
-  </div>
- </div>
+
+  <div class="row align-items-center">
+    <div class="mb-3 col-sm-12 col-md-6">
+        <label for="operadores" class="form-label">Operadores</label>
+        <select class="form-select" (change)="elegirpiloto($event)">
+            <option value="" disabled selected>Seleccione</option>
+            <option *ngFor="let opcion of catalogoPilotos" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
+        </select>
+    </div>
+    <div class="mb-3 col-sm-12 col-md-6">
+        <label for="caracteristicas" class="form-label">Referencias</label>
+        <input type="text" [(ngModel)]="referencias" (click)="changeReferencias($event)" class="form-control" id="caracteristicas" placeholder="Introduce Referencias">
+    </div>
+</div>
+
 
 <div class="d-grid justify-content-md-end mt-3 custom-font">
     <button type="button" class="btn btn-primary"  (click)="mostrarResumen()">Continuar</button>

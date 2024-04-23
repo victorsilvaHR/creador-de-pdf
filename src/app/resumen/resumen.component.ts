@@ -12,6 +12,7 @@ export class ResumenComponent implements OnInit {
   caracteristicas = '';
   pilotos = '';
   medidas : any ;
+  referencias : any
 
   constructor(private sharedDataService: SharedDataService, private generarPDF: GenerarPDF) {
     
@@ -27,12 +28,16 @@ export class ResumenComponent implements OnInit {
     this.sharedDataService.medidasObservable.subscribe(medidas => {
       this.medidas = medidas;
     });
+    this.sharedDataService.referenciasObservable.subscribe(referencias => {
+      this.referencias = referencias;
+    });
 }
   ngOnInit(): void {
   this.destino = this.sharedDataService.destino;
   this.caracteristicas = this.sharedDataService.caracteristicas;
   this.pilotos = this.sharedDataService.pilotos;
   this.medidas = this.sharedDataService.medidas;
+  this.referencias = this.sharedDataService.referencias;
 
   }
 
