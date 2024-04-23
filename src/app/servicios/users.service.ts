@@ -13,20 +13,16 @@ export class UserService {
     app = initializeApp(environment.firebaseConfig);
     private auth = getAuth();
 
-    singIn(email: string, password: string){
-        signInWithEmailAndPassword(this.auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            this.router.navigateByUrl('/home');
-            console.log(user);
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-          });
+      async singIn(email: string, password: string): Promise<any> {
+        const credentials = await signInWithEmailAndPassword(this.auth, email, password)
+        try {
+          console.log(credentials);
+          this.router.navigateByUrl('/home');
+          return credentials.user;
+        } catch (error: any) {
+          console.log(error);
+        }
       }
-
     createUser(email: string, password: string){
        createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
@@ -41,11 +37,9 @@ export class UserService {
     }
     logOut() {
         signOut(this.auth).then(() => {
-            // Sign-out successful.
         this.router.navigateByUrl('/');
-
           }).catch((error) => {
-            // An error happened.
+            console.log('Error de Logout', error);
           });
     }
 }

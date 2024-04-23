@@ -29,9 +29,12 @@
           
     </div>
       <div class="login-form">
-        <button type="submit" class="btn btn-primary col-12">Login</button>
+        <button type="submit" class="btn btn-primary col-12" [disabled]="showSpiner">Login</button>
       </div>
     </form>
-    <label class="err-message">Usuario y/o password incorrecto</label>
+    <div *ngIf="showSpiner" class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <label *ngIf="badCredentials" class="err-message">Usuario y/o password incorrecto</label>
   </div>
 </div>
