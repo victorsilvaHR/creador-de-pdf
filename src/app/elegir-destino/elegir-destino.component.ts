@@ -11,8 +11,9 @@ import { DataService } from '../servicios/db.service';
 export class ElegirDestinoComponent implements OnInit {
 
   destinos: any[]= [];
-  textoBusqueda: string = '';
+  textoDestino: string = '';
   destinoOk = true;
+  err: boolean = false;
 
   
   constructor (
@@ -30,22 +31,26 @@ export class ElegirDestinoComponent implements OnInit {
   enviarDestino(destino: string) {
     this.sharedDataService.enviarDestino(destino);
   }
-  // destinoElegido(event: any) {
-  //   console.log(event.target?.value)
-  //   this.enviarDestino(event.target?.value)
-  // }
+  destinoElegido(event: any) {
+    console.log(event.target?.value)
+    this.enviarDestino(event.target?.value)
+    this.destinoOk = true;
+    this.err = false;
+  }
   mostrarSegundaParteClick() {
-    if(this.textoBusqueda ){
+    if(this.textoDestino ){
     const segundaParte = true
     this.sharedDataService.segundaParte(segundaParte);
+    } else {
+      this.err = true;
     }
 
   }
-  destinoSelect(estado: any) {
-    this.textoBusqueda = estado.destino;
-    this.enviarDestino(estado.destino);
-    this.destinoOk = true;
-  }
+  // destinoSelect(estado: any) {
+  //   this.textoDestino = estado.destino;
+  //   this.enviarDestino(estado.destino);
+  //   this.destinoOk = true;
+  // }
   async getDestinos() {
     try {
       const destinos = await this.dataService.consultaCotizador();

@@ -60,7 +60,15 @@ margin-top: 2em;
 .btn-primary {
     background-color: #002e5d;
     border: #002e5d 1px solid;
-  }
-  .btn-primary:hover {
-    background-color: #1C4C96;
-  }
+}
+.btn-primary:hover {
+background-color: #1C4C96;
+}
+.err-select {
+    box-shadow:  0 0 3px 3px #d87171
+}
+.error {
+    color: red;
+    margin: 3px;
+    font-weight: 550;
+}
