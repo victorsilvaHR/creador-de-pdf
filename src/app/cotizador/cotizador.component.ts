@@ -26,10 +26,7 @@ export class CotizadorComponent {
   });
  }
  descargarPDF()  {
-  let numero = 105000;
-  let numeroAletras = numeral.zeroFormat
-  console.log(numeral)
-
+ 
  }
 
  cerrarSesion() {

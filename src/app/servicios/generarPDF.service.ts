@@ -10,23 +10,20 @@ import * as numeral from 'numeral'
 export class GenerarPDF {
     constructor (private fechaService: FechaService){}
     
-    pdfArmado(destino:string, caracteristicas:string, pilotos:string,) : void {
+    pdfArmado(destino:string, caracteristicas:string, pilotos:string) : void {
 
         const doc = new jsPDF();
         const currentDate = this.fechaService.formartDate();
         let numero = 105000;
         let numeroFormateado = accounting.formatNumber(numero);
        let numeroAletras = numeral
+        const medidas = {
+        largo:'',
+        ancho:'',
+        alto:'',
+      }
       
 
-// numeros.numero2word().Config._setSingular("MIL");
-// numeros.numero2word().Config._setPlural("PESOS");
-// numeros.numero2word().Config._setCentsSingular("CENTAVO");
-// numeros.numero2word().Config._setCentsPlural("CENTAVOS");
-// console.log(numeros.numero2word(123.04).toString());
-
-       
-        
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);
@@ -54,7 +51,7 @@ export class GenerarPDF {
         doc.text("VAGONES TOLVA", 11, 116);
         doc.text("11.80-2,90-370", 11, 122);
         doc.text("PESO " + caracteristicas, 11, 128);
-        doc.text("(LARGO x ANCHO x ALTO)", 11, 134);
+        doc.text("(LARGO x" +  + "x ANCHO x" + "ALTO)" , 11, 134);
         doc.text("No. de PILOTOS: " + pilotos, 11, 139);
 
                     
