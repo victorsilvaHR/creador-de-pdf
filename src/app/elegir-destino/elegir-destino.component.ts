@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
+import { UtilService } from '../utils/util.service';
+
 
 @Component({
   selector: 'app-elegir-destino',
@@ -18,13 +20,20 @@ export class ElegirDestinoComponent implements OnInit {
   
   constructor (
     private sharedDataService : SharedDataService,
-    private dataService :  DataService
+    private dataService :  DataService,
+    private utilService : UtilService
   )  {}
   
   ngOnInit(): void {
   //  this.dataService.cargarData();
       this.getDestinos();
+      let numero = 5135517; 
+      console.log(numero.toLocaleString());
+      let numeroATexto = this.utilService.numeroALetras(numero);
+      console.log(numeroATexto);
+      
   }
+  
   buscarDestino() {
     this.destinoOk = false;
   }

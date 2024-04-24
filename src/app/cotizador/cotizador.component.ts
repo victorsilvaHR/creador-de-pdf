@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
-import * as numeral from 'numeral'
+
 
 
 
@@ -26,9 +26,8 @@ export class CotizadorComponent {
   });
  }
  descargarPDF()  {
-  let numero = 105000;
-  let numeroAletras = numeral.zeroFormat
-  console.log(numeral)
+ 
+  console.log("this.descargarPDF")
 
  }
 
