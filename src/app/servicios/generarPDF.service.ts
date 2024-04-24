@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from "jspdf";
-import { FechaService } from '../utils/formate.date.service';
+import { UtilService } from '../utils/util.service';
 import accounting from 'accounting';
 import * as numeral from 'numeral'
 
@@ -8,12 +8,12 @@ import * as numeral from 'numeral'
     providedIn: 'root'
 })
 export class GenerarPDF {
-    constructor (private fechaService: FechaService){}
+    constructor (private utilService: UtilService){}
     
     pdfArmado(destino:string, caracteristicas:string, pilotos:string) : void {
 
         const doc = new jsPDF();
-        const currentDate = this.fechaService.formartDate();
+        const currentDate = this.utilService.formartDate();
         let numero = 105000;
         let numeroFormateado = accounting.formatNumber(numero);
        let numeroAletras = numeral

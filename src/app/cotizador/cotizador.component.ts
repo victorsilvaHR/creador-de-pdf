@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
-import * as numeral from 'numeral'
-
 
 
 @Component({
@@ -27,6 +25,8 @@ export class CotizadorComponent {
  }
  descargarPDF()  {
  
+  console.log("this.descargarPDF")
+
  }
 
  cerrarSesion() {

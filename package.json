@@ -22,9 +22,6 @@
     "bootstrap": "^5.3.3",
     "firebase": "^10.10.0",
     "jspdf": "^2.5.1",
-    "numeral": "^2.0.6",
-    "numero-a-letras": "^1.0.6",
-    "numeros_a_palabras": "^1.0.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
