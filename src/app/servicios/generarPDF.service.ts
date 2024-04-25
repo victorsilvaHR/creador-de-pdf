@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { jsPDF } from "jspdf";
 import { UtilService } from '../utils/util.service';
 import accounting from 'accounting';
@@ -6,38 +6,42 @@ import accounting from 'accounting';
 @Injectable({
     providedIn: 'root'
 })
-export class GenerarPDF {
-    constructor (private utilService: UtilService){}
+export class GenerarPDF  {
     
-    pdfArmado(destino:string, caracteristicas:string, pilotos:string,) : void {
-
+    constructor (private utilService: UtilService){}
+   
+ 
+    pdfArmado(pdf:any) : void {
+        console.log(pdf)
+        const {
+            destino,
+            caracteristicas,
+            pilotos,
+            peso,
+            alto,
+            largo,
+            ancho,
+        } = pdf
         const doc = new jsPDF();
         const currentDate = this.utilService.formartDate();
-        let numero = 105000;
+        let numero = 105325;
         let numeroFormateado = accounting.formatNumber(numero);
-       let numeroAletras = ''
+        console.log(numero.toLocaleString());
+        let numeroATexto = this.utilService.numeroALetras(numero);
+        console.log(numeroATexto);
       
-
-// numeros.numero2word().Config._setSingular("MIL");
-// numeros.numero2word().Config._setPlural("PESOS");
-// numeros.numero2word().Config._setCentsSingular("CENTAVO");
-// numeros.numero2word().Config._setCentsPlural("CENTAVOS");
-// console.log(numeros.numero2word(123.04).toString());
-
-       
-        
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);
         doc.rect(0, 30, 80, 8, "F");
         doc.setTextColor("white");
-        doc.text(`${currentDate}`, 10, 36);
+        doc.text(`${currentDate}`, 20, 36);
             
         doc.setTextColor("black");
         doc.text("Alvaro Puyol", 10, 55);
         doc.text("SPARBER", 10, 60);
             
-        doc.setFillColor(32, 202, 240);
+        doc.setFillColor(0, 46, 93);
         doc.rect(10, 80, 120, 10, "F");
         doc.setTextColor("white");
         doc.text("Origen:Veracruz. Ver", 10, 87);
@@ -47,30 +51,32 @@ export class GenerarPDF {
         doc.setTextColor("white");
         doc.text("Destino: " + destino, 10, 97);
             
-        doc.setFillColor(0, 6, 136);
+        doc.setFillColor(0, 46, 93);
         doc.rect(10, 110, 120, 30, "F");
         doc.setTextColor("white");
         doc.text("VAGONES TOLVA", 11, 116);
         doc.text("11.80-2,90-370", 11, 122);
-        doc.text("PESO " + caracteristicas, 11, 128);
-        doc.text("(LARGO x ANCHO x ALTO)", 11, 134);
-        doc.text("No. de PILOTOS: " + pilotos, 11, 139);
+        doc.text("PESO: " + peso , 11, 128);
+        doc.text("(LARGO: " + largo+ " x ANCHO: "+ ancho +" x ALTO: "+ alto+")", 11, 134);
+        doc.text("No. de PILOTOS:  " + pilotos, 11, 139);
 
                     
-        doc.setFillColor(0, 6, 136);
-        doc.rect(25, 141, 180, 10, "F");
+        doc.setFillColor(0, 46, 93);
+        doc.rect(10, 141, 180, 10, "F");
+        doc.setFontSize(12.5)
         doc.setTextColor("white");
-        doc.text("$" + `${numeroFormateado}` + `${numeroAletras}` + "( 00/100) + I.V.A", 28, 148);
+        doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A", 12, 148);
             
-        doc.setTextColor("black");     
-        doc.text("|", 15, 145);
-        doc.text("___", 16, 145);
+        // doc.setTextColor("black");     
+        // doc.text("|", 15, 145);
+        // doc.text("___", 16, 145);
             
         doc.addImage("/assets/canacar2.png",0,270,210, 30);
         doc.addPage();
             
         doc.addImage("/assets/canacar3.png",0,0,220, 30);
                 
+        doc.setFontSize(12);
         doc.setFillColor(0, 6, 136);
         doc.rect(10, 40, 120, 10, "F");
         doc.setTextColor("white");
@@ -80,17 +86,17 @@ export class GenerarPDF {
         doc.text("Lowboy / CamaBaja", 10, 60);
         doc.text("Permiso SCT", 10, 65);
             
-        doc.setFontSize(12);
         doc.setTextColor("black");
             
         const longText = 
-    `* Las medidas y pesos proporcionados deberán ser exactos, ya que con estos datos elaboramos el 
-    permiso especial ante la SCT y por cualquier diferencia nos lo anulan, procediendo a la detención del 
-    ehículo y sanción por 500 dias de salario mínimo.
+  
+  `* Las medidas y pesos proporcionados deberán ser exactos, ya que con estos datos elaboramos el 
+   permiso especial ante la SCT y por cualquier diferencia nos lo anulan, procediendo a la detención 
+   del veículo y sanción por 500 dias de salario mínimo.
         
-    * La cotización se basa en las condiciones actuales de ruta: cualquier cambio y/o obstáculo nuevo 
-    tendra que someterse a consideración y el precio pactado pudiese cambiar; Ejemplos:
-    Tramos de terraceria en malas condiciones, bloqueos, inundaciones, etc.
+   * La cotización se basa en las condiciones actuales de ruta: cualquier cambio y/o obstáculo nuevo 
+   tendra que someterse a consideración y el precio pactado pudiese cambiar; Ejemplos:
+   Tramos de terraceria en malas condiciones, bloqueos, inundaciones, etc.
         
         
     Observaciones:

@@ -3,8 +3,6 @@ import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
 
 
-
-
 @Component({
   selector: 'app-cotizador',
   templateUrl: './cotizador.component.html',

@@ -5,6 +5,7 @@ import { DataService } from '../servicios/db.service';
 
 
 
+
 @Component({
   selector: 'app-elegir-caracteristicas',
   templateUrl: './elegir-caracteristicas.component.html',
@@ -22,11 +23,13 @@ export class ElegirCaracteristicasComponent implements OnInit {
     alto:'',
   }
   referencias : string = ''
+  err: boolean = false;
+
 
 
   constructor (
     private sharedDataService : SharedDataService,
-    private dataService :  DataService
+    private dataService :  DataService,
   )  {}
   
   ngOnInit(): void {
@@ -34,7 +37,8 @@ export class ElegirCaracteristicasComponent implements OnInit {
     this.catalgoPiloto();
 
   }
- 
+
+
   changeCaracteristicas(event: any) {
     console.log(event.target?.value)
     this.opcionSeleccionada = event.target?.value;
@@ -65,12 +69,17 @@ elegirpiloto(event: any) {
   this.piloto = event.target?.value;
   this.sharedDataService.enviarPilotos(this.piloto)
 }
+
 mostrarResumen() {
-  if(this.opcionSeleccionada){
-    const resumen = true
+  this.err = false;
+  if (this.opcionSeleccionada && this.medidas.largo && this.medidas.ancho && this.medidas.alto  && this.piloto) {
+    const resumen = true;
     this.sharedDataService.enviarResumen(resumen);
+  } else {
+    this.err = true;
   }
 }
+
 changeMedidas(event: any) {
   console.log(event.target?.value)
   this.opcionSeleccionada = event.target?.value;
@@ -81,6 +90,7 @@ changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
+
 
 }
 

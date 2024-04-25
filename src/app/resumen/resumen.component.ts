@@ -42,7 +42,15 @@ export class ResumenComponent implements OnInit {
   }
 
   descargarPDF(){
-    this.generarPDF.pdfArmado(this.destino, this.caracteristicas, this.pilotos);
-  }
-
+    const datafile = {
+      destino: this.destino,
+      peso: this.caracteristicas,
+      pilotos: this.pilotos,
+      alto:  this.medidas.alto,
+      largo: this.medidas.largo,
+      ancho: this.medidas.ancho,
+    }
+    this.generarPDF.pdfArmado(datafile);
+    
+}
 }
