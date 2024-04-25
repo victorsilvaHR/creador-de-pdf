@@ -27,10 +27,10 @@ export class ElegirDestinoComponent implements OnInit {
   ngOnInit(): void {
   //  this.dataService.cargarData();
       this.getDestinos();
-      let numero = 5135517; 
-      console.log(numero.toLocaleString());
-      let numeroATexto = this.utilService.numeroALetras(numero);
-      console.log(numeroATexto);
+      // let numero = 5135517; 
+      // console.log(numero.toLocaleString());
+      // let numeroATexto = this.utilService.numeroALetras(numero);
+      // console.log(numeroATexto);
       
   }
   

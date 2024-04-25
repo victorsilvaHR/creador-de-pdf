@@ -1,14 +1,14 @@
-<div class="row mt-5">
+<div class="row mt-5 text-center">
     <h4 class="titulos custom-font-title">Elegir Destinos</h4>
     <div class="mb-3 col-sm-12 col-md-6 custom-font">
-        <label for="origen" class="form-label">Origen</label>
+        <label for="origen" class="form-label negritas">Origen</label>
         <select class="form-select" aria-label="Disabled select example" disabled>
             <option selected>Veracruz,Ver.</option>
           </select>
           <p>Por el momento solo se hacen viajes desde Veracruz.</p>
     </div>
     <div class="mb-3 col-sm-12 col-md-6 custom-font">
-        <label for="origen" class="form-label ">Destino</label>
+        <label for="origen" class="form-label negritas ">Destino</label>
         <select class="form-select" aria-label="Default select example" [ngClass]="{'err-select':err}"
           [(ngModel)]="textoDestino" (change)="destinoElegido($event)">
             <option value=""value="" disabled selected>Seleccione</option>
