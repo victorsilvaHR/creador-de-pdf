@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { jsPDF } from "jspdf";
 import { UtilService } from '../utils/util.service';
 import accounting from 'accounting';
-import * as numeral from 'numeral'
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +15,7 @@ export class GenerarPDF {
         const currentDate = this.utilService.formartDate();
         let numero = 105000;
         let numeroFormateado = accounting.formatNumber(numero);
-       let numeroAletras = numeral
+       let numeroAletras = ''
       
 
 // numeros.numero2word().Config._setSingular("MIL");
