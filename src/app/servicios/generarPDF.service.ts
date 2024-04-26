@@ -139,9 +139,14 @@ export class GenerarPDF  {
         doc.text("26 Años", 65, 256);
         doc.text("Tranportando Mexico!", 40, 267);
         doc.addImage("/assets/canacar2.png",0,270,210, 30);
+
+        const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
+        const pdfURL = URL.createObjectURL(pdfBlob);
+        window.open(pdfURL, '_blank');
             
         doc.save("PDF");
         doc.addPage();
+        
             
     }
 }
