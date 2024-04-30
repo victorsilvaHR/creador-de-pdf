@@ -1,17 +1,27 @@
+
 <h4 class="titulos custom-font-title">Elegir Caracteristicas</h4>
-  <div class="row negritas">
+<div class="row negritas">
       <div class="col-3">
-          <p class="text-center">Largo</p>
-          <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)"  type="number" class="form-control"   min="1" step="0.01" max="15">
-      </div>
-      <div class="col-3">
-          <p class="text-center">Ancho</p>
-          <input [(ngModel)]="medidas.ancho"  (change)="changeMedidas($event)" type="number" class="form-control"  min="1" step="0.01" max="5">
-      </div>
-      <div class="col-3">
-          <p class="text-center">Alto</p>
-          <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" class="form-control"  min="1" step="0.01" max="7">
-      </div>
+        <p class="text-center">Largo</p>
+        <div class="input-group">
+            <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)" type="number" class="form-control" min="1" step="0.01" max="15">
+            <span class="input-group-text" id="basic-addon2">m</span>
+        </div>
+    </div>
+    <div class="col-3">
+        <p class="text-center">Ancho</p>
+        <div class="input-group">
+            <input [(ngModel)]="medidas.ancho" (change)="changeMedidas($event)" type="number" class="form-control" min="1" step="0.01" max="15">
+            <span class="input-group-text" id="basic-addon2">m</span>
+        </div>
+    </div>
+    <div class="col-3">
+        <p class="text-center">Alto</p>
+        <div class="input-group">
+            <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" class="form-control" min="1" step="0.01" max="15">
+            <span class="input-group-text" id="basic-addon2">m</span>
+        </div>
+    </div>
       <div class="col-3">
           <p class="text-center">Peso</p>
           <select class="form-select"   (change)="changeCaracteristicas($event)">
@@ -21,23 +31,24 @@
        </div>
   </div>
 
-  <div class="row align-items-center">
+  <!-- <div class="row align-items-center">
     <div class="mb-3 col-sm-12 col-md-6 text-center">
         <label for="operadores" class="form-label negritas ">Operadores</label>
         <select class="form-select" (change)="elegirpiloto($event)">
             <option value="" disabled selected class="text-center">Seleccione</option>
             <option *ngFor="let opcion of catalogoPilotos" [value]="opcion.pilotos">{{opcion.pilotos}}</option>
         </select>
+    </div> -->
+    <div class="mb-3 col-sm-12 col-md- text-center">
+        <label for="caracteristicas" class="form-label negritas">No referencia / Correo / Cotización</label>
+        <input type="text" [(ngModel)]="referencias" (change)="changeReferencias($event)" class="form-control text-center" id="caracteristicas" placeholder="Escribe tu referencia">
     </div>
-    <div class="mb-3 col-sm-12 col-md-6 text-center">
-        <label for="caracteristicas" class="form-label negritas">Referencias</label>
-        <input type="text" [(ngModel)]="referencias" (change)="changeReferencias($event)" class="form-control text-center" id="caracteristicas" placeholder="Introduce Referencias (opcional)">
-    </div>
-</div>
 
 
-<div class="d-grid justify-content-md-end mt-3 custom-font">
-    <button type="button" class="btn btn-primary"  (click)="mostrarResumen()">Continuar</button>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end custom-font">
+        <button class="btn btn-danger" type="button" >Agregar cotización</button>
+        <button class="btn btn-primary me-md-2" type="button" (click)="mostrarResumen()">Continuar</button>
+    </div>
     <div *ngIf="err" class="error">Seleccione todas las opciones para poder continuar.</div>
-</div>
+    
 

@@ -57,20 +57,23 @@ export class GenerarPDF  {
         doc.text("Destino: " + destino, 10, 97);
             
         doc.setFillColor(0, 46, 93);
-        doc.rect(10, 110, 120, 30, "F");
+        doc.rect(10, 110, 140, 45, "F");
         doc.setTextColor("white");
         doc.text("VAGONES TOLVA", 11, 116);
         doc.text("11.80-2,90-370", 11, 122);
         doc.text("PESO: " + peso , 11, 128);
-        doc.text("(LARGO: " + largo+ " x ANCHO: "+ ancho +" x ALTO: "+ alto+")", 11, 134);
-        doc.text("No. de PILOTOS:  " + pilotos, 11, 139);
+        doc.text("(LARGO: " + largo+ " x ANCHO: "+ ancho +" x ALTO: "+ alto+")", 11, 135);
+        doc.text("No. Referencia, Correo, Cotizacion: ", 11, 142);
+      
+
+
 
                     
         doc.setFillColor(0, 46, 93);
-        doc.rect(10, 141, 180, 10, "F");
+        doc.rect(10, 160, 180, 10, "F");
         doc.setFontSize(12.5)
         doc.setTextColor("white");
-        doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A", 12, 148);
+        doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A", 12, 167);
             
         // doc.setTextColor("black");     
         // doc.text("|", 15, 145);
