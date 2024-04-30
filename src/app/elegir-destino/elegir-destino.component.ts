@@ -16,6 +16,8 @@ export class ElegirDestinoComponent implements OnInit {
   textoDestino: string = '';
   destinoOk = true;
   err: boolean = false;
+ 
+
 
   
   constructor (
@@ -69,4 +71,5 @@ export class ElegirDestinoComponent implements OnInit {
       throw error;
     }
   }
+ 
 }

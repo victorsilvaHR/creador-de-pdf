@@ -10,7 +10,7 @@ import { GenerarPDF } from '../servicios/generarPDF.service';
 export class ResumenComponent implements OnInit {
   destino = '';
   caracteristicas = '';
-  pilotos = '';
+  // pilotos = '';
   medidas : any ;
   referencias : any
 
@@ -22,9 +22,9 @@ export class ResumenComponent implements OnInit {
     this.sharedDataService.descripcionObservable.subscribe(descripcion => {
       this.caracteristicas = descripcion;
     });
-    this.sharedDataService.pilotosObservable.subscribe(pilotos => {
-      this.pilotos = pilotos;
-    });
+    // this.sharedDataService.pilotosObservable.subscribe(pilotos => {
+    //   this.pilotos = pilotos;
+    // });
     this.sharedDataService.medidasObservable.subscribe(medidas => {
       this.medidas = medidas;
     });
@@ -35,7 +35,7 @@ export class ResumenComponent implements OnInit {
   ngOnInit(): void {
   this.destino = this.sharedDataService.destino;
   this.caracteristicas = this.sharedDataService.caracteristicas;
-  this.pilotos = this.sharedDataService.pilotos;
+  // this.pilotos = this.sharedDataService.pilotos;
   this.medidas = this.sharedDataService.medidas;
   this.referencias = this.sharedDataService.referencias;
 
@@ -45,7 +45,7 @@ export class ResumenComponent implements OnInit {
     const datafile = {
       destino: this.destino,
       peso: this.caracteristicas,
-      pilotos: this.pilotos,
+      // pilotos: this.pilotos,
       alto:  this.medidas.alto,
       largo: this.medidas.largo,
       ancho: this.medidas.ancho,
