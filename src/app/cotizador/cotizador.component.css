@@ -44,6 +44,31 @@
     text-align: center;
     margin: 0;
 }
+@media only screen and (max-width: 600px) {
+    .subtitulo2 {
+        display: none;
+    }
+}
+.texto-movil {
+    display: none; 
+  }
+  
+  @media (max-width: 768px) {
+    .texto-movil {
+      display: block; 
+      text-align: center;
+      font-size: 13px; 
+      font-family: "Special Elite", system-ui;
+      color: #002e5d;
+    }
+  }
+  .footer {
+    bottom: 0;
+    width: 100%;
+}
+
+  
+
 
 
 
