@@ -2,7 +2,6 @@ import { Injectable, Input } from '@angular/core';
 import { jsPDF } from "jspdf";
 import { UtilService } from '../utils/util.service';
 import accounting from 'accounting';
-import * as numeral from 'numeral'
 
 @Injectable({
     providedIn: 'root'
@@ -31,10 +30,6 @@ export class GenerarPDF  {
         let numeroATexto = this.utilService.numeroALetras(numero);
         console.log(numeroATexto);
       
-       
-        
-      
-
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);

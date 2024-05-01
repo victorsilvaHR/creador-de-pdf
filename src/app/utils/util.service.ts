@@ -13,8 +13,6 @@ import { Injectable } from "@angular/core";
         const mesAux = 1+fecha.getMonth();
         const mes = mesAux >=10 ? mesAux : "0"+mesAux;
         const anio = fecha.getFullYear();
-        // const hora = fecha.getHours() >= 10 ? fecha.getHours() : '0'+fecha.getHours();
-        // const min = fecha.getMinutes() >=10 ? fecha.getMinutes() : '0'+fecha.getMinutes();
 
         return `${dia}/${mes}/${anio}`;
 
@@ -171,35 +169,48 @@ import { Injectable } from "@angular/core";
     
     return '';
   }
-centenas_nal(n){
-  if (n + '' == '1') {
-      return 'CIENTO'
-  }
-  if (n + '' == '2') {
-      return 'DOCIENTOS'
-  }
-  if (n + '' == '3') {
-      return 'TRECIENTOS'
-  }
-  if (n + '' == '4') {
-      return 'CUATROCIENTOS'
-  }
-  if (n + '' == '5') {
-      return 'QUINIENTOS'
-  }
-  if (n + '' == '6') {
-      return 'SEISCIENTOSD'
-  }
-  if (n + '' == '7') {
-      return 'SETECIENTOS'
-  }
-  if (n + '' == '8') {
-      return 'OCHOCIENTOS'
-  }
-  if (n + '' == '9') {
-      return 'NOVECIENTOS'
-  }
-  
-  return '';
-}
+    centenas_nal(n){
+    if (n + '' == '1') {
+        return 'CIENTO'
+    }
+    if (n + '' == '2') {
+        return 'DOCIENTOS'
+    }
+    if (n + '' == '3') {
+        return 'TRECIENTOS'
+    }
+    if (n + '' == '4') {
+        return 'CUATROCIENTOS'
+    }
+    if (n + '' == '5') {
+        return 'QUINIENTOS'
+    }
+    if (n + '' == '6') {
+        return 'SEISCIENTOSD'
+    }
+    if (n + '' == '7') {
+        return 'SETECIENTOS'
+    }
+    if (n + '' == '8') {
+        return 'OCHOCIENTOS'
+    }
+    if (n + '' == '9') {
+        return 'NOVECIENTOS'
+    }
+    
+    return '';
+    }
+    currentDateTime() {
+        const fecha = new Date();
+        const diaAux = fecha.getDate();
+        const dia = diaAux >= 10 ? diaAux : '0'+diaAux;
+        const mesAux = 1+fecha.getMonth();
+        const mes = mesAux >= 10 ? mesAux : '0'+mesAux;
+        const anio = fecha.getFullYear();
+        const hora = fecha.getHours() >= 10 ? fecha.getHours() : '0'+fecha.getHours();
+        const min = fecha.getMinutes() >= 10 ? fecha.getMinutes() : '0'+fecha.getMinutes();
+
+        return `${dia}/${mes}/${anio} ${hora}:${min}`;
+    }
+
   }
