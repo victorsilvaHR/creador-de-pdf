@@ -91,8 +91,27 @@ changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
-
-
+onLargoChange(value: number) {
+  if (value < 1) {
+    this.medidas.largo = '1';
+  } else if (value > 15) {
+    this.medidas.largo = '15';
+  }
+}
+onAnchoChange(value: number){
+  if (value < 1) {
+    this.medidas.ancho = '1';
+  } else if (value > 15) {
+    this.medidas.ancho = '5';
+  }
+}
+onAltoChange(value: number){
+  if (value < 1) {
+    this.medidas.alto = '1';
+  } else if (value > 15) {
+    this.medidas.alto = '5';
+  }
+}
 
 }
 

@@ -1,8 +1,8 @@
 
-<h4 class="titulos custom-font-title">Elegir Caracteristicas</h4>
 <div class="row">
+    <h4 class="titulos custom-font-title">Elegir Caracteristicas</h4>
       <div class="col-3">
-        <p class="text-center">Largo</p>
+        <p class="text-center custom-font negritas ">Largo</p>
         <div class="input-group">
             <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)" type="number"
              class="form-control" min="1" step="0.01" max="15" (ngModelChange)="onLargoChange($event)">
@@ -10,22 +10,23 @@
         </div>
     </div>
     <div class="col-3">
-        <p class="text-center">Ancho</p>
+        <p class="text-center custom-font negritas">Ancho</p>
         <div class="input-group">
             <input [(ngModel)]="medidas.ancho" (change)="changeMedidas($event)" type="number"
-             class="form-control" min="1" step="0.01" max="15" >
+             class="form-control" min="1" step="0.01" max="5" (ngModelChange)="onAnchoChange($event)">
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
     <div class="col-3">
-        <p class="text-center">Alto</p>
+        <p class="text-center custom-font negritas">Alto</p>
         <div class="input-group">
-            <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" class="form-control" min="1" step="0.01" max="15">
+            <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" 
+            class="form-control" min="1" step="0.01" max="5"(ngModelChange)="onAltoChange($event)" >
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
       <div class="col-3">
-          <p class="text-center">Peso</p>
+          <p class="text-center custom-font negritas">Peso</p>
           <select class="form-select"   (change)="changeCaracteristicas($event)">
             <option value="" disabled selected class="text-center">Seleccione</option>
             <option *ngFor="let elegir of caracteristicas" [value]="elegir.descripcion">{{elegir.descripcion}}</option>
@@ -42,8 +43,8 @@
         </select>
     </div> -->
     <div class="mt-3 mb-3 col-sm-12 col-md- text-center">
-        <label for="caracteristicas" class="form-label negritas">No referencia / Correo / Cotización</label>
-        <input type="text" [(ngModel)]="referencias" (change)="changeReferencias($event)" class="form-control text-center" id="caracteristicas" placeholder="Escribe tu referencia">
+        <label for="caracteristicas" class="form-label custom-font negritas">No referencia / Correo / Cotización</label>
+        <input type="text" [(ngModel)]="referencias" (change)="changeReferencias($event)" class="form-control text-center custom-font" id="caracteristicas" placeholder="Escribe tu referencia">
     </div>
 
 
