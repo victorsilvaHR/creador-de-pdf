@@ -1,4 +1,5 @@
 .titulos{
+    text-align: center;
     margin-top: 1em;
     
  }
@@ -37,7 +38,5 @@
   color: black;
   font-weight: 550;
 
-}
-.text-center {
-  margin-bottom: 0.5rem;
+
 }

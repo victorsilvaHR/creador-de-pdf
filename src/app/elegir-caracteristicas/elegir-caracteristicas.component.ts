@@ -24,12 +24,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   }
   referencias : string = ''
   err: boolean = false;
-  mostrarBoton = false;
-  medidas2 = {
-    largo: null,
-    ancho: null,
-    alto: null
-  };
+  
 
 
 
@@ -40,6 +35,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   
   ngOnInit(): void {
     this.catalogoCaracteristicas(this.opcionSeleccionada)
+    // this.catalgoPiloto();
 
   }
 
@@ -95,26 +91,8 @@ changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
-onLargoChange(value: number) {
-  if (value < 1) {
-    this.medidas.largo = '1';
-  } else if (value > 15) {
-    this.medidas.largo = '15';
-  }
-}
-continuar() {
-  // Realizar validaciones o acciones necesarias antes de mostrar el botón
-  this.mostrarBoton = true;
-}
-reset() {
 
-  this.medidas2.largo = null;
-  this.medidas2.ancho = null;
-  this.medidas2.alto = null;
-  // También puedes ocultar el botón nuevamente si es necesario
-  this.mostrarBoton = false;
 
-}
 
 }
 
