@@ -108,7 +108,7 @@ onAnchoChange(value: number){
 onAltoChange(value: number){
   if (value < 1) {
     this.medidas.alto = '1';
-  } else if (value > 15) {
+  } else if (value > 5) {
     this.medidas.alto = '5';
   }
 }
