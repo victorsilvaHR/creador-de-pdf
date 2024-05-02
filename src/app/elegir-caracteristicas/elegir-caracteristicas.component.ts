@@ -18,7 +18,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   catalogoPilotos:any [] = [];
   // piloto: string = '';
   medidas = {
-    largo: '',
+    largo:'',
     ancho:'',
     alto:'',
   }
@@ -101,7 +101,7 @@ onLargoChange(value: number) {
 onAnchoChange(value: number){
   if (value < 1) {
     this.medidas.ancho = '1';
-  } else if (value > 15) {
+  } else if (value > 5) {
     this.medidas.ancho = '5';
   }
 }
