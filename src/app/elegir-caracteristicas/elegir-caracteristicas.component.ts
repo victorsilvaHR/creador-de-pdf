@@ -18,7 +18,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   catalogoPilotos:any [] = [];
   // piloto: string = '';
   medidas = {
-    largo:'',
+    largo: '',
     ancho:'',
     alto:'',
   }
