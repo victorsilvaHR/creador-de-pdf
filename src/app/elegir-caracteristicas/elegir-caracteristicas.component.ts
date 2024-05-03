@@ -16,7 +16,6 @@ export class ElegirCaracteristicasComponent implements OnInit {
   caracteristicas:any [] = []; 
   opcionSeleccionada: string = '';
   catalogoPilotos:any [] = [];
-  // piloto: string = '';
   medidas = {
     largo:'',
     ancho:'',
@@ -24,9 +23,6 @@ export class ElegirCaracteristicasComponent implements OnInit {
   }
   referencias : string = ''
   err: boolean = false;
-  
-
-
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -34,7 +30,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   )  {}
   
   ngOnInit(): void {
-    this.catalogoCaracteristicas(this.opcionSeleccionada)
+    this.catalogoCaracteristicas();
     // this.catalgoPiloto();
 
   }
@@ -46,7 +42,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
     this.sharedDataService.enviarCaracteristicas(this.opcionSeleccionada)
   }
 
-async catalogoCaracteristicas(caracteristicas: any) {
+async catalogoCaracteristicas() {
   try {
     const caract = await this.dataService.consultaCaracteristicas();
     this.caracteristicas = caract;
@@ -56,35 +52,22 @@ async catalogoCaracteristicas(caracteristicas: any) {
   }
 }
 
-// async catalgoPiloto() {
-//   try {
-//     const pilotos = await this.dataService.consultaOperadores();
-//     this.catalogoPilotos = pilotos;
-//   } catch (error) {
-//     console.log(error);
-//     throw error;
-//   }
-// }
-// elegirpiloto(event: any) {
-//   console.log(event.target?.value)
-//   this.piloto = event.target?.value;
-//   this.sharedDataService.enviarPilotos(this.piloto)
-// }
-
 mostrarResumen() {
   this.err = false;
   if (this.opcionSeleccionada && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
     const resumen = true;
     this.sharedDataService.enviarResumen(resumen);
+    this.limpiarCampo();
   } else {
     this.err = true;
   }
+  
 }
 
 changeMedidas(event: any) {
   console.log(event.target?.value)
   this.opcionSeleccionada = event.target?.value;
-  this.sharedDataService.enviarMedidas(this.medidas)
+  this.sharedDataService.enviarMedidas({...this.medidas})
 }
 changeReferencias(event: any) {
   console.log(event.target?.value)
@@ -111,6 +94,13 @@ onAltoChange(value: number){
   } else if (value > 5) {
     this.medidas.alto = '5';
   }
+}
+limpiarCampo() {
+  this.medidas.largo = ''; 
+  this.medidas.ancho = '';
+  this.medidas.alto = '';
+  this.referencias = '';
+  this.opcionSeleccionada = '';
 }
 
 }

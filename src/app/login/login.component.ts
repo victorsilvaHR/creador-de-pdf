@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   mostrarPassword: boolean = false;
   badCredentials: boolean = false;
   showSpiner: boolean = false;
+  campoVacio: boolean = false
 
   constructor (
     private userService : UserService
@@ -36,19 +37,24 @@ export class LoginComponent implements OnInit {
     this.mostrarPassword = !this.mostrarPassword;
   }
   async sendCredentials() {
-    this.showSpiner = true;
     const { email, password } = this.loginForm.value;
     if(!!email && !!password) {
+      this.showSpiner = true;
       try {
         const user =  await this.userService.singIn(email, password);
         console.log(user);
+        sessionStorage.setItem('uid',user.uid);
         this.showSpiner = false;
       } catch (error) {
         console.log(error);
         this.badCredentials = true;
         this.showSpiner = false;
       }
+    } else {
+      this.campoVacio = true;
+
     }
+    
     
   }
 }

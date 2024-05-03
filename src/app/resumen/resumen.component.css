@@ -10,6 +10,7 @@
 .btn-primary {
     background-color: #002e5d;
     border: #002e5d 1px solid;
+    margin-top: 1em;
   }
   .btn-primary:hover {
     background-color: #1C4C96;

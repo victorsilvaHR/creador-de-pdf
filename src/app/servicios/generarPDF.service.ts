@@ -15,12 +15,12 @@ export class GenerarPDF  {
         console.log(pdf)
         const {
             destino,
-            caracteristicas,
-            pilotos,
             peso,
             alto,
             largo,
             ancho,
+            referencias,
+            nombre,
         } = pdf
         const doc = new jsPDF();
         const currentDate = this.utilService.formartDate();
@@ -58,9 +58,9 @@ export class GenerarPDF  {
         doc.text("11.80-2,90-370", 11, 122);
         doc.text("PESO: " + peso , 11, 128);
         doc.text("(LARGO: " + largo+ " x ANCHO: "+ ancho +" x ALTO: "+ alto+")", 11, 135);
-        doc.text("No. Referencia, Correo, Cotizacion: ", 11, 142);
-      
-
+        doc.text("No. Referencia, Correo, Cotizacion: " , 11, 142);
+        doc.text(referencias ,11,148 );
+    
 
 
                     

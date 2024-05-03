@@ -27,7 +27,7 @@
     </div>
       <div class="col-3">
           <p class="text-center custom-font negritas">Peso</p>
-          <select class="form-select"   (change)="changeCaracteristicas($event)">
+          <select class="form-select" [(ngModel)]="opcionSeleccionada"  (change)="changeCaracteristicas($event)">
             <option value="" disabled selected class="text-center">Seleccione</option>
             <option *ngFor="let elegir of caracteristicas" [value]="elegir.descripcion">{{elegir.descripcion}}</option>
           </select>      
@@ -40,7 +40,6 @@
     </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end custom-font">
-        <button class="btn btn-danger" type="button" >Agregar cotización</button>
         <button class="btn btn-primary me-md-2" type="button" (click)="mostrarResumen()">Continuar</button>
     </div>
     <div *ngIf="err" class="error">Seleccione todas las opciones para poder continuar.</div>
