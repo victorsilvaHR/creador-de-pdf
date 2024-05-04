@@ -2,13 +2,16 @@ import { Injectable, Input } from '@angular/core';
 import { jsPDF } from "jspdf";
 import { UtilService } from '../utils/util.service';
 import accounting from 'accounting';
+import { UserService } from './users.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class GenerarPDF  {
     
-    constructor (private utilService: UtilService){}
+    constructor (
+        private utilService: UtilService,
+    ){}
    
  
     pdfArmado(pdf:any) : void {
@@ -141,10 +144,12 @@ export class GenerarPDF  {
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
         const pdfURL = URL.createObjectURL(pdfBlob);
         window.open(pdfURL, '_blank');
-            
-        doc.save("PDF");
+        const userName =  sessionStorage.getItem('email')?.split('@')[0];   
+        const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
+        const pdfFile = new File([pdfBlob], fileName);
+        doc.save(fileName);
         doc.addPage();
+        this.utilService.subirArchivo(pdfFile, fileName)
         
-            
     }
 }
