@@ -10,13 +10,15 @@ import { environment } from '../../environments';
 export class UserService {
 
     constructor(private router: Router,) {}
+
     app = initializeApp(environment.firebaseConfig);
     private auth = getAuth();
 
       async singIn(email: string, password: string): Promise<any> {
-        const credentials = await signInWithEmailAndPassword(this.auth, email, password)
         try {
-          console.log(credentials);
+          const credentials = await signInWithEmailAndPassword(this.auth, email, password);
+          console.log('credentials',credentials);
+          sessionStorage.setItem('email',credentials.user.email+"");
           this.router.navigateByUrl('/home');
           return credentials.user;
         } catch (error: any) {

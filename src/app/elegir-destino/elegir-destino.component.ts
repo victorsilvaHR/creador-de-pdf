@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
-import { UtilService } from '../utils/util.service';
 
 
 @Component({
@@ -23,17 +22,10 @@ export class ElegirDestinoComponent implements OnInit {
   constructor (
     private sharedDataService : SharedDataService,
     private dataService :  DataService,
-    private utilService : UtilService
   )  {}
   
   ngOnInit(): void {
-  //  this.dataService.cargarData();
       this.getDestinos();
-      // let numero = 5135517; 
-      // console.log(numero.toLocaleString());
-      // let numeroATexto = this.utilService.numeroALetras(numero);
-      // console.log(numeroATexto);
-      
   }
   
   buscarDestino() {
@@ -57,11 +49,7 @@ export class ElegirDestinoComponent implements OnInit {
     }
 
   }
-  // destinoSelect(estado: any) {
-  //   this.textoDestino = estado.destino;
-  //   this.enviarDestino(estado.destino);
-  //   this.destinoOk = true;
-  // }
+
   async getDestinos() {
     try {
       const destinos = await this.dataService.consultaCotizador();

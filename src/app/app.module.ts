@@ -10,6 +10,7 @@ import { ElegirCaracteristicasComponent } from './elegir-caracteristicas/elegir-
 import { ResumenComponent } from './resumen/resumen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterDestinosPipe } from './utils/filterDestinos.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterDestinosPipe } from './utils/filterDestinos.pipe';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

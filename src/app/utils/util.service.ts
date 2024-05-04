@@ -1,9 +1,13 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { environment } from "../../environments";
 
 @Injectable({
     providedIn: 'root'
   })
   export class UtilService {
+
+    constructor(private http: HttpClient) {}
 
     formartDate(){
         const fecha : Date = new Date ();
@@ -209,8 +213,36 @@ import { Injectable } from "@angular/core";
         const anio = fecha.getFullYear();
         const hora = fecha.getHours() >= 10 ? fecha.getHours() : '0'+fecha.getHours();
         const min = fecha.getMinutes() >= 10 ? fecha.getMinutes() : '0'+fecha.getMinutes();
+        const seg = fecha.getSeconds() >= 10 ? fecha.getSeconds() : '0'+fecha.getSeconds();
 
-        return `${dia}/${mes}/${anio} ${hora}:${min}`;
+        return `${dia}${mes}-${anio}h${hora}${min}-${seg}`;
     }
-
+    subirArchivo(archivoSeleccionado: File, nameFile: string) {
+          const formData = new FormData();
+          formData.append('archivo', archivoSeleccionado, nameFile);
+          this.http.post(environment.dev+'/postFile.php', formData)
+            .subscribe(
+              (response) => {
+                console.log('El archivo se ha subido correctamente:', response);
+                this.sendMail('ivanju21@gmail.com', nameFile);
+              },
+              (error) => {
+                console.error('Error al subir el archivo:', error);
+              }
+            );
+      }
+      sendMail(mailTo: string, nameFile: string) {
+        const req = {
+            mailTo, nameFile
+        }
+        this.http.post(environment.dev+'/sendMail.php', req)
+          .subscribe(
+            (response) => {
+              console.log('El archivo se envio correctamente:', response);
+            },
+            (error) => {
+              console.error('Error al enviar el correo:', error);
+            }
+          );
+    }
   }
