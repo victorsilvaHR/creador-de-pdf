@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Cotizacion } from '../modelos/cotizacion';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Subject } from 'rxjs';
 export class SharedDataService {
   destino = '' 
   caracteristicas = ''
-  // pilotos = ''
+  piezas: Cotizacion[] = [];
   medidas = {};
   referencias = ''
   
@@ -28,15 +29,15 @@ export class SharedDataService {
 
   }
 
-//   private pilotosSubjetcts = new Subject<string>();
-//   pilotosObservable = this.pilotosSubjetcts.asObservable();
+  private piezasSubjetcts = new Subject<Cotizacion[]>();
+  piezasObservable = this.piezasSubjetcts.asObservable();
 
-//   enviarPilotos(mensaje : string) {
-//     console.log(mensaje)
-//     this.pilotosSubjetcts.next(mensaje)
-//     this.pilotos = mensaje;
+  enviarPiezas(cotizacion : Cotizacion[]) {
+    console.log(cotizacion)
+    this.piezasSubjetcts.next(cotizacion)
+    this.piezas = cotizacion;
 
-// }
+}
 private segundaParteSubjetcts = new Subject<boolean>();
   segundaParteObservable = this.segundaParteSubjetcts.asObservable();
 
@@ -56,7 +57,6 @@ private medidasSubjetcts = new Subject<any>();
   medidasObservable = this.medidasSubjetcts.asObservable();
 
   enviarMedidas(medidas : any) {
-    console.log(medidas)
     this.medidasSubjetcts.next(medidas);
     this.medidas = medidas
 }

@@ -27,7 +27,7 @@
     </div>
       <div class="col-3 col-6 col-sm-3">
           <p class="text-center custom-font negritas">Peso</p>
-          <select class="form-select" [(ngModel)]="opcionSeleccionada"  (change)="changeCaracteristicas($event)">
+          <select class="form-select" [(ngModel)]="toneladas"  (change)="changeCaracteristicas($event)">
             <option value="" disabled selected class="text-center">Seleccione</option>
             <option *ngFor="let elegir of caracteristicas" [value]="elegir.descripcion">{{elegir.descripcion}}</option>
           </select>      
