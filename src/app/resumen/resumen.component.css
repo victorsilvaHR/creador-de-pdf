@@ -26,3 +26,14 @@
 .strong {
   font-weight: bold;
 }
+.negritas {
+  color: black;
+  font-weight: 550;
+
+}
+.dynamic-text {
+  font-weight: bold;
+}
+.modal-dialog {
+  margin-top: 12em;
+}

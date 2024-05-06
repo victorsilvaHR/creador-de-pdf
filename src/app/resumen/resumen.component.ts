@@ -45,6 +45,6 @@ export class ResumenComponent implements OnInit {
       ancho: this.medidas.ancho,
       referencias: this.referencias,
     }
-    this.generarPDF.pdfArmado(datafile);  
+    // this.generarPDF.pdfArmado(datafile);  
 }
 }

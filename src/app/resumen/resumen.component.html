@@ -2,11 +2,33 @@
     <h4 class="titulos custom-font-title">Resumen</h4>
     <p><strong>Origen:</strong> Veracruz, Ver.</p>
     <p><strong style="font-weight: bold;">Destino:</strong> {{destino}}</p>
-    <p><strong style="font-weight: bold;">Caracteristicas:</strong> LARGO: {{medidas.largo}} , ANCHO: {{medidas.ancho}} , ALTO: {{medidas.alto}} , PESO: {{caracteristicas}} </p>
+    <p><strong style="font-weight: bold;">Caracteristicas:</strong> 
+        LARGO: <span class="dynamic-text">{{medidas.largo}}</span>,
+        ANCHO: <span class="dynamic-text">{{medidas.ancho}}</span>,
+        ALTO: <span class="dynamic-text">{{medidas.alto}}</span>,
+        PESO: <span class="dynamic-text">{{caracteristicas}}</span>
+     </p>
     <p><strong style="font-weight: bold;">No referencia / Correo / Cotización:</strong> {{referencias}}</p>
     
 </div>
-    <div class="d-grid justify-content-md-end">
-        <button class="btn btn-primary" (click)="descargarPDF()">Generar Cotizacion</button>
+    <div class="d-grid justify-content-md-end custom-font">
+        <button class="btn btn-primary " (click)="descargarPDF()" data-bs-toggle="modal" data-bs-target="#exampleModal">Generar Cotizacion</button>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 custom-font negritas " id="exampleModalLabel">Cotizacion Generada</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              <p class="custom-font ">La cotizacion se genero con exito , se mandara la informacion al correo registrado</p>
+            </div>
+            <div class="modal-footer custom-font">
+              <button type="button" class="btn btn-primary custom-font" data-bs-dismiss="modal">continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 

@@ -1,7 +1,7 @@
 
 <div class="row">
     <h4 class="titulos custom-font-title">Elegir Caracteristicas</h4>
-      <div class="col-3">
+      <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas ">Largo</p>
         <div class="input-group">
             <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)" type="number"
@@ -9,7 +9,7 @@
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas">Ancho</p>
         <div class="input-group">
             <input [(ngModel)]="medidas.ancho" (change)="changeMedidas($event)" type="number"
@@ -17,7 +17,7 @@
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas">Alto</p>
         <div class="input-group">
             <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" 
@@ -25,7 +25,7 @@
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
-      <div class="col-3">
+      <div class="col-3 col-6 col-sm-3">
           <p class="text-center custom-font negritas">Peso</p>
           <select class="form-select" [(ngModel)]="opcionSeleccionada"  (change)="changeCaracteristicas($event)">
             <option value="" disabled selected class="text-center">Seleccione</option>

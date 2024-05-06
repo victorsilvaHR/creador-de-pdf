@@ -76,3 +76,8 @@ background-color: #1C4C96;
     font-weight: 550;
   
   }
+  @media only screen and (max-width: 600px){
+    .text-start {
+        text-align: center;
+    }
+  }
