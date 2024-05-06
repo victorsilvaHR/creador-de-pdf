@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { baseDatos } from '../modelos/cotizador';
+import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
-
-
+import { Medidas } from '../modelos/medidas';
+import { Cotizacion } from '../modelos/cotizacion';
 
 
 @Component({
@@ -13,10 +12,11 @@ import { DataService } from '../servicios/db.service';
 })
 export class ElegirCaracteristicasComponent implements OnInit {
 
+  contizacion: Cotizacion [] = [];
   caracteristicas:any [] = []; 
-  opcionSeleccionada: string = '';
+  toneladas: string = '';
   catalogoPilotos:any [] = [];
-  medidas = {
+  medidas: Medidas = {
     largo:'',
     ancho:'',
     alto:'',
@@ -32,14 +32,13 @@ export class ElegirCaracteristicasComponent implements OnInit {
   ngOnInit(): void {
     this.catalogoCaracteristicas();
     // this.catalgoPiloto();
-
   }
 
 
   changeCaracteristicas(event: any) {
     console.log(event.target?.value)
-    this.opcionSeleccionada = event.target?.value;
-    this.sharedDataService.enviarCaracteristicas(this.opcionSeleccionada)
+    this.toneladas = event.target?.value;
+    this.sharedDataService.enviarCaracteristicas(this.toneladas)
   }
 
 async catalogoCaracteristicas() {
@@ -54,10 +53,18 @@ async catalogoCaracteristicas() {
 
 mostrarResumen() {
   this.err = false;
-  if (this.opcionSeleccionada && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
+  if (this.toneladas && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
+    this.contizacion.push({
+      peso: this.toneladas,
+      medidas: {...this.medidas},
+      referencia: this.referencias,
+      destino: this.sharedDataService.destino  
+    })
     const resumen = true;
     this.sharedDataService.enviarResumen(resumen);
     this.limpiarCampo();
+    // console.log(this.contizacion);
+    this.sharedDataService.enviarPiezas(this.contizacion)
   } else {
     this.err = true;
   }
@@ -66,7 +73,7 @@ mostrarResumen() {
 
 changeMedidas(event: any) {
   console.log(event.target?.value)
-  this.opcionSeleccionada = event.target?.value;
+  this.toneladas = event.target?.value;
   this.sharedDataService.enviarMedidas({...this.medidas})
 }
 changeReferencias(event: any) {
@@ -100,7 +107,7 @@ limpiarCampo() {
   this.medidas.ancho = '';
   this.medidas.alto = '';
   this.referencias = '';
-  this.opcionSeleccionada = '';
+  this.toneladas = '';
 }
 
 }

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
-import { baseDatos, caracteristicasCarga, operadores, users } from '../modelos/cotizador';
+import { baseDatos, users } from '../modelos/cotizador';
 import { environment } from '../../environments';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -16,8 +15,8 @@ export class DataService {
 
     baseLocal = baseDatos;
     usuario = users;
-    caracteristicas = caracteristicasCarga;
-    pilotos = operadores;
+    caracteristicas = [];
+    pilotos = [];
 
     cargarData() {
     // recibe BD, ruta/nodo, Object puede o no llevar llaves
