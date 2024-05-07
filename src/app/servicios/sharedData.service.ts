@@ -42,14 +42,12 @@ private segundaParteSubjetcts = new Subject<boolean>();
   segundaParteObservable = this.segundaParteSubjetcts.asObservable();
 
   segundaParte(mensaje : boolean) {
-    console.log(mensaje)
     this.segundaParteSubjetcts.next(mensaje)
 }
 private resumenSubjetcts = new Subject<boolean>();
   resumenObservable = this.resumenSubjetcts.asObservable();
 
   enviarResumen(mensaje : boolean) {
-    console.log(mensaje)
     this.resumenSubjetcts.next(mensaje)
 
 }
@@ -63,10 +61,9 @@ private medidasSubjetcts = new Subject<any>();
 private referenciasSubjetcts = new Subject<string>();
 referenciasObservable = this.referenciasSubjetcts.asObservable();
 
-enviarReferencias(referencias : string) {
-  console.log(referencias)
-  this.referenciasSubjetcts.next(referencias)
-  this.referencias = referencias;
-}
+  enviarReferencias(referencias : string) {
+    this.referenciasSubjetcts.next(referencias)
+    this.referencias = referencias;
+  }
 
 }

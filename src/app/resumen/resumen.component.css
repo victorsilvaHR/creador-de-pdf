@@ -16,7 +16,7 @@
     background-color: #1C4C96;
   }
 .resumen-rectangulo {
-  background-color: #f0f0f0; 
+  /* background-color: #f0f0f0;  */
   padding: 15px; 
   border: 1px solid red; 
   border-radius: 5px; 
@@ -36,4 +36,18 @@
 }
 .modal-dialog {
   margin-top: 12em;
+}
+.red-color {
+  color: red;
+  cursor: pointer;
+  justify-self: end;
+}
+.pieza-cotizar {
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border: #1C4C96 solid 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 90% 10%;
 }
