@@ -52,7 +52,13 @@ export class ResumenComponent implements OnInit {
       referencias: this.referencias,
     }
     // this.generarPDF.pdfArmado(datafile);  
-  }
+}
+limpiarPantalla(){
+  const resumen = false;
+  this.sharedDataService.enviarResumen(resumen);
+  this.sharedDataService.segundaParte(resumen);
+}
+  
   borrarPieza(indice) {
     this.piezas.splice(indice, 1)
   }
