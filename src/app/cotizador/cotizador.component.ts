@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
+import { GenerarPDF } from '../servicios/generarPDF.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class CotizadorComponent implements OnInit {
  constructor(
   private userService: UserService,
   private sharedDataService: SharedDataService,
-  private dataService: DataService
+  private dataService: DataService,
+  private generarPDF: GenerarPDF
  ){ 
   this.sharedDataService.segundaParteObservable.subscribe(destino => {
     this.destino = destino;
@@ -31,6 +33,7 @@ export class CotizadorComponent implements OnInit {
   ngOnInit(): void {
     const uid = sessionStorage.getItem('uid');
     this.getUsuario(uid)
+    this.generarPDF.pdfArmado(10);
   }
  descargarPDF()  {
   console.log("this.descargarPDF")
