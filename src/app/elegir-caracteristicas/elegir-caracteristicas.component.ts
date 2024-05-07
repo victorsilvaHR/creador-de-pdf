@@ -55,7 +55,6 @@ mostrarResumen() {
   this.err = false;
   if (this.toneladas && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
     if (this.contizacion.length <= 4) {
-
       this.contizacion.push({
         peso: this.toneladas,
         medidas: {...this.medidas},

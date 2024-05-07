@@ -13,7 +13,6 @@ export class GenerarPDF  {
         private utilService: UtilService,
     ){}
    
- 
     pdfArmado(pdf:any) : void {
         console.log(pdf)
         const {

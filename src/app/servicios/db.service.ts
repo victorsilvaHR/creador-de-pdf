@@ -20,8 +20,8 @@ export class DataService {
 
     cargarData() {
     // recibe BD, ruta/nodo, Object puede o no llevar llaves
-    // set(ref(this.db, 'users/'+this.usuario.uid), this.usuario);
-      set(ref(this.db, 'operadores/'), this.pilotos);
+    set(ref(this.db, 'users/'+this.usuario.uid), this.usuario);
+      // set(ref(this.db, 'operadores/'), this.pilotos);
     }
 
     async consultaCotizador(): Promise<any> {
