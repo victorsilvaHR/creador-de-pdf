@@ -54,17 +54,20 @@ async catalogoCaracteristicas() {
 mostrarResumen() {
   this.err = false;
   if (this.toneladas && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
-    this.contizacion.push({
-      peso: this.toneladas,
-      medidas: {...this.medidas},
-      referencia: this.referencias,
-      destino: this.sharedDataService.destino  
-    })
-    const resumen = true;
-    this.sharedDataService.enviarResumen(resumen);
-    this.limpiarCampo();
-    // console.log(this.contizacion);
-    this.sharedDataService.enviarPiezas(this.contizacion)
+    if (this.contizacion.length <= 4) {
+
+      this.contizacion.push({
+        peso: this.toneladas,
+        medidas: {...this.medidas},
+        referencia: this.referencias,
+        destino: this.sharedDataService.destino  
+      })
+      const resumen = true;
+      this.sharedDataService.enviarResumen(resumen);
+      this.limpiarCampo();
+      // console.log(this.contizacion);
+      this.sharedDataService.enviarPiezas(this.contizacion);
+    }
   } else {
     this.err = true;
   }
@@ -72,12 +75,10 @@ mostrarResumen() {
 }
 
 changeMedidas(event: any) {
-  console.log(event.target?.value)
   this.toneladas = event.target?.value;
   this.sharedDataService.enviarMedidas({...this.medidas})
 }
 changeReferencias(event: any) {
-  console.log(event.target?.value)
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
