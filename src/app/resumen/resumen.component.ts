@@ -44,14 +44,8 @@ export class ResumenComponent implements OnInit {
   }
 
   descargarPDF(){
-    const datafile = {
-      destino: this.destino,
-      alto:  this.medidas.alto,
-      largo: this.medidas.largo,
-      ancho: this.medidas.ancho,
-      referencias: this.referencias,
-    }
-    // this.generarPDF.pdfArmado(datafile);  
+    this.generarPDF.pdfArmado(this.piezas);  
+    console.log(this.piezas)
 }
 limpiarPantalla(){
   const resumen = false;

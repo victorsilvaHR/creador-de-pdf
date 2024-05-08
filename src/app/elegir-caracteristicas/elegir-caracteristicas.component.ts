@@ -23,6 +23,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   }
   referencias : string = ''
   err: boolean = false;
+  cotizaciones = false;
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -51,27 +52,29 @@ async catalogoCaracteristicas() {
   }
 }
 
+
 mostrarResumen() {
   this.err = false;
   if (this.toneladas && this.medidas.largo && this.medidas.ancho && this.medidas.alto && this.referencias) {
-    if (this.contizacion.length <= 4) {
+    if (this.contizacion.length < 4) {
       this.contizacion.push({
         peso: this.toneladas,
         medidas: {...this.medidas},
         referencia: this.referencias,
         destino: this.sharedDataService.destino  
-      })
+      });
       const resumen = true;
       this.sharedDataService.enviarResumen(resumen);
       this.limpiarCampo();
-      // console.log(this.contizacion);
       this.sharedDataService.enviarPiezas(this.contizacion);
-    }
+    } else {
+      this.cotizaciones = true; 
+    } 
   } else {
     this.err = true;
   }
-  
 }
+
 
 changeMedidas(event: any) {
   this.toneladas = event.target?.value;

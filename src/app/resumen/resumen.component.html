@@ -1,22 +1,21 @@
 <div class="resumen-rectangulo custom-font">
-    <h4 class="titulos custom-font-title">Resumen</h4>
-    <div class="pieza-cotizar" *ngFor="let pieza of piezas; let indice = index">
-      <div>
-        <p><strong>Origen:</strong> Veracruz, Ver.</p>
-        <p><strong style="font-weight: bold;">Destino:</strong> {{pieza.destino}}</p>
-        <p><strong style="font-weight: bold;">Caracteristicas:</strong> 
-            LARGO: <span class="dynamic-text">{{pieza.medidas.largo}}</span>,
-            ANCHO: <span class="dynamic-text">{{pieza.medidas.ancho}}</span>,
-            ALTO: <span class="dynamic-text">{{pieza.medidas.alto}}</span>,
-            PESO: <span class="dynamic-text">{{pieza.peso}}</span>
-        </p>
-        <p><strong style="font-weight: bold;">No referencia / Correo / Cotización:</strong> {{pieza.referencia}}</p>
-      </div>
-      
-      <span class="material-symbols-outlined red-color" (click)="borrarPieza(indice)">delete</span>
+  <h4 class="titulos custom-font-title">Resumen</h4>
+  <div class="pieza-cotizar" *ngFor="let pieza of piezas; let i = index">
+    <div>
+      <p><strong style="font-weight: bold;" class="pieza">Pieza</strong><span class="pieza2 dynamic-text">{{i+1}}</span></p>
+      <p><strong>Origen:</strong> Veracruz, Ver.</p>
+      <p><strong style="font-weight: bold;">Destino:</strong> {{pieza.destino}}</p>
+      <p><strong style="font-weight: bold;">Caracteristicas:</strong> 
+          LARGO: <span class="dynamic-text">{{pieza.medidas.largo}}</span>,
+          ANCHO: <span class="dynamic-text">{{pieza.medidas.ancho}}</span>,
+          ALTO: <span class="dynamic-text">{{pieza.medidas.alto}}</span>,
+          PESO: <span class="dynamic-text">{{pieza.peso}}</span>
+      </p>
+      <p><strong style="font-weight: bold;">No referencia / Correo / Cotización:</strong> {{pieza.referencia}}</p>
     </div>
-    
+  </div>
 </div>
+
 <div class="d-grid justify-content-md-end custom-font">
     <button class="btn btn-primary " (click)="descargarPDF()" data-bs-toggle="modal" data-bs-target="#exampleModal">Generar Cotizacion</button>
 </div>

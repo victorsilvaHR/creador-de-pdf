@@ -51,3 +51,10 @@
   display: grid;
   grid-template-columns: 90% 10%;
 }
+.pieza1 {
+   font-size: 20px ;
+}
+.pieza2 {
+  font-size: 20px ;
+  margin-right: 3em;
+}
