@@ -15,28 +15,38 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
-        piezas = [
-            {
-                "peso": "Hasta 33 Toneladas",
-                "medidas": {
-                    "largo": "15",
-                    "ancho": 3,
-                    "alto": 4
-                },
-                "referencia": "123456",
-                "destino": "Aguascalientes"
-            },
-            {
-                "peso": "Hasta 46 Toneladas",
-                "medidas": {
-                    "largo": 11.2,
-                    "ancho": 1.15,
-                    "alto": 1.37
-                },
-                "referencia": "ff",
-                "destino": "Aguascalientes"
-            }
-        ]
+        // piezas = [
+        //     {
+        //         "peso": "Hasta 33 Toneladas",
+        //         "medidas": {
+        //             "largo": "15",
+        //             "ancho": 3,
+        //             "alto": 4
+        //         },
+        //         "referencia": "123456",
+        //         "destino": "Aguascalientes"
+        //     },
+        //     {
+        //         "peso": "Hasta 46 Toneladas",
+        //         "medidas": {
+        //             "largo": 11.2,
+        //             "ancho": 1.15,
+        //             "alto": 1.37
+        //         },
+        //         "referencia": "ff",
+        //         "destino": "Aguascalientes"
+        //     },
+        //     {
+        //         "peso": "Hasta 46 Toneladas",
+        //         "medidas": {
+        //             "largo": 10.2,
+        //             "ancho": 4.15,
+        //             "alto": 3.37
+        //         },
+        //         "referencia": "test-1",
+        //         "destino": "CDMX"
+        //     }
+        // ]
        
         const doc = new jsPDF();
         const currentDate = this.utilService.formartDate();
@@ -56,64 +66,39 @@ export class GenerarPDF  {
         doc.setTextColor("black");
         doc.text("Alvaro Puyol", 10, 47);
         doc.text("SPARBER", 10, 52);
+        let altura = 0;
 
-        // piezas.forEach(pieza => {
-            
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 57, 100, 10, "F");
-        doc.setTextColor("white");
-        doc.text("Origen:Veracruz. Ver", 10, 62);
-            
-        doc.setFillColor(2, 47, 136);
-        doc.rect(10, 67, 100, 10, "F");
-        doc.setTextColor("white");
-        doc.text("Destino: " + piezas[0].destino, 10, 72);
-            
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 78, 140, 45, "F");
-        doc.setTextColor("white");
-        doc.text("VAGONES TOLVA", 11, 85);
-        doc.text("11.80-2,90-370", 11, 91);
-        doc.text("PESO: " + piezas[0].peso , 11, 97);
-        doc.text("(LARGO: " + piezas[0].medidas.largo+ " x ANCHO: "+ piezas[0].medidas.ancho +" x ALTO: "+ piezas[0].medidas.alto+")", 11, 103);
-        doc.text("No. Referencia, Correo, Cotizacion: " , 11, 109);
-        doc.text(piezas[0].referencia ,11,115 );
-                    
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 125, 180, 10, "F");
-        doc.setFontSize(12.5)
-        doc.setTextColor("white");
-        doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 131);
+        piezas.forEach(pieza => {
 
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 146, 100, 10, "F");
-        doc.setTextColor("white");
-        doc.text("Origen:Veracruz. Ver", 10, 162);
-            
-        doc.setFillColor(2, 47, 136);
-        doc.rect(10, 156, 100, 10, "F");
-        doc.setTextColor("white");
-        doc.text("Destino: " + piezas[1].destino, 10, 172);
-            
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 168, 140, 45, "F");
-        doc.setTextColor("white");
-        doc.text("VAGONES TOLVA", 11, 175);
-        doc.text("11.80-2,90-370", 11, 181);
-        doc.text("PESO: " + piezas[1].peso , 11, 187);
-        doc.text("(LARGO: " + piezas[1].medidas.largo+ " x ANCHO: "+ piezas[1].medidas.ancho +" x ALTO: "+ piezas[1].medidas.alto+")", 11, 193);
-        doc.text("No. Referencia, Correo, Cotizacion: " , 11, 199);
-        doc.text(piezas[1].referencia ,11,205 );
-                    
-        doc.setFillColor(0, 46, 93);
-        doc.rect(10, 200, 180, 10, "F");
-        doc.setFontSize(12.5)
-        doc.setTextColor("white");
-        doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A", 12, 211);
+            doc.setFontSize(12.5)
 
-
-    // }); 
+            doc.setFillColor(0, 46, 93);
+            doc.rect(10, 57+altura, 100, 7, "F");
+            doc.setTextColor("white");
+            doc.text("Origen: Veracruz. Ver", 11, 62+altura);
                 
+            doc.setFillColor(2, 47, 136);
+            doc.rect(60, 57+altura, 100, 7, "F");
+            doc.setTextColor("white");
+            doc.text("Destino: " + pieza.destino, 62, 62+altura);
+                
+            doc.setFillColor(0, 46, 93);
+            doc.rect(10, 65+altura, 140, 38, "F");
+            doc.setTextColor("white");
+            doc.text("VAGONES TOLVA", 11, 71+altura);
+            doc.text("11.80-2,90-370", 11, 77+altura);
+            doc.text("PESO: " + pieza.peso , 11, 83+altura);
+            doc.text("(LARGO: " + pieza.medidas.largo+ " x ANCHO: "+ pieza.medidas.ancho +" x ALTO: "+ pieza.medidas.alto+")", 11, 89+altura);
+            doc.text("No. Referencia, Correo, Cotizacion: " , 11, 95+altura);
+            doc.text(pieza.referencia ,11,101+altura);
+                        
+            doc.setFillColor(0, 46, 93);
+            doc.rect(10, 104+altura, 180, 7, "F");
+            doc.setTextColor("white");
+            doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 109+altura);
+            altura += 56;
+        }); 
+  
         doc.addImage("/assets/canacar2.png",0,270,210, 30);
         doc.addPage();
             

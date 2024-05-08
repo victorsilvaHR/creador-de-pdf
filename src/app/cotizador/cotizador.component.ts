@@ -33,7 +33,7 @@ export class CotizadorComponent implements OnInit {
   ngOnInit(): void {
     const uid = sessionStorage.getItem('uid');
     this.getUsuario(uid)
-    this.generarPDF.pdfArmado(10);
+    // this.generarPDF.pdfArmado(10);
   }
  descargarPDF()  {
   console.log("this.descargarPDF")
