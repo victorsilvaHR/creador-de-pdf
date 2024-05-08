@@ -15,25 +15,71 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
+        piezas = [
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 46 Toneladas",
+                "medidas": {
+                    "largo": 11.2,
+                    "ancho": 1.15,
+                    "alto": 1.37
+                },
+                "referencia": "ff",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+        ]
        
         const doc = new jsPDF();
+        const userData = JSON.parse(sessionStorage.getItem('user')+'');
         const currentDate = this.utilService.formartDate();
         let numero = 105325;
         let numeroFormateado = accounting.formatNumber(numero);
         console.log(numero.toLocaleString());
         let numeroATexto = this.utilService.numeroALetras(numero);
         console.log(numeroATexto);
+
+
+        
       
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
         doc.setFillColor(250, 0, 0);
-        doc.rect(0, 30, 80, 8, "F");
+        doc.rect(140, 30, 80, 8, "F");
         doc.setTextColor("white");
-        doc.text(`${currentDate}`, 20, 36);
+        doc.text(`${currentDate}`, 162, 36);
             
         doc.setTextColor("black");
-        doc.text("Alvaro Puyol", 10, 47);
-        doc.text("SPARBER", 10, 52);
+        doc.text(userData.name, 10, 40);
+        doc.text(userData.company, 10, 45);
         let altura = 0;
 
         piezas.forEach(pieza => {
@@ -41,30 +87,30 @@ export class GenerarPDF  {
             doc.setFontSize(12.5)
 
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 57+altura, 100, 7, "F");
+            doc.rect(10, 52+altura, 100, 7, "F");
             doc.setTextColor("white");
-            doc.text("Origen: Veracruz. Ver", 11, 62+altura);
+            doc.text("Origen: Veracruz. Ver", 11, 58+altura);
                 
             doc.setFillColor(2, 47, 136);
-            doc.rect(60, 57+altura, 100, 7, "F");
+            doc.rect(60, 52+altura, 100, 7, "F");
             doc.setTextColor("white");
-            doc.text("Destino: " + pieza.destino, 62, 62+altura);
+            doc.text("Destino: " + pieza.destino, 62, 58+altura);
                 
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 65+altura, 140, 38, "F");
+            doc.rect(10, 60+altura, 140, 38, "F");
             doc.setTextColor("white");
-            doc.text("VAGONES TOLVA", 11, 71+altura);
-            doc.text("11.80-2,90-370", 11, 77+altura);
-            doc.text("PESO: " + pieza.peso , 11, 83+altura);
-            doc.text("(LARGO: " + pieza.medidas.largo+ " x ANCHO: "+ pieza.medidas.ancho +" x ALTO: "+ pieza.medidas.alto+")", 11, 89+altura);
-            doc.text("No. Referencia, Correo, Cotizacion: " , 11, 95+altura);
-            doc.text(pieza.referencia ,11,101+altura);
+            doc.text("VAGONES TOLVA", 11, 66+altura);
+            doc.text("11.80-2,90-370", 11, 72+altura);
+            doc.text("PESO: " + pieza.peso , 11, 78+altura);
+            doc.text("(LARGO: " + pieza.medidas.largo+ " x ANCHO: "+ pieza.medidas.ancho +" x ALTO: "+ pieza.medidas.alto+")", 11, 84+altura);
+            doc.text("No. Referencia, Correo, Cotizacion: " , 11, 90+altura);
+            doc.text(pieza.referencia ,11,96+altura);
                         
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 104+altura, 180, 7, "F");
+            doc.rect(10, 99+altura, 180, 7, "F");
             doc.setTextColor("white");
-            doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 109+altura);
-            altura += 56;
+            doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 104+altura);
+            altura += 55;
         }); 
   
         doc.addImage("/assets/canacar2.png",0,270,210, 30);
@@ -134,7 +180,7 @@ export class GenerarPDF  {
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
         const pdfURL = URL.createObjectURL(pdfBlob);
         window.open(pdfURL, '_blank');
-        const userName =  sessionStorage.getItem('email')?.split('@')[0];   
+        const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
         doc.save(fileName);

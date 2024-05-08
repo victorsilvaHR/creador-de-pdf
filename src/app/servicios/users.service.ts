@@ -17,8 +17,6 @@ export class UserService {
       async singIn(email: string, password: string): Promise<any> {
         try {
           const credentials = await signInWithEmailAndPassword(this.auth, email, password);
-          // console.log('credentials',credentials);
-          sessionStorage.setItem('email',credentials.user.email+"");
           this.router.navigateByUrl('/home');
           return credentials.user;
         } catch (error: any) {

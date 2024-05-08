@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.showSpiner = true;
       try {
         const user =  await this.userService.singIn(email, password);
-        // console.log(user);
+        console.log(user);
         sessionStorage.setItem('uid',user.uid);
         this.showSpiner = false;
       } catch (error) {
