@@ -15,14 +15,60 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
+        piezas = [
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 46 Toneladas",
+                "medidas": {
+                    "largo": 11.2,
+                    "ancho": 1.15,
+                    "alto": 1.37
+                },
+                "referencia": "ff",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+        ]
        
         const doc = new jsPDF();
+        const userData = JSON.parse(sessionStorage.getItem('user')+'');
         const currentDate = this.utilService.formartDate();
         let numero = 105325;
         let numeroFormateado = accounting.formatNumber(numero);
         console.log(numero.toLocaleString());
         let numeroATexto = this.utilService.numeroALetras(numero);
         console.log(numeroATexto);
+
+
+        
       
         doc.addImage("/assets/canacar.png",0,0,220, 30);
             
@@ -32,8 +78,8 @@ export class GenerarPDF  {
         doc.text(`${currentDate}`, 162, 36);
             
         doc.setTextColor("black");
-        doc.text("Alvaro Puyol", 10, 40);
-        doc.text("SPARBER", 10, 45);
+        doc.text(userData.name, 10, 40);
+        doc.text(userData.company, 10, 45);
         let altura = 0;
 
         piezas.forEach(pieza => {
@@ -64,7 +110,7 @@ export class GenerarPDF  {
             doc.rect(10, 99+altura, 180, 7, "F");
             doc.setTextColor("white");
             doc.text("$" +`${numeroFormateado}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 104+altura);
-            altura += 52;
+            altura += 55;
         }); 
   
         doc.addImage("/assets/canacar2.png",0,270,210, 30);
@@ -134,7 +180,7 @@ export class GenerarPDF  {
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
         const pdfURL = URL.createObjectURL(pdfBlob);
         window.open(pdfURL, '_blank');
-        const userName =  sessionStorage.getItem('email')?.split('@')[0];   
+        const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
         doc.save(fileName);

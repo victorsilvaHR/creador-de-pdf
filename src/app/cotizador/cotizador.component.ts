@@ -32,8 +32,7 @@ export class CotizadorComponent implements OnInit {
  }
   ngOnInit(): void {
     const uid = sessionStorage.getItem('uid');
-    this.getUsuario(uid)
-    this.generarPDF.pdfArmado(10);
+    this.getUsuario(uid);
     // this.generarPDF.pdfArmado(10);
   }
  descargarPDF()  {
@@ -43,7 +42,7 @@ export class CotizadorComponent implements OnInit {
   try {
     const user = await this.dataService.usuarioById(uid);
     this.nombre = user.name
-    // console.log(user) 
+    sessionStorage.setItem('user', JSON.stringify(user));    
   } catch (error) {
     console.log(error);
     throw error;

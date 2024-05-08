@@ -206,7 +206,15 @@ export const baseDatos= [
         hasta46T: 100300,		
         piloto1:  16000,
         piloto2:  20000		
-    },				
+    },	
+    {  destino: "Morelia",																																																																																																																				
+       hasta33T:74000 ,
+       hasta39T:78440 ,
+       hasta46T:87320 ,		
+       piloto1: 14000 ,
+       piloto2: 18000		
+
+    },			
     {
         destino: "Peñitas, Chiapas",																																																																																																																
         hasta33T: 52000,
