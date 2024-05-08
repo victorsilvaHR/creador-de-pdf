@@ -15,38 +15,6 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
-        // piezas = [
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 46 Toneladas",
-        //         "medidas": {
-        //             "largo": 11.2,
-        //             "ancho": 1.15,
-        //             "alto": 1.37
-        //         },
-        //         "referencia": "ff",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 46 Toneladas",
-        //         "medidas": {
-        //             "largo": 10.2,
-        //             "ancho": 4.15,
-        //             "alto": 3.37
-        //         },
-        //         "referencia": "test-1",
-        //         "destino": "CDMX"
-        //     }
-        // ]
        
         const doc = new jsPDF();
         const currentDate = this.utilService.formartDate();
