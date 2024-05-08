@@ -330,10 +330,11 @@ export const baseDatos= [
     
 ]
 export const users =  {
-        uid: 'jwEB82rEbeOXwyUPeYzqBkubZwB2',
-        email: 'apiros@mailinator.com',
-        tel: '5586779112',
-        name: 'Armando Piros'
+        uid: 'fE2oJKb0jFfvfhv8KG6nJ2btUww1',
+        email: 'oscarcastellongg@gmail.com',
+        tel: '2294224747',
+        name: 'Oscar Castellon',
+        company: 'TI'
     }
 export const caracteristicasCarga = [
     {

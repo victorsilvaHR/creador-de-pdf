@@ -42,7 +42,7 @@ export class CotizadorComponent implements OnInit {
   try {
     const user = await this.dataService.usuarioById(uid);
     this.nombre = user.name
-    console.log(user) 
+    // console.log(user) 
   } catch (error) {
     console.log(error);
     throw error;
