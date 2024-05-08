@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
-
+import { UtilService } from '../utils/util.service';
 
 @Component({
   selector: 'app-elegir-destino',
@@ -15,13 +14,11 @@ export class ElegirDestinoComponent implements OnInit {
   textoDestino: string = '';
   destinoOk = true;
   err: boolean = false;
- 
-
-
   
   constructor (
     private sharedDataService : SharedDataService,
     private dataService :  DataService,
+    private utilService: UtilService
   )  {}
   
   ngOnInit(): void {
@@ -47,13 +44,13 @@ export class ElegirDestinoComponent implements OnInit {
     } else {
       this.err = true;
     }
-
   }
 
   async getDestinos() {
     try {
       const destinos = await this.dataService.consultaCotizador();
       this.destinos = destinos;
+      this.utilService.allDestinos = destinos;
     } catch (error) {
       console.log(error);
       throw error;

@@ -1,13 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../environments";
+import { DataService } from "../servicios/db.service";
 
 @Injectable({
     providedIn: 'root'
   })
   export class UtilService {
+    
+    allDestinos: any[] = []
 
-    constructor(private http: HttpClient) {}
+    constructor(
+        private http: HttpClient,
+        private dataService: DataService
+    ) {}
 
     formartDate(){
         const fecha : Date = new Date ();
@@ -218,13 +224,14 @@ import { environment } from "../../environments";
         return `${dia}${mes}-${anio}h${hora}${min}-${seg}`;
     }
     subirArchivo(archivoSeleccionado: File, nameFile: string) {
+          const userData = JSON.parse(sessionStorage.getItem('user')+'');
           const formData = new FormData();
           formData.append('archivo', archivoSeleccionado, nameFile);
           this.http.post(environment.dev+'/postFile.php', formData)
             .subscribe(
               (response) => {
                 console.log('El archivo se ha subido correctamente:', response);
-                this.sendMail('ivanju21@gmail.com', nameFile);
+                this.sendMail(userData.email, nameFile);
               },
               (error) => {
                 console.error('Error al subir el archivo:', error);
@@ -245,4 +252,5 @@ import { environment } from "../../environments";
             }
           );
     }
+    
   }

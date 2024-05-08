@@ -35,9 +35,7 @@ export class CotizadorComponent implements OnInit {
     this.getUsuario(uid)
     // this.generarPDF.pdfArmado(10);
   }
- descargarPDF()  {
-  console.log("this.descargarPDF")
- }
+
  async getUsuario(uid) {
   try {
     const user = await this.dataService.usuarioById(uid);

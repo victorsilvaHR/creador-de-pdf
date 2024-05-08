@@ -139,7 +139,7 @@ export class GenerarPDF  {
         const pdfFile = new File([pdfBlob], fileName);
         doc.save(fileName);
         doc.addPage();
-        // this.utilService.subirArchivo(pdfFile, fileName)
+        this.utilService.subirArchivo(pdfFile, fileName)
         
     }
 }
