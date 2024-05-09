@@ -23,10 +23,8 @@ export class SharedDataService {
   descripcionObservable = this. descripcionSubjetcts.asObservable();
 
   enviarCaracteristicas(mensaje : string) {
-    console.log(mensaje)
     this.descripcionSubjetcts.next(mensaje)
     this.caracteristicas = mensaje;
-
   }
 
   private piezasSubjetcts = new Subject<Cotizacion[]>();
@@ -36,7 +34,6 @@ export class SharedDataService {
     console.log(cotizacion)
     this.piezasSubjetcts.next(cotizacion)
     this.piezas = cotizacion;
-
 }
 private segundaParteSubjetcts = new Subject<boolean>();
   segundaParteObservable = this.segundaParteSubjetcts.asObservable();

@@ -3,6 +3,7 @@ import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
 import { GenerarPDF } from '../servicios/generarPDF.service';
+import { UtilService } from '../utils/util.service';
 
 
 @Component({
@@ -15,13 +16,12 @@ export class CotizadorComponent implements OnInit {
   destino = false ;
   resumen = false ;
   nombre = '' ;
-  
 
  constructor(
   private userService: UserService,
   private sharedDataService: SharedDataService,
   private dataService: DataService,
-  private generarPDF: GenerarPDF
+  private generarPDF: GenerarPDF,
  ){ 
   this.sharedDataService.segundaParteObservable.subscribe(destino => {
     this.destino = destino;
@@ -35,9 +35,7 @@ export class CotizadorComponent implements OnInit {
     this.getUsuario(uid);
     // this.generarPDF.pdfArmado(10);
   }
- descargarPDF()  {
-  console.log("this.descargarPDF")
- }
+
  async getUsuario(uid) {
   try {
     const user = await this.dataService.usuarioById(uid);
@@ -49,7 +47,7 @@ export class CotizadorComponent implements OnInit {
   }
 }
 cerrarSesion() {
+
   this.userService.logOut();
-  
  }
 }
