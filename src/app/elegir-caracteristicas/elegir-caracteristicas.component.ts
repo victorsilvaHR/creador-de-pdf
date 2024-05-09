@@ -73,20 +73,16 @@ mostrarResumen() {
   }
 }
 
-
-changeMedidas(event: any) {
-  this.toneladas = event.target?.value;
-  this.sharedDataService.enviarMedidas({...this.medidas})
-}
 changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
 onLargoChange(value: number) {
+  console.log(value);
   if (value < 1) {
     this.medidas.largo = 1;
   } else if (value > 15) {
-    this.medidas.largo = 15;
+      this.medidas.largo = 15;
   }
 }
 onAnchoChange(value: number){

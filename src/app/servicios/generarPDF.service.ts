@@ -15,48 +15,7 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
-        // piezas = [
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 46 Toneladas",
-        //         "medidas": {
-        //             "largo": 11.2,
-        //             "ancho": 1.15,
-        //             "alto": 1.37
-        //         },
-        //         "referencia": "ff",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        // ]
+        
         let piezasPrecios: Cotizacion[] = [];
         piezas.forEach(el => {
             piezasPrecios.push(this.utilService.calcularCosto(el));
@@ -194,9 +153,9 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        // doc.save(fileName);
+        doc.save(fileName);
         doc.addPage();
-        // this.utilService.subirArchivo(pdfFile, fileName);
+        this.utilService.subirArchivo(pdfFile, fileName);
         
     }
 }

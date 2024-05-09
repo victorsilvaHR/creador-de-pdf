@@ -3,7 +3,6 @@ import { UserService } from '../servicios/users.service';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
 import { GenerarPDF } from '../servicios/generarPDF.service';
-import { UtilService } from '../utils/util.service';
 
 
 @Component({

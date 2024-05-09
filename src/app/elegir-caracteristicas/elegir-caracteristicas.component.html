@@ -4,15 +4,15 @@
       <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas ">Largo</p>
         <div class="input-group">
-            <input [(ngModel)]="medidas.largo" (change)="changeMedidas($event)" type="number"
-             class="form-control" min="1" step="0.01" max="15" (ngModelChange)="onLargoChange($event)">
+            <input [(ngModel)]="medidas.largo" type="number"
+             class="form-control" min=1 step="0.01" max=15 (ngModelChange)="onLargoChange($event)">
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
     </div>
     <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas">Ancho</p>
         <div class="input-group">
-            <input [(ngModel)]="medidas.ancho" (change)="changeMedidas($event)" type="number"
+            <input [(ngModel)]="medidas.ancho" type="number"
              class="form-control" min="1" step="0.01" max="5" (ngModelChange)="onAnchoChange($event)">
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
@@ -20,7 +20,7 @@
     <div class="col-3 col-6 col-sm-3">
         <p class="text-center custom-font negritas">Alto</p>
         <div class="input-group">
-            <input [(ngModel)]="medidas.alto" (change)="changeMedidas($event)" type="number" 
+            <input [(ngModel)]="medidas.alto" type="number" 
             class="form-control" min="1" step="0.01" max="5"(ngModelChange)="onAltoChange($event)" >
             <span class="input-group-text" id="basic-addon2">m</span>
         </div>
