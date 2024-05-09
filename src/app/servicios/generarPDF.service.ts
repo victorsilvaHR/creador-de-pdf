@@ -16,16 +16,7 @@ export class GenerarPDF  {
  
     pdfArmado(piezas:any) : void {
         piezas = [
-            {
-                "peso": "Hasta 33 Toneladas",
-                "medidas": {
-                    "largo": "15",
-                    "ancho": 3,
-                    "alto": 4
-                },
-                "referencia": "123456",
-                "destino": "Aguascalientes"
-            },
+        
             {
                 "peso": "Hasta 46 Toneladas",
                 "medidas": {
