@@ -20,7 +20,6 @@ export class CotizadorComponent implements OnInit {
   private userService: UserService,
   private sharedDataService: SharedDataService,
   private dataService: DataService,
-  private generarPDF: GenerarPDF,
  ){ 
   this.sharedDataService.segundaParteObservable.subscribe(destino => {
     this.destino = destino;
@@ -32,7 +31,6 @@ export class CotizadorComponent implements OnInit {
   ngOnInit(): void {
     const uid = sessionStorage.getItem('uid');
     this.getUsuario(uid);
-    // this.generarPDF.pdfArmado(10);
   }
 
  async getUsuario(uid) {

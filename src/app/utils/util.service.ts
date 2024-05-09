@@ -246,7 +246,7 @@ import { Cotizacion } from "../modelos/cotizacion";
         this.http.post(environment.dev+'/sendMail.php', req)
           .subscribe(
             (response) => {
-              console.log('El archivo se envio correctamente:', response);
+              console.log('El email se envio correctamente:', response);
             },
             (error) => {
               console.error('Error al enviar el correo:', error);
