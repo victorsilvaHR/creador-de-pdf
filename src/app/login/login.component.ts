@@ -53,8 +53,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.campoVacio = true;
 
-    }
-    
-    
+    } 
   }
+
 }
