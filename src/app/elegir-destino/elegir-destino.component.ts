@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
+import { Cotizacion } from '../modelos/cotizacion';
 import { UtilService } from '../utils/util.service';
 
 @Component({
@@ -14,6 +15,28 @@ export class ElegirDestinoComponent implements OnInit {
   textoDestino: string = '';
   destinoOk = true;
   err: boolean = false;
+  piezas: Cotizacion[] = [
+    {
+        peso: "Hasta 39 Toneladas",
+        "medidas": {
+            "largo": 1.01,
+            "ancho": 3.80,
+            "alto": 3
+        },
+        "referencia": "kloiu80",
+        "destino": "CDMX"
+    },
+    {
+        peso: "Hasta 33 Toneladas",
+        "medidas": {
+            "largo": 1.05,
+            "ancho": 3,
+            "alto": 4.5
+        },
+        "referencia": "kloiu80",
+        "destino": "CDMX"
+    }
+];
   
   constructor (
     private sharedDataService : SharedDataService,

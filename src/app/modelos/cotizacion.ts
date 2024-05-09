@@ -5,5 +5,6 @@ export interface Cotizacion {
     medidas: Medidas,
     destino: string, 
     referencia: string,
-    precio?: string
+    precio?: number,
+    pilotos?: number
 }

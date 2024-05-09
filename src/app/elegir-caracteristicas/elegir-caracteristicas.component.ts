@@ -15,7 +15,6 @@ export class ElegirCaracteristicasComponent implements OnInit {
   contizacion: Cotizacion [] = [];
   caracteristicas:any [] = []; 
   toneladas: string = '';
-  catalogoPilotos:any [] = [];
   medidas: Medidas = {
     largo:'',
     ancho:'',
@@ -32,7 +31,6 @@ export class ElegirCaracteristicasComponent implements OnInit {
   
   ngOnInit(): void {
     this.catalogoCaracteristicas();
-    // this.catalgoPiloto();
   }
 
 
@@ -86,23 +84,23 @@ changeReferencias(event: any) {
 }
 onLargoChange(value: number) {
   if (value < 1) {
-    this.medidas.largo = '1';
+    this.medidas.largo = 1;
   } else if (value > 15) {
-    this.medidas.largo = '15';
+    this.medidas.largo = 15;
   }
 }
 onAnchoChange(value: number){
   if (value < 1) {
-    this.medidas.ancho = '1';
+    this.medidas.ancho = 1;
   } else if (value > 5) {
-    this.medidas.ancho = '5';
+    this.medidas.ancho = 5;
   }
 }
 onAltoChange(value: number){
   if (value < 1) {
-    this.medidas.alto = '1';
+    this.medidas.alto = 1;
   } else if (value > 5) {
-    this.medidas.alto = '5';
+    this.medidas.alto = 5;
   }
 }
 limpiarCampo() {

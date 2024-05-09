@@ -1,5 +1,5 @@
 export interface Medidas {
-    largo: string,
-    ancho: string,
-    alto: string,
+    largo: number | string,
+    ancho: number | string,
+    alto: number | string,
 }
