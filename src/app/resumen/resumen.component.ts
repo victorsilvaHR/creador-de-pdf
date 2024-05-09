@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../servicios/sharedData.service';
 import { GenerarPDF } from '../servicios/generarPDF.service';
 import { Cotizacion } from '../modelos/cotizacion';
+import { ElegirDestinoComponent } from '../elegir-destino/elegir-destino.component';
 
 @Component({
   selector: 'app-resumen',

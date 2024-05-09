@@ -20,7 +20,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
     ancho:'',
     alto:'',
   }
-  referencias : string = ''
+  referencias : string = '';
   err: boolean = false;
   cotizaciones = false;
 
@@ -65,6 +65,7 @@ mostrarResumen() {
       this.sharedDataService.enviarResumen(resumen);
       this.limpiarCampo();
       this.sharedDataService.enviarPiezas(this.contizacion);
+      this.limpiarCampo();
     } else {
       this.cotizaciones = true; 
     } 

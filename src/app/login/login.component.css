@@ -54,7 +54,6 @@
   margin-bottom: -5em;
   font-size: 6rem;
 }
-
 .larp {
   height: 5.3em;
 }
@@ -70,6 +69,10 @@
 .footer {
   display: none; 
 }
+.movil{
+  display: none;
+}
+
 
 @media (max-width: 767px) {
   .header-login {
@@ -83,14 +86,11 @@
       left: 0; 
       z-index: 1000;
   }
-
-
   .texto-movil {
-      font-size: 42px;
+      font-size: 43px;
       margin: auto;
-      padding: 8px; 
+      padding: 16px; 
   }
-
   .larp {
         display: none;    
   }
@@ -99,14 +99,17 @@
     background-color: #f0f0f0; 
     padding: 20px 0; 
     display: flex !important; 
-
   }
-
   .footer-image {
     width: 100%; 
     height: auto; 
-    max-height: 5em; 
-    left: 0px;
+    max-height: 6em; 
+}
+.desktop{
+  display: none;
+}
+.movil {
+  display: block;
 }
 }
 
