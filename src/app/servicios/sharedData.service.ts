@@ -7,6 +7,7 @@ import { Cotizacion } from '../modelos/cotizacion';
 })
 export class SharedDataService {
   destino = '' 
+  // disableDest = false;
   caracteristicas = ''
   piezas: Cotizacion[] = [];
   medidas = {};
@@ -19,6 +20,15 @@ export class SharedDataService {
     this.destinoSubject.next(mensaje);
     this.destino = mensaje;
   }
+  //
+  private disDestinoSubject = new Subject<boolean>();
+  disDestinoObservable = this.disDestinoSubject.asObservable();
+  
+  enviarDisableDestino(disableDestino: boolean) {
+    this.disDestinoSubject.next(disableDestino);
+    // this.disableDest = disableDestino;
+  }
+  //
   private descripcionSubjetcts = new Subject<string>();
   descripcionObservable = this. descripcionSubjetcts.asObservable();
 

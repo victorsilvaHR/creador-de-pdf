@@ -23,6 +23,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   referencias : string = '';
   err: boolean = false;
   cotizaciones = false;
+  disableRef = false;
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -63,8 +64,9 @@ mostrarResumen() {
       });
       const resumen = true;
       this.sharedDataService.enviarResumen(resumen);
-      this.limpiarCampo();
       this.sharedDataService.enviarPiezas(this.contizacion);
+      this.disableRef = true;
+      this.sharedDataService.enviarDisableDestino(true)
       this.limpiarCampo();
     } else {
       this.cotizaciones = true; 
@@ -104,7 +106,7 @@ limpiarCampo() {
   this.medidas.largo = ''; 
   this.medidas.ancho = '';
   this.medidas.alto = '';
-  this.referencias = '';
+  // this.referencias = '';
   this.toneladas = '';
 }
 
