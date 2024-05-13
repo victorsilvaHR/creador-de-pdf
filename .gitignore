@@ -2,6 +2,8 @@
 environments.ts
 firebase.json
 .firebaserc
+.firebase
+.firebase/
 
 # Compiled output
 /dist

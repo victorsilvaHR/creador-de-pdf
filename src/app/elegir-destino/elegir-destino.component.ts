@@ -13,6 +13,7 @@ import { GenerarPDF } from '../servicios/generarPDF.service';
 export class ElegirDestinoComponent   implements OnInit {
 
   destinos: any[]= [];
+  disDestino: boolean = false;
   textoDestino: string = '';
   destinoOk = true;
   err: boolean = false;
@@ -43,9 +44,12 @@ export class ElegirDestinoComponent   implements OnInit {
     private sharedDataService : SharedDataService,
     private dataService :  DataService,
     private utilService: UtilService,
-    private generarPDF: GenerarPDF 
-    
-  )  {}
+    private generarPDF: GenerarPDF
+  )  {
+    this.sharedDataService.disDestinoObservable.subscribe(dis => {
+      this.disDestino = dis
+    })
+  }
   
   ngOnInit(): void {
       this.getDestinos();

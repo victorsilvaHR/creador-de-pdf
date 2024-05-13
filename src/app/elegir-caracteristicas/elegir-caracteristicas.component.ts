@@ -23,6 +23,7 @@ export class ElegirCaracteristicasComponent implements OnInit {
   referencias : string = '';
   err: boolean = false;
   cotizaciones = false;
+  disableRef = false;
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -63,8 +64,9 @@ mostrarResumen() {
       });
       const resumen = true;
       this.sharedDataService.enviarResumen(resumen);
-      this.limpiarCampo();
       this.sharedDataService.enviarPiezas(this.contizacion);
+      this.disableRef = true;
+      this.sharedDataService.enviarDisableDestino(true)
       this.limpiarCampo();
     } else {
       this.cotizaciones = true; 
@@ -74,20 +76,16 @@ mostrarResumen() {
   }
 }
 
-
-changeMedidas(event: any) {
-  this.toneladas = event.target?.value;
-  this.sharedDataService.enviarMedidas({...this.medidas})
-}
 changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
 onLargoChange(value: number) {
+  console.log(value);
   if (value < 1) {
     this.medidas.largo = 1;
   } else if (value > 15) {
-    this.medidas.largo = 15;
+      this.medidas.largo = 15;
   }
 }
 onAnchoChange(value: number){
@@ -108,7 +106,7 @@ limpiarCampo() {
   this.medidas.largo = ''; 
   this.medidas.ancho = '';
   this.medidas.alto = '';
-  this.referencias = '';
+  // this.referencias = '';
   this.toneladas = '';
 }
 

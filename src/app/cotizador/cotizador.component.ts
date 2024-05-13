@@ -4,7 +4,6 @@ import { SharedDataService } from '../servicios/sharedData.service';
 import { DataService } from '../servicios/db.service';
 
 
-
 @Component({
   selector: 'app-cotizador',
   templateUrl: './cotizador.component.html',
