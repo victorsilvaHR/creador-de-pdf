@@ -15,48 +15,48 @@ export class GenerarPDF  {
    
  
     pdfArmado(piezas:any) : void {
-        // piezas = [
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 46 Toneladas",
-        //         "medidas": {
-        //             "largo": 11.2,
-        //             "ancho": 1.15,
-        //             "alto": 1.37
-        //         },
-        //         "referencia": "ff",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        //     {
-        //         "peso": "Hasta 33 Toneladas",
-        //         "medidas": {
-        //             "largo": "15",
-        //             "ancho": 3,
-        //             "alto": 4
-        //         },
-        //         "referencia": "123456",
-        //         "destino": "Aguascalientes"
-        //     },
-        // ]
+        piezas = [
+            {
+                "peso": "Hasta 33 Toneladas",
+                "medidas": {
+                    "largo": "15",
+                    "ancho": 3,
+                    "alto": 4
+                },
+                "referencia": "123456",
+                "destino": "Aguascalientes"
+            },
+            {
+                "peso": "Hasta 46 Toneladas",
+                "medidas": {
+                    "largo": 11.2,
+                    "ancho": 1.15,
+                    "alto": 1.37
+                },
+                "referencia": "ff",
+                "destino": "Aguascalientes"
+            },
+            // {
+            //     "peso": "Hasta 33 Toneladas",
+            //     "medidas": {
+            //         "largo": "15",
+            //         "ancho": 3,
+            //         "alto": 4
+            //     },
+            //     "referencia": "123456",
+            //     "destino": "Aguascalientes"
+            // },
+            // {
+            //     "peso": "Hasta 33 Toneladas",
+            //     "medidas": {
+            //         "largo": "15",
+            //         "ancho": 3,
+            //         "alto": 4
+            //     },
+            //     "referencia": "123456",
+            //     "destino": "Aguascalientes"
+            // },
+        ]
         let piezasPrecios: Cotizacion[] = [];
         piezas.forEach(el => {
             piezasPrecios.push(this.utilService.calcularCosto(el));
@@ -66,17 +66,20 @@ export class GenerarPDF  {
         const userData = JSON.parse(sessionStorage.getItem('user')+'');
         const currentDate = this.utilService.formartDate();
       
-        doc.addImage("/assets/canacar.png",0,0,220, 28);
+        doc.addImage("/assets/msuperior.png",0,0,214, 28);
             
         doc.setFillColor(250, 0, 0);
-        doc.rect(140, 28, 80, 8, "F");
-        // doc.roundedRect(140, 28, 80, 8, 1,1, "F");
+        doc.rect(0, 28, 55, 7, "F");
+        doc.setFontSize(12),
         doc.setTextColor("white");
-        doc.text(`${currentDate}`, 162, 34);
+        doc.text(`${currentDate}`, 8, 34);
             
         doc.setTextColor("black");
-        doc.text(userData.name, 10, 40);
-        doc.text(userData.company, 10, 45);
+        doc.text("Empresa del Cliente:"+ userData.company, 7, 44);
+        doc.text("Cliente:"+ userData.name, 7, 49);
+        doc.text("Referencia:",7,54);
+
+        
         let altura = 0;
 
         piezasPrecios.forEach(pieza => {
@@ -85,59 +88,55 @@ export class GenerarPDF  {
             let numeroATexto = this.utilService.numeroALetras(Number(pieza.precio));
             console.log(numeroATexto);
 
-            doc.setFontSize(12.5)
-
+            doc.setFontSize(12)
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 51+altura, 100, 7, "F");
+            doc.rect(7, 63+altura, 80, 5, "F");
             doc.setTextColor("white");
-            doc.text("Origen: Veracruz. Ver", 11, 56+altura);
+            doc.text("Origen: Veracruz. Ver", 8, 66+altura);
                 
             doc.setFillColor(2, 47, 136);
-            doc.rect(60, 51+altura, 100, 7, "F");
+            doc.rect(7, 68+altura, 110, 5, "F");
             doc.setTextColor("white");
-            doc.text("Destino: " + pieza.destino, 62, 56+altura);
+            doc.text("Destino: " + pieza.destino, 8, 71+altura);
                 
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 59+altura, 140, 35, "F");
+            doc.rect(7, 80+altura, 150, 20, "F");
             doc.setTextColor("white");
-            doc.text("VAGONES TOLVA", 11, 64+altura);
-            doc.text("11.80-2,90-370", 11, 69+altura);
-            doc.text("PESO: " + pieza.peso , 11, 74+altura);
-            doc.text("(LARGO: " + pieza.medidas.largo+ " x ANCHO: "+ pieza.medidas.ancho +" x ALTO: "+ pieza.medidas.alto+")", 11, 80+altura);
-            doc.text("No. Referencia, Correo, Cotizacion: " , 11, 86+altura);
-            doc.text(pieza.referencia ,11,92+altura);
+            doc.text("1 Pieza o Conjunto de Piezas que en total tiene las sig medidas.", 8, 86+altura);
+            doc.text("Largo: " + pieza.medidas.largo,8,90+altura);
+            doc.text("Ancho: " + pieza.medidas.ancho,34,90+altura);
+            doc.text("Alto: " + pieza.medidas.alto,58,90+altura);
+            doc.text("Peso: " + pieza.peso , 78, 90+altura);
+            // doc.text("No. Referencia, Correo, Cotizacion: " , 11, 86+altura);
+            // doc.text(pieza.referencia ,11,92+altura);
                         
             doc.setFillColor(0, 46, 93);
-            doc.rect(10, 96+altura, 180, 7, "F");
+            doc.rect(23, 102+altura, 165, 6, "F");
             doc.setTextColor("white");
-            doc.text("$" +`${numFormat}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 12, 101+altura);
+            doc.text("$ " +`${numFormat}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 26, 106+altura);
+            doc.setLineWidth(0.5)
+            doc.line(18, 100 +altura, 18, 105 + altura);
+            doc.line(18, 105 +altura, 24, 105 + altura);
+
             altura += 55;
         }); 
   
-        doc.addImage("/assets/canacar2.png",0,270,210, 30);
+        doc.addImage("/assets/minferior.png",0,270,210, 30);
         doc.addPage();
             
-        doc.addImage("/assets/canacar3.png",0,0,220, 30);
+        doc.addImage("/assets/msuperior2.png",0,0,210, 30);
                 
         doc.setFontSize(12);
-        const totalNum = this.utilService.calcuarTotal(piezasPrecios);
-        const totalFormat = accounting.formatNumber(Number(totalNum));
-        const totalText = this.utilService.numeroALetras(Number(totalNum));
-
-        doc.setDrawColor(0, 6, 136);
-        doc.rect(10, 35, 180, 10);
-        doc.setTextColor("black");
-        doc.text("$" +`${totalFormat}`+" (" +`${totalText}`+" PESOS 00/100) + I.V.A" , 11, 40);
-
-
+       
         doc.setFillColor(0, 6, 136);
-        doc.rect(10, 45, 120, 8, "F");
+        doc.rect(10, 45, 60, 7, "F");
         doc.setTextColor("white");
-        doc.text("Equipo a Utilizar:", 15, 49);
+        doc.text("Equipo a Utilizar:", 15, 50);
             
         doc.setTextColor("black");
         doc.text("Lowboy / CamaBaja", 10, 63);
         doc.text("Permiso SCT", 10, 68);
+        doc.text("Carros Piloto ( en caso de ). ",10,73)
             
         doc.setTextColor("black");
             
@@ -186,7 +185,7 @@ export class GenerarPDF  {
         doc.setFont("arial","bold");
         doc.text("26 Años", 60, 252);
         doc.text("Tranportando Mexico!", 35, 265);
-        doc.addImage("/assets/canacar2.png",0,270,210, 30);
+        doc.addImage("/assets/minferior2.png",0,270,210, 30);
 
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
         const pdfURL = URL.createObjectURL(pdfBlob);
@@ -194,7 +193,7 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        // doc.save(fileName);
+        doc.save(fileName);
         doc.addPage();
         // this.utilService.subirArchivo(pdfFile, fileName);
         
