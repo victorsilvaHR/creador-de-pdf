@@ -182,11 +182,11 @@ export class GenerarPDF  {
         doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 13, 168);
         doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 13, 173);
             
-        doc.setFontSize(44)
+        doc.setFontSize(48)
         doc.setTextColor(27,2, 136);
         doc.setFont("arial","bold");
-        doc.text("26 Años", 60, 252);
-        doc.text("Tranportando Mexico!", 35, 265);
+        doc.text("26 Años", 35, 246);
+        doc.text("Tranportando Mexico!", 10, 257);
         doc.addImage("/assets/minferior2.png",0,270,210, 30);
 
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });

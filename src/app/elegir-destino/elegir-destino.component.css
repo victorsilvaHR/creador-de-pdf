@@ -1,6 +1,6 @@
 .titulos{
 text-align: center;
-margin-top: 2em;
+margin-top: 0em;
 }
 .lupa {
     margin: auto;
@@ -84,6 +84,13 @@ background-color: #1C4C96;
   .ul {
       list-style-type: none; 
       padding: 0; 
-      font-size: 80%;
+      font-size: 100%;
+  }
+  .accordion-item {
+    margin-top: 4em;
+  }
+  .instrucciones {
+    font-size: 120%;
+
   }
 
