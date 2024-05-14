@@ -12,7 +12,6 @@ export class GenerarPDF  {
     constructor (
         private utilService: UtilService,
     ){}
-   
  
     pdfArmado(piezas:any) : void {
         piezas = [
@@ -57,31 +56,39 @@ export class GenerarPDF  {
             //     "destino": "Aguascalientes"
             // },
         ]
-        let piezasPrecios: Cotizacion[] = [];
+        let piezasPrecios: Cotizacion[] = []; // Agregando precios
         piezas.forEach(el => {
             piezasPrecios.push(this.utilService.calcularCosto(el));
         })
-        console.log(this.utilService.calcularCosto(piezas[0]));
         const doc = new jsPDF();
         const userData = JSON.parse(sessionStorage.getItem('user')+'');
         const currentDate = this.utilService.formartDate();
       
         doc.addImage("/assets/msuperior.png",0,0,214, 28);
             
-        doc.setFillColor(250, 0, 0);
-        doc.rect(0, 28, 55, 7, "F");
-        doc.setFillColor(255, 0, 0);
-        doc.triangle(55, 28, 55, 35, 60, 28, "F");
+        doc.setFillColor(238, 40, 60);
+        doc.rect(0, 28, 55, 5, "F");
+        doc.setFillColor(238, 40, 60);
+        doc.triangle(55, 28, 55, 33, 60, 28, "F");
         doc.setFontSize(12),
         doc.setTextColor("white");
-        doc.text(`${currentDate}`, 8, 33);
+        doc.text(`${currentDate}`, 8, 32);
             
         doc.setTextColor("black");
         doc.text("Empresa del Cliente:"+ userData.company, 7, 44);
-        doc.text("Cliente:"+ userData.name, 7, 49);
-        doc.text("Referencia:",7,54);
+        doc.text("Cliente:"+ userData.name, 7.5, 49);
+        doc.text("Referencia: " + piezas[0].referencia,7,54);
 
-        
+        doc.setFontSize(11)
+        doc.setFillColor(30, 22, 63); // Color Origen
+        doc.rect(7, 63, 80, 5, "F");
+        doc.setTextColor("white");
+        doc.text("Origen: Veracruz. Ver", 8, 66.5);
+            
+        doc.setFillColor(54, 48, 113); // Color Destino
+        doc.rect(7, 68, 110, 5, "F");
+        doc.setTextColor("white");
+        doc.text("Destino: " + piezas[0].destino, 8, 72);
         let altura = 0;
 
         piezasPrecios.forEach(pieza => {
@@ -89,19 +96,8 @@ export class GenerarPDF  {
             console.log(numFormat);
             let numeroATexto = this.utilService.numeroALetras(Number(pieza.precio));
             console.log(numeroATexto);
-
-            doc.setFontSize(12)
-            doc.setFillColor(0, 46, 93);
-            doc.rect(7, 63+altura, 80, 5, "F");
-            doc.setTextColor("white");
-            doc.text("Origen: Veracruz. Ver", 8, 66+altura);
                 
-            doc.setFillColor(2, 47, 136);
-            doc.rect(7, 68+altura, 110, 5, "F");
-            doc.setTextColor("white");
-            doc.text("Destino: " + pieza.destino, 8, 71+altura);
-                
-            doc.setFillColor(0, 46, 93);
+            doc.setFillColor(30, 22, 63);
             doc.rect(7, 80+altura, 150, 20, "F");
             doc.setTextColor("white");
             doc.text("1 Pieza o Conjunto de Piezas que en total tiene las sig medidas.", 8, 86+altura);
@@ -112,7 +108,7 @@ export class GenerarPDF  {
             // doc.text("No. Referencia, Correo, Cotizacion: " , 11, 86+altura);
             // doc.text(pieza.referencia ,11,92+altura);
                         
-            doc.setFillColor(0, 46, 93);
+            doc.setFillColor(54, 48, 113);
             doc.rect(23, 102+altura, 165, 6, "F");
             doc.setTextColor("white");
             doc.text("$ " +`${numFormat}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 26, 106+altura);
@@ -120,7 +116,7 @@ export class GenerarPDF  {
             doc.line(18, 100 +altura, 18, 105 + altura);
             doc.line(18, 105 +altura, 24, 105 + altura);
 
-            altura += 55;
+            altura += 36;
         }); 
   
         doc.addImage("/assets/minferior.png",0,270,210, 30);
@@ -130,10 +126,10 @@ export class GenerarPDF  {
                 
         doc.setFontSize(12);
        
-        doc.setFillColor(0, 6, 136);
+        doc.setFillColor(30, 22, 63);
         doc.rect(10, 45, 55, 7, "F");
         doc.setTextColor("white");
-        doc.text("Equipo a Utilizar:", 15, 50);
+        doc.text("Equipo a Utilizar:", 13, 50);
             
         doc.setTextColor("black");
         doc.text("Lowboy / CamaBaja", 10, 63);
@@ -183,7 +179,7 @@ export class GenerarPDF  {
         doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 13, 173);
             
         doc.setFontSize(44)
-        doc.setTextColor(27,2, 136);
+        doc.setTextColor(30, 22, 63);
         doc.setFont("arial","bold");
         doc.text("26 Años", 60, 252);
         doc.text("Tranportando Mexico!", 35, 265);
