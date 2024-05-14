@@ -70,9 +70,11 @@ export class GenerarPDF  {
             
         doc.setFillColor(250, 0, 0);
         doc.rect(0, 28, 55, 7, "F");
+        doc.setFillColor(255, 0, 0);
+        doc.triangle(55, 28, 55, 35, 60, 28, "F");
         doc.setFontSize(12),
         doc.setTextColor("white");
-        doc.text(`${currentDate}`, 8, 34);
+        doc.text(`${currentDate}`, 8, 33);
             
         doc.setTextColor("black");
         doc.text("Empresa del Cliente:"+ userData.company, 7, 44);
@@ -129,7 +131,7 @@ export class GenerarPDF  {
         doc.setFontSize(12);
        
         doc.setFillColor(0, 6, 136);
-        doc.rect(10, 45, 60, 7, "F");
+        doc.rect(10, 45, 55, 7, "F");
         doc.setTextColor("white");
         doc.text("Equipo a Utilizar:", 15, 50);
             
@@ -169,7 +171,7 @@ export class GenerarPDF  {
         const maxWidth = 200;
         const lines = doc.splitTextToSize(longText, maxWidth); 
         const lineHeight = 6;
-        let y = 80;
+        let y = 90;
             
         lines.forEach((line: string) => { 
         doc.text(line, 10, y);
@@ -177,8 +179,8 @@ export class GenerarPDF  {
         });
         doc.setFontSize(12)
         doc.setTextColor("red");
-        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 11, 158);
-        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 12, 164);
+        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 13, 168);
+        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 13, 173);
             
         doc.setFontSize(44)
         doc.setTextColor(27,2, 136);
@@ -193,8 +195,8 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        doc.save(fileName);
-        doc.addPage();
+        // doc.save(fileName);
+        // doc.addPage();
         this.utilService.subirArchivo(pdfFile, fileName);        
     }
 }

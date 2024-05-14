@@ -81,3 +81,9 @@ background-color: #1C4C96;
         text-align: center;
     }
   }
+  .ul {
+      list-style-type: none; 
+      padding: 0; 
+      font-size: 80%;
+  }
+
