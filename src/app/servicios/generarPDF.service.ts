@@ -80,12 +80,12 @@ export class GenerarPDF  {
         doc.text("Referencia: " + piezas[0].referencia,7,54);
 
         doc.setFontSize(11)
-        doc.setFillColor(30, 22, 63); // Color Origen
+        doc.setFillColor(30, 22, 63);
         doc.rect(7, 63, 80, 5, "F");
         doc.setTextColor("white");
         doc.text("Origen: Veracruz. Ver", 8, 66.5);
             
-        doc.setFillColor(54, 48, 113); // Color Destino
+        doc.setFillColor(54, 48, 113);
         doc.rect(7, 68, 110, 5, "F");
         doc.setTextColor("white");
         doc.text("Destino: " + piezas[0].destino, 8, 72);
@@ -105,8 +105,7 @@ export class GenerarPDF  {
             doc.text("Ancho: " + pieza.medidas.ancho,34,90+altura);
             doc.text("Alto: " + pieza.medidas.alto,58,90+altura);
             doc.text("Peso: " + pieza.peso , 78, 90+altura);
-            // doc.text("No. Referencia, Correo, Cotizacion: " , 11, 86+altura);
-            // doc.text(pieza.referencia ,11,92+altura);
+            
                         
             doc.setFillColor(54, 48, 113);
             doc.rect(23, 102+altura, 165, 6, "F");
@@ -127,12 +126,14 @@ export class GenerarPDF  {
         doc.setFontSize(12);
        
         doc.setFillColor(30, 22, 63);
-        doc.rect(10, 45, 42, 7, "F");
+        doc.rect(10, 45, 52, 7, "F");
         doc.setTextColor("white");
-        doc.triangle(52, 45, 52, 52, 55, 45, "F");
         doc.rect(54, 45, 4, 7, "F");
-        doc.rect(58, 48, 4, 4, "F");
-        doc.triangle(62, 48, 62, 52.5, 65, 48, "F");
+        doc.setDrawColor("white")
+        doc.setLineWidth(2)
+        doc.line(47,53,55,40)
+        doc.rect(60, 48, 4, 4, "F");
+        doc.triangle(62, 48, 64, 52.5, 67, 48, "F");
         doc.text("Equipo a Utilizar:", 13, 50);
             
         doc.setTextColor("black");
@@ -168,26 +169,31 @@ export class GenerarPDF  {
     destinatario.`;
             
             
-        const maxWidth = 200;
-        const lines = doc.splitTextToSize(longText, maxWidth); 
-        const lineHeight = 6;
-        let y = 90;
-            
-        lines.forEach((line: string) => { 
-        doc.text(line, 10, y);
+    const maxWidth = 220;
+    const lines = doc.splitTextToSize(longText, maxWidth); 
+    const lineHeight = 6;
+    let y = 90;
+    
+    
+    lines.forEach((line: string) => { 
+        doc.text(line, 5, y);
         y += lineHeight;    
-        });
+        doc.setFontSize(12)
+    });
+
         doc.setFontSize(12)
         doc.setTextColor("red");
-        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 13, 168);
-        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 13, 173);
+        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 11, 168);
+        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 11, 173);
             
         
-        doc.setFontSize(48)
-        doc.setTextColor(30, 22, 63);
-        doc.setFont("arial","bold");
-        doc.text("26 Años", 35, 246);
-        doc.text("Tranportando Mexico!", 10, 257);
+        // doc.setFontSize(50)
+        // doc.setTextColor(30, 22, 63);
+        // doc.setFont("arial","bold");
+        // doc.text("26 Años", 35, 246);
+        // doc.text("Tranportando Mexico!", 10, 257);
+        doc.addImage("/assets/larp26años.png",0,230,210, 30);
+
         doc.addImage("/assets/minferior2.png",0,270,210, 30);
 
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
@@ -196,8 +202,8 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        doc.save(fileName);
-        doc.addPage();
+        // doc.save(fileName);
+        // doc.addPage();
         this.utilService.subirArchivo(pdfFile, fileName);        
     }
 }
