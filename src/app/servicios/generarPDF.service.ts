@@ -127,8 +127,12 @@ export class GenerarPDF  {
         doc.setFontSize(12);
        
         doc.setFillColor(30, 22, 63);
-        doc.rect(10, 45, 55, 7, "F");
+        doc.rect(10, 45, 42, 7, "F");
         doc.setTextColor("white");
+        doc.triangle(52, 45, 52, 52, 55, 45, "F");
+        doc.rect(54, 45, 4, 7, "F");
+        doc.rect(58, 48, 4, 4, "F");
+        doc.triangle(62, 48, 62, 52.5, 65, 48, "F");
         doc.text("Equipo a Utilizar:", 13, 50);
             
         doc.setTextColor("black");
@@ -178,11 +182,12 @@ export class GenerarPDF  {
         doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 13, 168);
         doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 13, 173);
             
-        doc.setFontSize(44)
+        
+        doc.setFontSize(48)
         doc.setTextColor(30, 22, 63);
         doc.setFont("arial","bold");
-        doc.text("26 Años", 60, 252);
-        doc.text("Tranportando Mexico!", 35, 265);
+        doc.text("26 Años", 35, 246);
+        doc.text("Tranportando Mexico!", 10, 257);
         doc.addImage("/assets/minferior2.png",0,270,210, 30);
 
         const pdfBlob = new Blob([doc.output("blob")], { type: "application/pdf" });
