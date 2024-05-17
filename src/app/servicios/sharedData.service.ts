@@ -20,7 +20,7 @@ export class SharedDataService {
     this.destinoSubject.next(mensaje);
     this.destino = mensaje;
   }
-  //
+  
   private disDestinoSubject = new Subject<boolean>();
   disDestinoObservable = this.disDestinoSubject.asObservable();
   
@@ -28,7 +28,7 @@ export class SharedDataService {
     this.disDestinoSubject.next(disableDestino);
     // this.disableDest = disableDestino;
   }
-  //
+  
   private descripcionSubjetcts = new Subject<string>();
   descripcionObservable = this. descripcionSubjetcts.asObservable();
 

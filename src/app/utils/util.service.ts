@@ -44,23 +44,23 @@ import { Cotizacion } from "../modelos/cotizacion";
               let x = Math.floor(numero/1000000);
       
               if (x == 1) {
-                  respuesta = 'UN MILLON ' + this.numeroALetras(residuo);
+                  respuesta = 'Un Millon ' + this.numeroALetras(residuo);
               } else {
-                  respuesta = this.numeroALetras(x) + ' MILLONES ' + this.numeroALetras(residuo);
+                  respuesta = this.numeroALetras(x) + ' Millones ' + this.numeroALetras(residuo);
               }
           }else if ((numero+'').length > 3) {
               let residuo  = parseInt((numero + ''))%1000;
               let x  = Math.floor(numero/1000);
       
               if (x == 1) {
-                  respuesta = 'MIL ' + this.numeroALetras(residuo);
+                  respuesta = 'Mil ' + this.numeroALetras(residuo);
               } else {
-                  respuesta = this.numeroALetras(x) + ' MIL ' + this.numeroALetras(residuo);
+                  respuesta = this.numeroALetras(x) + ' Mil ' + this.numeroALetras(residuo);
               }
           }        
       } else {
           if (numero == 100) {
-              respuesta = 'CIEN';
+              respuesta = 'Cien';
           }else if (numero > 100) {
               let cen = Math.floor(numero/100);
               let dec = numero % 100;
@@ -76,7 +76,7 @@ import { Cotizacion } from "../modelos/cotizacion";
                   let ddec = Math.floor(dec/10);
 
                   if (unis != 0) {
-                      respuesta = '' + this.decenas_nal(ddec) + ' Y ' + this.unidades_nal(unis);
+                      respuesta = '' + this.decenas_nal(ddec) + ' y ' + this.unidades_nal(unis);
                   } else {
                       respuesta = '' + this.decenas_nal(ddec);
                   }
@@ -88,125 +88,125 @@ import { Cotizacion } from "../modelos/cotizacion";
   }
   unidades_nal(n){
     if (n + '' == '1') {
-        return 'UNO'
+        return 'Uno'
     }
     if (n + '' == '2') {
-        return 'DOS'
+        return 'Dos'
     }
     if (n + '' == '3') {
-        return 'TRES'
+        return 'Tres'
     }
     if (n + '' == '4') {
-        return 'CUATRO'
+        return 'Cuatro'
     }
     if (n + '' == '5') {
-        return 'CINCO'
+        return 'Cinco'
     }
     if (n + '' == '6') {
-        return 'SEIS'
+        return 'Seis'
     }
     if (n + '' == '7') {
-        return 'SIETE'
+        return 'Siete'
     }
     if (n + '' == '8') {
-        return 'OCHO'
+        return 'Ocho'
     }
     if (n + '' == '9') {
-        return 'NUEVE'
+        return 'Nueve'
     }
 
     
     if (n + '' == '10') {
-        return 'DIEZ'
+        return 'Diez'
     }
     if (n + '' == '11') {
-        return 'ONCE'
+        return 'Once'
     }
     if (n + '' == '12') {
-        return 'DOCE'
+        return 'Doce'
     }
     if (n + '' == '13') {
-        return 'TRECE'
+        return 'Trece'
     }
     if (n + '' == '14') {
-        return 'CATORCE'
+        return 'Catorce'
     }
     if (n + '' == '15') {
-        return 'QUINCE'
+        return 'Quince'
     }
     if (n + '' == '16') {
-        return 'DIECISEIS'
+        return 'Dieciseis'
     }
     if (n + '' == '17') {
-        return 'DIECISIETE'
+        return 'Diecisiete'
     }
     if (n + '' == '18') {
-        return 'DIECIOCHO'
+        return 'Dieciocho'
     }
     if (n + '' == '19') {
-        return 'DIECINUEVE'
+        return 'Diecinueve'
     }
 
     return '';
   }
   decenas_nal(n){
     if (n + '' == '1') {
-        return 'DIEZ'
+        return 'Diez'
     }
     if (n + '' == '2') {
-        return 'VEINTE'
+        return 'Veinte'
     }
     if (n + '' == '3') {
-        return 'TREINTA'
+        return 'Treinta'
     }
     if (n + '' == '4') {
-        return 'CUARENTA'
+        return 'Cuarenta'
     }
     if (n + '' == '5') {
-        return 'CINCUENTA'
+        return 'Cincuenta'
     }
     if (n + '' == '6') {
-        return 'SESENTA'
+        return 'Sesenta'
     }
     if (n + '' == '7') {
-        return 'SETENTA'
+        return 'Setenta'
     }
     if (n + '' == '8') {
-        return 'OCHENTA'
+        return 'Ochenta'
     }
     if (n + '' == '9') {
-        return 'NOVENTA'
+        return 'Noventa'
     }
     
     return '';
   }
     centenas_nal(n){
     if (n + '' == '1') {
-        return 'CIENTO'
+        return 'Ciento'
     }
     if (n + '' == '2') {
-        return 'DOCIENTOS'
+        return 'Docientos'
     }
     if (n + '' == '3') {
-        return 'TRECIENTOS'
+        return 'Trecientos'
     }
     if (n + '' == '4') {
-        return 'CUATROCIENTOS'
+        return 'Cuatrocientos'
     }
     if (n + '' == '5') {
-        return 'QUINIENTOS'
+        return 'Quinientos'
     }
     if (n + '' == '6') {
-        return 'SEISCIENTOSD'
+        return 'Seiscientos'
     }
     if (n + '' == '7') {
-        return 'SETECIENTOS'
+        return 'Setecientos'
     }
     if (n + '' == '8') {
-        return 'OCHOCIENTOS'
+        return 'Ochocientos'
     }
     if (n + '' == '9') {
-        return 'NOVECIENTOS'
+        return 'Novecientos'
     }
     
     return '';

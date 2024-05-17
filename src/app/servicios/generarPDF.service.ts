@@ -14,48 +14,7 @@ export class GenerarPDF  {
     ){}
  
     pdfArmado(piezas:any) : void {
-        piezas = [
-            {
-                "peso": "Hasta 33 Toneladas",
-                "medidas": {
-                    "largo": "15",
-                    "ancho": 3,
-                    "alto": 4
-                },
-                "referencia": "123456",
-                "destino": "Aguascalientes"
-            },
-            {
-                "peso": "Hasta 46 Toneladas",
-                "medidas": {
-                    "largo": 11.2,
-                    "ancho": 1.15,
-                    "alto": 1.37
-                },
-                "referencia": "ff",
-                "destino": "Aguascalientes"
-            },
-            // {
-            //     "peso": "Hasta 33 Toneladas",
-            //     "medidas": {
-            //         "largo": "15",
-            //         "ancho": 3,
-            //         "alto": 4
-            //     },
-            //     "referencia": "123456",
-            //     "destino": "Aguascalientes"
-            // },
-            // {
-            //     "peso": "Hasta 33 Toneladas",
-            //     "medidas": {
-            //         "largo": "15",
-            //         "ancho": 3,
-            //         "alto": 4
-            //     },
-            //     "referencia": "123456",
-            //     "destino": "Aguascalientes"
-            // },
-        ]
+        
         let piezasPrecios: Cotizacion[] = []; // Agregando precios
         piezas.forEach(el => {
             piezasPrecios.push(this.utilService.calcularCosto(el));
@@ -75,8 +34,8 @@ export class GenerarPDF  {
         doc.text(`${currentDate}`, 8, 32);
             
         doc.setTextColor("black");
-        doc.text("Empresa del Cliente:"+ userData.company, 7, 44);
-        doc.text("Cliente:"+ userData.name, 7.5, 49);
+        doc.text("Empresa del Cliente: "+ userData.company, 7, 44);
+        doc.text("Cliente: "+ userData.name, 7.5, 49);
         doc.text("Referencia: " + piezas[0].referencia,7,54);
 
         doc.setFontSize(11)
@@ -133,7 +92,7 @@ export class GenerarPDF  {
         doc.setLineWidth(2)
         doc.line(47,53,55,40)
         doc.rect(60, 48, 4, 4, "F");
-        doc.triangle(62, 48, 64, 52.5, 67, 48, "F");
+        doc.triangle(62, 48, 64, 52, 67, 48, "F");
         doc.text("Equipo a Utilizar:", 13, 50);
             
         doc.setTextColor("black");
@@ -202,8 +161,8 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        // doc.save(fileName);
-        // doc.addPage();
+        doc.save(fileName);
+        doc.addPage();
         this.utilService.subirArchivo(pdfFile, fileName);        
     }
 }
