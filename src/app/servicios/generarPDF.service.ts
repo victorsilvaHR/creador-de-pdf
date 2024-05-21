@@ -69,7 +69,7 @@ export class GenerarPDF  {
             doc.setFillColor(54, 48, 113);
             doc.rect(23, 102+altura, 165, 6, "F");
             doc.setTextColor("white");
-            doc.text("$ " +`${numFormat}`+" (" +`${numeroATexto}`+" PESOS 00/100) + I.V.A" , 26, 106+altura);
+            doc.text("$ " +`${numFormat}`+" (" +`${numeroATexto}`+" Pesos 00/100) + I.V.A" , 26, 106+altura);
             doc.setLineWidth(0.5)
             doc.line(18, 100 +altura, 18, 105 + altura);
             doc.line(18, 105 +altura, 24, 105 + altura);
