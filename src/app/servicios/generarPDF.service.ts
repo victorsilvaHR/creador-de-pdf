@@ -202,8 +202,8 @@ export class GenerarPDF  {
         const userName =  userData.email?.split('@')[0];   
         const fileName = `${userName}${this.utilService.currentDateTime()}.pdf`;
         const pdfFile = new File([pdfBlob], fileName);
-        // doc.save(fileName);
-        // doc.addPage();
+        doc.save(fileName);
+        doc.addPage();
         this.utilService.subirArchivo(pdfFile, fileName);        
     }
 }
