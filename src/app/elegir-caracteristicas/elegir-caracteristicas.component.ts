@@ -20,10 +20,15 @@ export class ElegirCaracteristicasComponent implements OnInit {
     ancho:'',
     alto:'',
   }
+  
   referencias : string = '';
   err: boolean = false;
   cotizaciones = false;
   disableRef = false;
+  disAll = false;
+  MAX_L = 14;
+  MAX_A = 4.80;
+  MAX_AL = 4;
 
   constructor (
     private sharedDataService : SharedDataService,
@@ -70,6 +75,7 @@ mostrarResumen() {
       this.limpiarCampo();
     } else {
       this.cotizaciones = true; 
+      this.disAll = true;
     } 
   } else {
     this.err = true;
@@ -80,26 +86,41 @@ changeReferencias(event: any) {
   this.referencias = event.target?.value;
   this.sharedDataService.enviarReferencias(this.referencias)
 }
-onLargoChange(value: number) {
-  console.log(value);
+onLargoChange(event: any) {
+  let value = parseFloat(event.target.value);
+
   if (value < 1) {
     this.medidas.largo = 1;
-  } else if (value > 15) {
-      this.medidas.largo = 15;
+  } else if (value > this.MAX_L) {
+    this.medidas.largo = this.MAX_L;
+    event.target.value = this.MAX_L;  // Ajusta el valor en el input
+  } else {
+    this.medidas.largo = value;
   }
 }
-onAnchoChange(value: number){
+
+onAnchoChange(event: any) {
+  let value = parseFloat(event.target.value);
+
   if (value < 1) {
     this.medidas.ancho = 1;
-  } else if (value > 5) {
-    this.medidas.ancho = 5;
+  } else if (value > this.MAX_A) {
+    this.medidas.ancho = this.MAX_A;
+    event.target.value = this.MAX_A;  // Ajusta el valor en el input
+  } else {
+    this.medidas.ancho = value;
   }
 }
-onAltoChange(value: number){
+onAltoChange(event: any){
+  let value = parseFloat(event.target.value);
+
   if (value < 1) {
     this.medidas.alto = 1;
-  } else if (value > 5) {
-    this.medidas.alto = 5;
+  } else if (value > this.MAX_AL) {
+    this.medidas.alto = this.MAX_AL;
+    event.target.value = this.MAX_AL;  // Ajusta el valor en el input
+  } else {
+    this.medidas.alto = value;
   }
 }
 limpiarCampo() {
@@ -111,9 +132,3 @@ limpiarCampo() {
 }
 
 }
-
-
-
-
-
-

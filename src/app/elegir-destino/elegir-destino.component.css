@@ -93,4 +93,6 @@ background-color: #1C4C96;
     font-size: 120%;
 
   }
-
+.accordion-button {
+    border: 2px solid red;
+}
