@@ -37,7 +37,6 @@ export class ElegirDestinoComponent   implements OnInit {
     this.sharedDataService.enviarDestino(destino);
   }
   destinoElegido(event: any) {
-    console.log(event.target?.value)
     this.enviarDestino(event.target?.value)
     this.destinoOk = true;
     this.err = false;

@@ -98,7 +98,7 @@ export class GenerarPDF  {
         doc.setTextColor("black");
         doc.text("Lowboy / CamaBaja", 10, 63);
         doc.text("Permiso SCT", 10, 68);
-        doc.text("Carros Piloto ( en caso de ). ",10,73)
+        doc.text("Carros Piloto ( en caso de ). " + this.utilService.mostrarPilotos(piezasPrecios),10,73);
             
         doc.setTextColor("black");
             
@@ -163,6 +163,6 @@ export class GenerarPDF  {
         const pdfFile = new File([pdfBlob], fileName);
         doc.save(fileName);
         doc.addPage();
-        this.utilService.subirArchivo(pdfFile, fileName);        
+        // this.utilService.subirArchivo(pdfFile, fileName);        
     }
 }

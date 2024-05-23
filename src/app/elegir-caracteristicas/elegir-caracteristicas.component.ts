@@ -41,7 +41,6 @@ export class ElegirCaracteristicasComponent implements OnInit {
 
 
   changeCaracteristicas(event: any) {
-    console.log(event.target?.value)
     this.toneladas = event.target?.value;
     this.sharedDataService.enviarCaracteristicas(this.toneladas)
   }
