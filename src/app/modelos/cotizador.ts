@@ -355,14 +355,4 @@ export const caracteristicasCarga = [
       id:3, descripcion: "Hasta 46 Toneladas"
     }
   ];
-export const operadores = [
-    {
-      id:1, pilotos: "sin piloto"
-    },
-    {
-      id:2, pilotos: "1"
-    },
-    {
-      id:3, pilotos: "2"
-    }
-  ];
+
