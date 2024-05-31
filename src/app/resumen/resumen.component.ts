@@ -28,7 +28,6 @@ export class ResumenComponent implements OnInit {
   }
 
   descargarPDF(){
-    console.log(this.piezas);
     this.generarPDF.pdfArmado(this.piezas);  
 }
 limpiarPantalla(){

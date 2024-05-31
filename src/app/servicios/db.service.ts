@@ -57,22 +57,7 @@ export class DataService {
         throw error;
       }
     }
-    async consultaOperadores(): Promise<any> {
-      try {
-        const dbRef = ref(getDatabase());
-        const snapshot = await get(child(dbRef, `/operadores`));
-        
-        if (snapshot.exists()) {
-          return snapshot.val();
-        } else {
-          console.log("No data available");
-          return null;
-        }
-      } catch (error) {
-        console.error(error);
-        throw error;
-      }
-    }
+   
     async usuarioById(idUser: string): Promise<any> {
       try {
         const dbRef = ref(getDatabase());

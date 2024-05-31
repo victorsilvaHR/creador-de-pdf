@@ -257,25 +257,22 @@ import { Cotizacion } from "../modelos/cotizacion";
         console.log('PIEZA',pieza);
         let subtotal = 0;
         let desc = '';
+        pieza.pilotos = 0;
         const tempCotizacion = this.allDestinos.find(el => el.destino == pieza.destino);
         console.log('tempCotizacion', tempCotizacion);
         
         const tons = pieza.peso.split(' ')[1];
-        console.log(tons);
         
         switch (Number(tons)) {
             case 33:
-                console.log(tempCotizacion.hasta33T);
                 subtotal += tempCotizacion.hasta33T;
                 desc += pieza.peso;
                 break;
             case 39:
-                console.log(tempCotizacion.hasta39T);
                 subtotal += tempCotizacion.hasta39T;
                 desc += pieza.peso;
             break;
             case 46:
-                console.log(tempCotizacion.hasta46T);   
                 subtotal += tempCotizacion.hasta46T;
                 desc += pieza.peso; 
             break;
@@ -287,9 +284,13 @@ import { Cotizacion } from "../modelos/cotizacion";
         if (Number(pieza.medidas.ancho) >= 3.31 && Number(pieza.medidas.ancho) <= 3.70) {
             subtotal += tempCotizacion.piloto1;
             desc += ' 1 piloto';
+            pieza.pilotos = 1;
+            
         } else if(Number(pieza.medidas.ancho) >= 3.71 && Number(pieza.medidas.ancho) <= 4.80) {
+            subtotal += tempCotizacion.piloto1;
             subtotal += tempCotizacion.piloto2;
             desc += ' 2 pilotos';
+            pieza.pilotos = 2;
         }
         console.log(desc,subtotal);
 
@@ -302,5 +303,10 @@ import { Cotizacion } from "../modelos/cotizacion";
             monto += Number(el!.precio);
         });
         return monto;
+    }
+    mostrarPilotos(lista: Cotizacion[]) {
+        const hayPilotos = lista.map(pieza => Number(pieza!.pilotos));     
+        let numPilotos = Math.max(...hayPilotos).toString();
+        return numPilotos;
     }
   }
