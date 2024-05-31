@@ -98,7 +98,7 @@ export class GenerarPDF  {
         doc.setTextColor("black");
         doc.text("Lowboy / CamaBaja", 10, 63);
         doc.text("Permiso SCT", 10, 68);
-        doc.text("Carros Piloto ( en caso de ). ",10,73)
+        doc.text("Carros Piloto ( en caso de ). " + this.utilService.mostrarPilotos(piezasPrecios),10,73)
         doc.setFillColor(255, 195, 0,)
         doc.rect(10, 74, 33, 5, "F");
         doc.text("No incluye lonas.", 10,78)   
