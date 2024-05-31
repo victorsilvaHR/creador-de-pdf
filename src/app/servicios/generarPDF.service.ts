@@ -99,6 +99,13 @@ export class GenerarPDF  {
         doc.text("Lowboy / CamaBaja", 10, 63);
         doc.text("Permiso SCT", 10, 68);
         doc.text("Carros Piloto ( en caso de ). ",10,73)
+        doc.setFillColor(255, 195, 0,)
+        doc.rect(10, 74, 33, 5, "F");
+        doc.text("No incluye lonas.", 10,78)   
+        doc.setFillColor(255, 195, 0,)
+        doc.rect(10, 79, 105, 5, "F");
+        doc.text("Maquinas Autopropulsables requieren custodia armada.",10,83)
+
             
         doc.setTextColor("black");
             
@@ -114,7 +121,8 @@ export class GenerarPDF  {
         
         
     Observaciones:
-        
+
+    -Flat Racks con Pilotos, se le agregara un 10% al precio final, ya que los pilotos se regresaran andando.
     -Maniobras de carga y descarga son por cuenta del destinatario.
     -Esta mercancia viaja por cuenta y riesco del interesado.
         
@@ -128,10 +136,10 @@ export class GenerarPDF  {
     destinatario.`;
             
             
-    const maxWidth = 220;
+    const maxWidth = 230;
     const lines = doc.splitTextToSize(longText, maxWidth); 
     const lineHeight = 6;
-    let y = 90;
+    let y = 100;
     
     
     lines.forEach((line: string) => { 
@@ -142,8 +150,8 @@ export class GenerarPDF  {
 
         doc.setFontSize(12)
         doc.setTextColor("red");
-        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 11, 168);
-        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 11, 173);
+        doc.text("- En caso de contenedor, se recomienda se asegure contra daños y/o robo por cuenta del interesado.", 10, 184);
+        doc.text("LARP Transport no se hara responsable por costos del contenedor en caso de robo.", 10, 189);
             
         
         // doc.setFontSize(50)
@@ -151,7 +159,7 @@ export class GenerarPDF  {
         // doc.setFont("arial","bold");
         // doc.text("26 Años", 35, 246);
         // doc.text("Tranportando Mexico!", 10, 257);
-        doc.addImage("/assets/larp26años.png",0,230,210, 30);
+        doc.addImage("/assets/larp26años.png",0,237,210, 30);
 
         doc.addImage("/assets/minferior2.png",0,270,210, 30);
 
