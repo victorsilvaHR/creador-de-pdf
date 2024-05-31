@@ -136,6 +136,14 @@ export const baseDatos= [
         piloto2:  18500	
     },
     {
+        destino: "Hermosillo Sonora",																																																																									
+        hasta33T: 185000,
+        hasta39T: 196100,
+        hasta46T: 218300,		
+        piloto1:  28000,
+        piloto2:  35000	
+    },
+    {
         destino: "Irapuato",																																																																														
         hasta33T: 75000,
         hasta39T: 79500,
@@ -256,7 +264,7 @@ export const baseDatos= [
         piloto2:  22000			
     },
     {
-        destino: "SMA",																																																																																																																																			
+        destino: "San Miguel Allende",																																																																																																																																			
         hasta33T: 66000,
         hasta39T: 69960,
         hasta46T: 77880,		
