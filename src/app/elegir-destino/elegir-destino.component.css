@@ -2,18 +2,7 @@
 text-align: center;
 margin-top: 0em;
 }
-.lupa {
-    margin: auto;
-    border: #1489fd 2px solid;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
-    color: #1489fd;
-}
-.lupa:hover {
-    background-color: #1489fd;
-    color: white;
-}
+
 .modal-body {
     height: 40vh;
     overflow-y: scroll;
