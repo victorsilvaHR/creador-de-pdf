@@ -345,11 +345,11 @@ export const baseDatos = [
     }
 ]
 export const users =  {
-        uid: 'fE2oJKb0jFfvfhv8KG6nJ2btUww1',
-        email: 'oscarcastellongg@gmail.com',
-        tel: '2294224747',
-        name: 'Oscar Castellon',
-        company: 'TI'
+        uid: '7Guw2BlMu2OPbx4xaI67NeSl9Sy2',
+        email: 'consuelo.santiago@dhl.com',
+        tel: '1234567890',
+        name: 'Consuelo Santiago',
+        company: 'DHL'
     }
 export const caracteristicasCarga = [
     {

@@ -30,6 +30,9 @@ export class CotizadorComponent implements OnInit {
   ngOnInit(): void {
     const uid = sessionStorage.getItem('uid');
     this.getUsuario(uid);
+    // this.dataService.cargarData();
+//  this.userService.createUser('consuelo.santiago@dhl.com','Mexico123'); 
+
   }
 
  async getUsuario(uid) {
