@@ -6,32 +6,23 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   providedIn: 'root'
 })
 export class AuthGuard {
-
   constructor(private router: Router) {}
 
   canActivate(): Promise<boolean> {
     return new Promise((resolve) => {
-      const auth = getAuth();
-   
+      const auth = getAuth(); // seguro si Firebase está inicializado
       onAuthStateChanged(auth, (user) => {
-        console.log(user);
-        if (this.validateSession(auth, user)) {
+        if (user) {
           resolve(true);
         } else {
           this.router.navigate(['/']);
           resolve(false);
         }
+      }, (err) => {
+        console.error('Auth state error', err);
+        this.router.navigate(['/']);
+        resolve(false);
       });
     });
-  }
-  validateSession(auth : any, user: any) : Boolean {
-    let userValid = false
-    try {
-      userValid =  auth.currentUser.uid == user.uid
-      return userValid;
-    } catch (error) {
-      console.log(error);
-      return userValid;
-    }
   }
 }
