@@ -1,23 +1,26 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { UserService } from './users.service';
 
-export const authGuard: CanActivateFn = async () => {
-  const router = inject(Router);
-  const userService = inject(UserService);
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-  const auth = getAuth();
+  constructor(private userService: UserService, private router: Router) {}
 
-  // Esperar a Firebase para saber si hay usuario
-  const user = await new Promise<any>((resolve) => {
-    onAuthStateChanged(auth, (usuario) => resolve(usuario));
-  });
-
-  if (user) {
-    return true;
-  } else {
-    router.navigate(['/']);
-    return false;
+  canActivate(): Promise<boolean> {
+    return new Promise((resolve) => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          resolve(true);
+        } else {
+          this.router.navigate(['/']);
+          resolve(false);
+        }
+      });
+    });
   }
-};
+}
